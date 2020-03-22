@@ -21,5 +21,11 @@ namespace AS_Autodoc
         {
 
         }
+
+        private void Enter_Click(object sender, EventArgs e)
+        {
+            Form f = new Suppliers();
+            f.ShowDialog();
+        }
     }
 }
