@@ -17,8 +17,8 @@ Street CHAR(30))
 CREATE TABLE Suppliers (
 ID_supplier INT PRIMARY KEY,
 Title CHAR(150),
-TIN INT,
-CIO INT,
+TIN BIGINT,
+CIO BIGINT,
 FIO_director CHAR(50),
 ID_country INT FOREIGN KEY REFERENCES  Country(ID_country),
 ID_city INT FOREIGN KEY REFERENCES City(ID_city),
@@ -67,14 +67,6 @@ ID_position INT FOREIGN KEY REFERENCES Position (ID_position),
 ID_role INT FOREIGN KEY REFERENCES Role_(ID_role));
 
 
-CREATE PROCEDURE dbo.SelectSuppliers
-AS
-BEGIN
-SELECT *
-FROM Suppliers
-END
-GO
-
 SELECT Autoparts.ID_autoparts, Autoparts.Article, Autoparts.Title, Autoparts.ID_Car, Car.ID_brand, Brands.Brand, Car.ID_model, Models.Title_model, Autoparts.Price, Autoparts.Comment
 FROM Autoparts INNER JOIN  Car 
 ON Autoparts.ID_car=Car.ID_car
@@ -93,6 +85,40 @@ INNER JOIN Street ON Suppliers.ID_street=Street.ID_street
 END
 GO
 EXECUTE dbo.SelectSuppliers
+
+
+CREATE PROCEDURE dbo.InsertSupplier
+@id INT,
+@title CHAR(15),
+@tin BIGINT,
+@cio BIGINT,
+@fio CHAR(50),
+@country INT,
+@city INT,
+@street INT,
+@house CHAR(15),
+@telephon CHAR(20),
+@email CHAR(25)
+AS
+BEGIN
+INSERT INTO [dbo].[Suppliers]
+           ([ID_supplier]
+           ,[Title]
+           ,[TIN]
+           ,[CIO]
+           ,[FIO_director]
+           ,[ID_country]
+           ,[ID_city]
+           ,[ID_street]
+           ,[House]
+           ,[Telephone]
+           ,[Email])
+     VALUES
+           (@id, @title, @tin, @cio, @fio, @country, @city, @street, @house, @telephon, @email)
+END
+GO
+
+
 
 
 CREATE PROCEDURE dbo.SelectAutoparts

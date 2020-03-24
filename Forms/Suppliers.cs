@@ -59,5 +59,12 @@ namespace AS_Autodoc
         {
 
         }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            AddingSupplier f = new AddingSupplier();
+            f.Owner = this;
+            f.Show();
+        }
     }
 }
