@@ -119,6 +119,13 @@ END
 GO
 
 
+CREATE PROCEDURE dbo.DeleteSupplier
+@id INT
+AS
+BEGIN
+DELETE FROM Suppliers WHERE ID_supplier=@id
+END
+GO
 
 
 CREATE PROCEDURE dbo.SelectAutoparts

@@ -50,6 +50,29 @@ namespace AS_Autodoc
 
         }
 
+        private void Delete()
+        {
+            DialogResult result = MessageBox.Show(
+            "Вы точно хотите удалить поставщика?",
+            "Предупреждение",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Information,
+            MessageBoxDefaultButton.Button3);
+
+            if (result == DialogResult.Yes)
+            {
+                using (SqlConnection connect = new SqlConnection(con))
+                {
+                    connect.Open();
+                    int id = Convert.ToInt32(dataGridView1[0, dataGridView1.CurrentRow.Index].Value);
+                    SqlCommand com = new SqlCommand("EXECUTE dbo.DeleteSupplier '" + id + "'", connect);
+                    com.ExecuteNonQuery();
+
+                }
+            }
+            this.TopMost = true;
+        }
+
         private void Suppliers_Load(object sender, EventArgs e)
         {
             LoadAll();
@@ -65,6 +88,12 @@ namespace AS_Autodoc
             AddingSupplier f = new AddingSupplier();
             f.Owner = this;
             f.Show();
+        }
+
+        private void Button3_Click(object sender, EventArgs e)
+        {
+            Delete();
+            LoadAll();
         }
     }
 }
