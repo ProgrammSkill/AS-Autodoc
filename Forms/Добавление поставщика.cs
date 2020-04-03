@@ -104,6 +104,20 @@ namespace AS_Autodoc
             }
         }
 
+        string Check()
+        {
+            Suppliers f = (Suppliers)this.Owner;
+            if(f.InsertOrEdit=="Добавление")
+            {
+                return "Добавление";
+            }
+            else
+            {
+                return "Редактирование";
+            }
+
+        }
+
         private void Insertion()
         {
             using (SqlConnection connect = new SqlConnection(con))
@@ -120,7 +134,25 @@ namespace AS_Autodoc
 
         private void AddingSupplier_Load(object sender, EventArgs e)
         {
-
+            AddingSupplier f = new AddingSupplier();
+            Suppliers f1 = new Suppliers();
+            //if(Check()=="Добавить")
+            //{
+            //    f.Text = "Добавленпаппапие поставщика";
+            //}
+            //else
+            //{
+            //    f.Text = "Редактирование поставщика";
+            //}
+            if(f1.InsertOrEdit=="Добавить")
+            {
+                f.Text = "INSERT";
+            }
+            else
+            {
+                f.Text = "edit";
+            }
+            textBox2.Text = f1.InsertOrEdit;
         }
 
         private void TextBox5_TextChanged(object sender, EventArgs e)

@@ -52,42 +52,111 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\AddingSupplier.cs">
+    <Compile Include="Forms\Переименование страны.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AddingSupplier.Designer.cs">
-      <DependentUpon>AddingSupplier.cs</DependentUpon>
+    <Compile Include="Forms\Переименование страны.Designer.cs">
+      <DependentUpon>Переименование страны.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Редактирование поставщика.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Редактирование поставщика.Designer.cs">
+      <DependentUpon>Редактирование поставщика.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Город.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Город.Designer.cs">
+      <DependentUpon>Город.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Account_administration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Account_administration.Designer.cs">
+      <DependentUpon>Account_administration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Account_administrator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Account_administrator.Designer.cs">
+      <DependentUpon>Account_administrator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Страна.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Страна.Designer.cs">
+      <DependentUpon>Страна.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Добавление поставщика.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Добавление поставщика.Designer.cs">
+      <DependentUpon>Добавление поставщика.cs</DependentUpon>
     </Compile>
     <Compile Include="Class\Connect.cs" />
-    <Compile Include="Forms\Form1.cs">
+    <Compile Include="Forms\Авторизация.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Forms\Авторизация.Designer.cs">
+      <DependentUpon>Авторизация.cs</DependentUpon>
     </Compile>
     <Compile Include="GithubNETAPI\GithubNET.cs" />
-    <Compile Include="Forms\Menu.cs">
+    <Compile Include="Forms\Меню.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Menu.Designer.cs">
-      <DependentUpon>Menu.cs</DependentUpon>
+    <Compile Include="Forms\Меню.Designer.cs">
+      <DependentUpon>Меню.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Forms\Suppliers.cs">
+    <Compile Include="Forms\Поставщики.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Suppliers.Designer.cs">
-      <DependentUpon>Suppliers.cs</DependentUpon>
+    <Compile Include="Forms\Поставщики.Designer.cs">
+      <DependentUpon>Поставщики.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Forms\AddingSupplier.resx">
-      <DependentUpon>AddingSupplier.cs</DependentUpon>
+    <Compile Include="Forms\Улица.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Улица.Designer.cs">
+      <DependentUpon>Улица.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Переименование города.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Переименование города.Designer.cs">
+      <DependentUpon>Переименование города.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Переименование улицы.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Переименование улицы.Designer.cs">
+      <DependentUpon>Переименование улицы.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Forms\Переименование страны.resx">
+      <DependentUpon>Переименование страны.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Редактирование поставщика.resx">
+      <DependentUpon>Редактирование поставщика.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Menu.resx">
-      <DependentUpon>Menu.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Город.resx">
+      <DependentUpon>Город.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Account_administration.resx">
+      <DependentUpon>Account_administration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Страна.resx">
+      <DependentUpon>Страна.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Добавление поставщика.resx">
+      <DependentUpon>Добавление поставщика.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Авторизация.resx">
+      <DependentUpon>Авторизация.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Меню.resx">
+      <DependentUpon>Меню.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -98,8 +167,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Forms\Suppliers.resx">
-      <DependentUpon>Suppliers.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Поставщики.resx">
+      <DependentUpon>Поставщики.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Улица.resx">
+      <DependentUpon>Улица.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Переименование города.resx">
+      <DependentUpon>Переименование города.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Переименование улицы.resx">
+      <DependentUpon>Переименование улицы.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

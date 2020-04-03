@@ -40,12 +40,17 @@ ID_car INT PRIMARY KEY,
 ID_brand INT FOREIGN KEY REFERENCES Brands(ID_brand),
 ID_model INT FOREIGN KEY REFERENCES Models(ID_models))
 
+CREATE TABLE Manufacturers(
+ID_manufacturer INT PRIMARY KEY,
+Manufacturer CHAR(30),
+ID_country INT FOREIGN KEY REFERENCES  Country(ID_country))
+
 CREATE TABLE Autoparts (
 ID_autoparts INT PRIMARY KEY,
 Article CHAR(50),
 Title CHAR(50),
 ID_Car INT FOREIGN KEY REFERENCES Car(ID_Car),
-Price FLOAT,
+ID_manufacturer INT FOREIGN KEY REFERENCES Manufacturers(ID_manufacturer),
 Comment CHAR(150))
 
 CREATE TABLE Role_(
@@ -57,14 +62,153 @@ ID_position INT PRIMARY KEY,
 Title char(30))
 
 CREATE TABLE Users(
-ID_user INT PRIMARY KEY,
-Login_ char(15),
+Login_ CHAR(15) PRIMARY KEY,
 Password_ char(15),
+ID_role INT FOREIGN KEY REFERENCES Role_(ID_role))
+
+CREATE TABLE InfoUsers(
+Login_ CHAR(15) FOREIGN KEY REFERENCES Users(Login_),
 Surname char(20),
 First_name char(20),
 Last_name char(20),
 ID_position INT FOREIGN KEY REFERENCES Position (ID_position),
-ID_role INT FOREIGN KEY REFERENCES Role_(ID_role));
+Address_ char(50),
+Telephone CHAR(20),
+Date_of_acceptance DATE,
+Date_of_termination DATE)
+
+
+CREATE PROCEDURE dbo.InsertUsers
+@login CHAR(15),
+@pass CHAR(15),
+@role INT,
+@surname CHAR(20),
+@f_name CHAR(20),
+@l_name CHAR(20),
+@pos INT,
+@adress CHAR(50),
+@tel CHAR(20),
+@da DATE,
+@dt DATE
+AS
+BEGIN
+INSERT INTO [dbo].[Users]
+           ([Login_]
+           ,[Password_]
+           ,[ID_role])
+     VALUES
+           (@login,
+            @pass,
+            @role)
+INSERT INTO [dbo].[InfoUsers]
+           ([Login_]
+           ,[Surname]
+           ,[First_name]
+           ,[Last_name]
+           ,[ID_position]
+           ,[Address_]
+           ,[Telephone]
+           ,[Date_of_acceptance]
+           ,[Date_of_termination])
+     VALUES
+           (@login,
+            @surname,
+            @f_name,
+            @l_name,
+            @pos,
+            @adress,
+            @tel,
+            @da,
+            @dt)
+END
+GO
+EXECUTE dbo.InsertUsers 'fvdfd', '3545fg', 2, 'xccsd', 'dss', 'dsss', 1, 'dsdsds', '343433', 31.12.99, 01.04.20
+
+
+
+
+
+
+CREATE PROCEDURE dbo.InsertCountry
+@id INT,
+@c CHAR(30)
+AS
+BEGIN
+INSERT INTO [dbo].[Country]
+           ([ID_country]
+           ,[Country])
+     VALUES
+           (@id, @c)
+END
+GO
+
+
+CREATE PROCEDURE dbo.EditCountry
+@id INT,
+@c CHAR(30)
+AS
+BEGIN
+UPDATE [dbo].[Country]
+   SET [ID_country] = @id,
+       [Country] = @c
+ WHERE ID_country=@id
+END
+GO
+
+
+CREATE PROCEDURE dbo.InsertCity
+@id INT,
+@c CHAR(30)
+AS
+BEGIN
+INSERT INTO [dbo].[City]
+           ([ID_city]
+           ,[City])
+     VALUES
+           (@id, @c)
+END
+GO
+
+CREATE PROCEDURE dbo.EditCity
+@id INT,
+@c CHAR(30)
+AS
+BEGIN
+UPDATE [dbo].[City]
+   SET [ID_city] = @id,
+       [City] = @c
+ WHERE ID_city=@id
+END
+GO
+
+
+
+CREATE PROCEDURE dbo.InsertStreet
+@id INT,
+@s CHAR(30)
+AS
+BEGIN
+INSERT INTO [dbo].[Street]
+           ([ID_street]
+           ,[Street])
+     VALUES
+           (@id, @s)
+END
+GO
+
+CREATE PROCEDURE dbo.EditStreet
+@id INT,
+@s CHAR(30)
+AS
+BEGIN
+UPDATE [dbo].[Street]
+   SET [ID_street] =@id,
+       [Street] = @s
+ WHERE ID_street=@id
+END
+GO
+
+
 
 
 SELECT Autoparts.ID_autoparts, Autoparts.Article, Autoparts.Title, Autoparts.ID_Car, Car.ID_brand, Brands.Brand, Car.ID_model, Models.Title_model, Autoparts.Price, Autoparts.Comment
@@ -119,6 +263,39 @@ END
 GO
 
 
+CREATE PROCEDURE dbo.EditSupplier
+@id INT,
+@title CHAR(15),
+@tin BIGINT,
+@cio BIGINT,
+@fio CHAR(50),
+@country INT,
+@city INT,
+@street INT,
+@house CHAR(15),
+@telephon CHAR(20),
+@email CHAR(25)
+AS
+BEGIN
+UPDATE [dbo].[Suppliers]
+   SET [ID_supplier] =@id,
+       [Title] =@title,
+       [TIN] = @tin,
+       [CIO] = @cio,
+       [FIO_director] = @fio,
+       [ID_country] = @country,
+       [ID_city] = @city,
+       [ID_street] = @street,
+       [House] = @house,
+       [Telephone] = @telephon,
+       [Email] = @email
+ WHERE ID_supplier=@id
+END
+GO
+
+
+
+
 CREATE PROCEDURE dbo.DeleteSupplier
 @id INT
 AS
@@ -141,7 +318,7 @@ GO
 EXECUTE dbo.SelectAutoparts
 
 
-CREATE PROCEDURE dbo.InsertAutoparts
+CREATE PROCEDURE dbo.InsertAutopart
 @id int,
 @a char(50),
 @t char(50),
@@ -165,4 +342,5 @@ INSERT INTO [dbo].[Autoparts]
            ,<Price, float,>
            ,<Comment, char(150),>)
 GO
+
 

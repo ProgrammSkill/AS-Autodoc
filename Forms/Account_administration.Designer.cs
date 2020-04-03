@@ -1,6 +1,6 @@
 ﻿namespace AS_Autodoc
 {
-    partial class Menu
+    partial class Account_administration
     {
         /// <summary>
         /// Required designer variable.
@@ -28,34 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.enter = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // enter
+            // dataGridView1
             // 
-            this.enter.Location = new System.Drawing.Point(319, 211);
-            this.enter.Name = "enter";
-            this.enter.Size = new System.Drawing.Size(162, 29);
-            this.enter.TabIndex = 1;
-            this.enter.Text = "Войти";
-            this.enter.UseVisualStyleBackColor = true;
-            this.enter.Click += new System.EventHandler(this.Enter_Click);
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(31, 25);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(699, 150);
+            this.dataGridView1.TabIndex = 1;
             // 
-            // Menu
+            // Account_administration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.enter);
-            this.Name = "Menu";
-            this.Text = "Menu";
-            this.Load += new System.EventHandler(this.Menu_Load);
+            this.Controls.Add(this.dataGridView1);
+            this.Name = "Account_administration";
+            this.Text = "Администрирование учётных записей";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button enter;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

@@ -10,22 +10,11 @@ using System.Windows.Forms;
 
 namespace AS_Autodoc
 {
-    public partial class Menu : Form
+    public partial class Account_administration : Form
     {
-        public Menu()
+        public Account_administration()
         {
             InitializeComponent();
-        }
-
-        private void Menu_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Enter_Click(object sender, EventArgs e)
-        {
-            Form f = new Suppliers();
-            f.ShowDialog();
         }
     }
 }

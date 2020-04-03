@@ -14,6 +14,7 @@ namespace AS_Autodoc
     public partial class Suppliers : Form
     {
         string con = Connect.getConnect();
+        public string InsertOrEdit;
         public Suppliers()
         {
             InitializeComponent();
@@ -86,6 +87,7 @@ namespace AS_Autodoc
         private void Button1_Click(object sender, EventArgs e)
         {
             AddingSupplier f = new AddingSupplier();
+            InsertOrEdit = "Добавить";
             f.Owner = this;
             f.Show();
         }
@@ -94,6 +96,14 @@ namespace AS_Autodoc
         {
             Delete();
             LoadAll();
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            InsertOrEdit = "Редактировать";
+            AddingSupplier f = new AddingSupplier();
+            f.Owner = this;
+            f.Show();
         }
     }
 }
