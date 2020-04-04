@@ -24,11 +24,9 @@ namespace AS_Autodoc
         {
             using (SqlConnection connect = new SqlConnection(con))
             {
-
                 connect.Open();
                 SqlCommand com = new SqlCommand("EXECUTE dbo.EditStreet '" + id + "','" + textBox1.Text + "'", connect);
                 com.ExecuteNonQuery();
-
             }
         }
 
@@ -41,9 +39,26 @@ namespace AS_Autodoc
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            Edit();
+            if (textBox1.Text != "")
+            {
+                Edit();
+            }
+            else
+            {
+                MessageBox.Show("Поле пустое.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             Street f = (Street)this.Owner;
             f.LoadAll();
+        }
+
+        private void TextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

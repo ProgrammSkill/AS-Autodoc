@@ -11,23 +11,24 @@ using System.Data.SqlClient;
 
 namespace AS_Autodoc
 {
-    public partial class City : Form
+    public partial class Brands : Form
     {
         string con = Connect.getConnect();
-        public City()
+        public Brands()
         {
             InitializeComponent();
         }
+
         public int insertId;
-        public int ID_city;
-        public string city;
+        public int ID_brand;
+        public string brand;
 
         public void LoadAll()
         {
             using (SqlConnection conn = new SqlConnection(con))
             {
                 conn.Open();
-                SqlCommand com = new SqlCommand("SELECT * FROM City", conn);
+                SqlCommand com = new SqlCommand("SELECT * FROM Brands", conn);
                 int i = 0;
                 dataGridView1.Rows.Clear();
                 using (SqlDataReader r = com.ExecuteReader())
@@ -48,7 +49,7 @@ namespace AS_Autodoc
         {
             string title_country = dataGridView1[1, dataGridView1.CurrentRow.Index].Value.ToString();
             DialogResult result = MessageBox.Show(
-            "Вы точно хотите удалить город из списка?",
+            "Вы точно хотите удалить марку из списка?",
             "Предупреждение",
             MessageBoxButtons.YesNo,
             MessageBoxIcon.Question,
@@ -60,7 +61,7 @@ namespace AS_Autodoc
                 {
                     connect.Open();
                     int id = Convert.ToInt32(dataGridView1[0, dataGridView1.CurrentRow.Index].Value);
-                    SqlCommand com = new SqlCommand("DELETE FROM City WHERE ID_city='" + id + "'", connect);
+                    SqlCommand com = new SqlCommand("DELETE FROM Brands WHERE ID_brand='" + id + "'", connect);
                     com.ExecuteNonQuery();
 
                 }
@@ -75,12 +76,12 @@ namespace AS_Autodoc
                 connection.Open();
                 int id = 0;
                 int n = 1;
-                SqlCommand cm = new SqlCommand("SELECT * FROM City", connection);
+                SqlCommand cm = new SqlCommand("SELECT * FROM Brands", connection);
                 SqlDataReader r = cm.ExecuteReader();
                 if (r.HasRows)
                 {
                     r.Close();
-                    cm = new SqlCommand("SELECT Max(ID_city) FROM City", connection);
+                    cm = new SqlCommand("SELECT Max(ID_brand) FROM Brands", connection);
                     r = cm.ExecuteReader();
                     while (r.Read())
                     {
@@ -98,22 +99,17 @@ namespace AS_Autodoc
             using (SqlConnection connect = new SqlConnection(con))
             {
                 connect.Open();
-                SqlCommand com = new SqlCommand("EXECUTE dbo.InsertCity '" + insertId + "','" + textBox1.Text + "'", connect);
+                SqlCommand com = new SqlCommand("EXECUTE dbo.InsertBrand '" + insertId + "','" + textBox1.Text + "'", connect);
                 com.ExecuteNonQuery();
             }
             textBox1.Clear();
         }
 
-        private void City_Load(object sender, EventArgs e)
+
+        private void Brands_Load(object sender, EventArgs e)
         {
             LoadAll();
             Maxid();
-        }
-
-        private void Button3_Click(object sender, EventArgs e)
-        {
-            Delete();
-            LoadAll();
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -134,16 +130,22 @@ namespace AS_Autodoc
         {
             if (dataGridView1.CurrentRow != null)
             {
-                ID_city = Convert.ToInt32(dataGridView1[0, dataGridView1.CurrentRow.Index].Value);
-                city = dataGridView1[1, dataGridView1.CurrentRow.Index].Value.ToString();
-                Renaming_city f = new Renaming_city();
+                ID_brand = Convert.ToInt32(dataGridView1[0, dataGridView1.CurrentRow.Index].Value);
+                brand = dataGridView1[1, dataGridView1.CurrentRow.Index].Value.ToString();
+                Renaming_brand f = new Renaming_brand();
                 f.Owner = this;
                 f.Show();
             }
             else
             {
-                MessageBox.Show("Не выбран город для переименования.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Не выбрана марка для переименования.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void Button3_Click(object sender, EventArgs e)
+        {
+            Delete();
+            LoadAll();
         }
     }
 }

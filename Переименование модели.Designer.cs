@@ -1,6 +1,6 @@
 ﻿namespace AS_Autodoc
 {
-    partial class Renaming__street
+    partial class Renaming__model
     {
         /// <summary>
         /// Required designer variable.
@@ -39,7 +39,7 @@
             this.button1.Location = new System.Drawing.Point(223, 51);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(132, 23);
-            this.button1.TabIndex = 9;
+            this.button1.TabIndex = 12;
             this.button1.Text = "Готово";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.Button1_Click);
@@ -49,8 +49,7 @@
             this.textBox1.Location = new System.Drawing.Point(90, 12);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(221, 20);
-            this.textBox1.TabIndex = 8;
-            this.textBox1.TextChanged += new System.EventHandler(this.TextBox1_TextChanged);
+            this.textBox1.TabIndex = 11;
             // 
             // label1
             // 
@@ -59,11 +58,10 @@
             this.label1.Location = new System.Drawing.Point(10, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 16);
-            this.label1.TabIndex = 7;
+            this.label1.TabIndex = 10;
             this.label1.Text = "Название";
-            this.label1.Click += new System.EventHandler(this.Label1_Click);
             // 
-            // Renaming__street
+            // Renaming__model
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -71,9 +69,9 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
-            this.Name = "Renaming__street";
-            this.Text = "Переименование улицы";
-            this.Load += new System.EventHandler(this.Renaming__street_Load);
+            this.Name = "Renaming__model";
+            this.Text = "Переименование модели";
+            this.Load += new System.EventHandler(this.Renaming__model_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

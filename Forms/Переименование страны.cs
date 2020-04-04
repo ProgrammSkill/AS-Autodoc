@@ -42,7 +42,14 @@ namespace AS_Autodoc
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            Edit();
+            if (textBox1.Text != "")
+            {
+                Edit();
+            }
+            else
+            {
+                MessageBox.Show("Поле пустое.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             Country f = (Country)this.Owner;
             f.LoadAll();
         }

@@ -11,23 +11,23 @@ using System.Data.SqlClient;
 
 namespace AS_Autodoc
 {
-    public partial class City : Form
+    public partial class Models : Form
     {
         string con = Connect.getConnect();
-        public City()
+        public Models()
         {
             InitializeComponent();
         }
         public int insertId;
-        public int ID_city;
-        public string city;
+        public int ID_model;
+        public string model;
 
         public void LoadAll()
         {
             using (SqlConnection conn = new SqlConnection(con))
             {
                 conn.Open();
-                SqlCommand com = new SqlCommand("SELECT * FROM City", conn);
+                SqlCommand com = new SqlCommand("SELECT * FROM Models", conn);
                 int i = 0;
                 dataGridView1.Rows.Clear();
                 using (SqlDataReader r = com.ExecuteReader())
@@ -48,7 +48,7 @@ namespace AS_Autodoc
         {
             string title_country = dataGridView1[1, dataGridView1.CurrentRow.Index].Value.ToString();
             DialogResult result = MessageBox.Show(
-            "Вы точно хотите удалить город из списка?",
+            "Вы точно хотите удалить модель из списка?",
             "Предупреждение",
             MessageBoxButtons.YesNo,
             MessageBoxIcon.Question,
@@ -60,7 +60,7 @@ namespace AS_Autodoc
                 {
                     connect.Open();
                     int id = Convert.ToInt32(dataGridView1[0, dataGridView1.CurrentRow.Index].Value);
-                    SqlCommand com = new SqlCommand("DELETE FROM City WHERE ID_city='" + id + "'", connect);
+                    SqlCommand com = new SqlCommand("DELETE FROM Models WHERE ID_model='" + id + "'", connect);
                     com.ExecuteNonQuery();
 
                 }
@@ -75,12 +75,12 @@ namespace AS_Autodoc
                 connection.Open();
                 int id = 0;
                 int n = 1;
-                SqlCommand cm = new SqlCommand("SELECT * FROM City", connection);
+                SqlCommand cm = new SqlCommand("SELECT * FROM Models", connection);
                 SqlDataReader r = cm.ExecuteReader();
                 if (r.HasRows)
                 {
                     r.Close();
-                    cm = new SqlCommand("SELECT Max(ID_city) FROM City", connection);
+                    cm = new SqlCommand("SELECT Max(ID_model) FROM Models", connection);
                     r = cm.ExecuteReader();
                     while (r.Read())
                     {
@@ -98,13 +98,13 @@ namespace AS_Autodoc
             using (SqlConnection connect = new SqlConnection(con))
             {
                 connect.Open();
-                SqlCommand com = new SqlCommand("EXECUTE dbo.InsertCity '" + insertId + "','" + textBox1.Text + "'", connect);
+                SqlCommand com = new SqlCommand("EXECUTE dbo.InsertModel '" + insertId + "','" + textBox1.Text + "'", connect);
                 com.ExecuteNonQuery();
             }
             textBox1.Clear();
         }
 
-        private void City_Load(object sender, EventArgs e)
+        private void Models_Load(object sender, EventArgs e)
         {
             LoadAll();
             Maxid();
@@ -134,15 +134,15 @@ namespace AS_Autodoc
         {
             if (dataGridView1.CurrentRow != null)
             {
-                ID_city = Convert.ToInt32(dataGridView1[0, dataGridView1.CurrentRow.Index].Value);
-                city = dataGridView1[1, dataGridView1.CurrentRow.Index].Value.ToString();
-                Renaming_city f = new Renaming_city();
+                ID_model = Convert.ToInt32(dataGridView1[0, dataGridView1.CurrentRow.Index].Value);
+                model = dataGridView1[1, dataGridView1.CurrentRow.Index].Value.ToString();
+                Renaming__model f = new Renaming__model();
                 f.Owner = this;
                 f.Show();
             }
             else
             {
-                MessageBox.Show("Не выбран город для переименования.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Не выбрана модель для переименования.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

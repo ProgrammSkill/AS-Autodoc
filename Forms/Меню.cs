@@ -45,5 +45,17 @@ namespace AS_Autodoc
             Street f = new Street();
             f.ShowDialog();
         }
+
+        private void МоделиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Models f = new Models();
+            f.ShowDialog();
+        }
+
+        private void МаркиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Brands f = new Brands();
+            f.ShowDialog();
+        }
     }
 }

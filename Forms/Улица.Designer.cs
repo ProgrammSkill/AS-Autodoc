@@ -74,7 +74,7 @@
             this.groupBox1.Size = new System.Drawing.Size(331, 101);
             this.groupBox1.TabIndex = 15;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Добавление города";
+            this.groupBox1.Text = "Добавление улицы";
             // 
             // button1
             // 

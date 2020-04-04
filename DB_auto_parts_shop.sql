@@ -210,6 +210,60 @@ GO
 
 
 
+CREATE PROCEDURE dbo.InsertBrand
+@id INT,
+@b CHAR(30)
+AS
+BEGIN
+INSERT INTO [dbo].[Brands]
+           ([ID_brand]
+           ,[Brand])
+     VALUES
+           (@id,
+            @b)
+END
+GO
+
+CREATE PROCEDURE dbo.EditBrand
+@id INT,
+@b CHAR(30)
+AS
+BEGIN
+UPDATE [dbo].[Brands]
+   SET [ID_brand] =@id,
+       [Brand] = @b
+ WHERE ID_brand=@id
+END
+GO
+
+
+CREATE PROCEDURE dbo.InsertModel
+@id INT,
+@m CHAR(30)
+AS
+BEGIN
+INSERT INTO [dbo].[Models]
+           ([ID_model]
+           ,[Title_model])
+     VALUES
+           (@id, @m)
+END
+GO
+
+CREATE PROCEDURE dbo.EditModel
+@id INT,
+@m CHAR(30)
+AS
+BEGIN
+UPDATE [dbo].[Models]
+   SET [ID_model] = @id,
+       [Title_model] = @m
+ WHERE ID_model=@id
+END
+GO
+
+
+
 
 SELECT Autoparts.ID_autoparts, Autoparts.Article, Autoparts.Title, Autoparts.ID_Car, Car.ID_brand, Brands.Brand, Car.ID_model, Models.Title_model, Autoparts.Price, Autoparts.Comment
 FROM Autoparts INNER JOIN  Car 

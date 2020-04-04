@@ -1,6 +1,6 @@
 ﻿namespace AS_Autodoc
 {
-    partial class Country
+    partial class Models
     {
         /// <summary>
         /// Required designer variable.
@@ -44,10 +44,10 @@
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(187, 249);
+            this.button3.Location = new System.Drawing.Point(177, 249);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(132, 23);
-            this.button3.TabIndex = 9;
+            this.button3.TabIndex = 25;
             this.button3.Text = "Удалить";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.Button3_Click);
@@ -55,10 +55,10 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(24, 249);
+            this.button2.Location = new System.Drawing.Point(21, 249);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(132, 23);
-            this.button2.TabIndex = 8;
+            this.button2.TabIndex = 24;
             this.button2.Text = "Переименовать";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.Button2_Click);
@@ -69,13 +69,12 @@
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox1.Location = new System.Drawing.Point(299, 32);
+            this.groupBox1.Location = new System.Drawing.Point(296, 32);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(331, 101);
-            this.groupBox1.TabIndex = 7;
+            this.groupBox1.TabIndex = 23;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Добавление страны";
-            this.groupBox1.Enter += new System.EventHandler(this.GroupBox1_Enter);
+            this.groupBox1.Text = "Добавление модели";
             // 
             // button1
             // 
@@ -113,11 +112,11 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2});
-            this.dataGridView1.Location = new System.Drawing.Point(24, 32);
+            this.dataGridView1.Location = new System.Drawing.Point(21, 32);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(244, 193);
-            this.dataGridView1.TabIndex = 6;
+            this.dataGridView1.TabIndex = 22;
             // 
             // Column1
             // 
@@ -128,12 +127,12 @@
             // 
             // Column2
             // 
-            this.Column2.HeaderText = "Страна";
+            this.Column2.HeaderText = "Модели";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             this.Column2.Width = 200;
             // 
-            // Country
+            // Models
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -142,9 +141,9 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
-            this.Name = "Country";
-            this.Text = "Страна";
-            this.Load += new System.EventHandler(this.Country_Load);
+            this.Name = "Models";
+            this.Text = "Модели";
+            this.Load += new System.EventHandler(this.Models_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

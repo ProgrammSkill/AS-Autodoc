@@ -34,6 +34,8 @@
             this.странаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.городToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.улицаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.маркиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.моделиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,6 +62,8 @@
             // справочникToolStripMenuItem
             // 
             this.справочникToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.маркиToolStripMenuItem,
+            this.моделиToolStripMenuItem,
             this.странаToolStripMenuItem,
             this.городToolStripMenuItem,
             this.улицаToolStripMenuItem});
@@ -88,6 +92,20 @@
             this.улицаToolStripMenuItem.Text = "Улица";
             this.улицаToolStripMenuItem.Click += new System.EventHandler(this.УлицаToolStripMenuItem_Click);
             // 
+            // маркиToolStripMenuItem
+            // 
+            this.маркиToolStripMenuItem.Name = "маркиToolStripMenuItem";
+            this.маркиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.маркиToolStripMenuItem.Text = "Марки";
+            this.маркиToolStripMenuItem.Click += new System.EventHandler(this.МаркиToolStripMenuItem_Click);
+            // 
+            // моделиToolStripMenuItem
+            // 
+            this.моделиToolStripMenuItem.Name = "моделиToolStripMenuItem";
+            this.моделиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.моделиToolStripMenuItem.Text = "Модели";
+            this.моделиToolStripMenuItem.Click += new System.EventHandler(this.МоделиToolStripMenuItem_Click);
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -114,5 +132,7 @@
         private System.Windows.Forms.ToolStripMenuItem странаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem городToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem улицаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem маркиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem моделиToolStripMenuItem;
     }
 }

@@ -101,11 +101,13 @@ namespace AS_Autodoc
                 SqlCommand com = new SqlCommand("EXECUTE dbo.InsertStreet '" + insertId + "','" + textBox1.Text + "'", connect);
                 com.ExecuteNonQuery();
             }
+            textBox1.Clear();
         }
 
         private void Street_Load(object sender, EventArgs e)
         {
             LoadAll();
+            Maxid();
         }
 
         private void Button3_Click(object sender, EventArgs e)

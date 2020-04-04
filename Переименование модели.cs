@@ -11,10 +11,10 @@ using System.Data.SqlClient;
 
 namespace AS_Autodoc
 {
-    public partial class Renaming_city : Form
+    public partial class Renaming__model : Form
     {
         string con = Connect.getConnect();
-        public Renaming_city()
+        public Renaming__model()
         {
             InitializeComponent();
         }
@@ -24,19 +24,17 @@ namespace AS_Autodoc
         {
             using (SqlConnection connect = new SqlConnection(con))
             {
-
                 connect.Open();
-                SqlCommand com = new SqlCommand("EXECUTE dbo.EditCity'" + id + "','" + textBox1.Text + "'", connect);
+                SqlCommand com = new SqlCommand("EXECUTE dbo.EditModel '" + id + "','" + textBox1.Text + "'", connect);
                 com.ExecuteNonQuery();
-
             }
         }
 
-        private void Renaming_city_Load(object sender, EventArgs e)
+        private void Renaming__model_Load(object sender, EventArgs e)
         {
-            City f = (City)this.Owner;
-            id = f.ID_city.ToString();
-            textBox1.Text = f.city.ToString();
+            Models f = (Models)this.Owner;
+            id = f.ID_model.ToString();
+            textBox1.Text = f.model.ToString();
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -49,7 +47,7 @@ namespace AS_Autodoc
             {
                 MessageBox.Show("Поле пустое.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            City f = (City)this.Owner;
+            Models f = (Models)this.Owner;
             f.LoadAll();
         }
     }
