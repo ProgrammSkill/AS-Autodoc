@@ -52,6 +52,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Добавление автозапчасти.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Добавление автозапчасти.Designer.cs">
+      <DependentUpon>Добавление автозапчасти.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Автозапчасти.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Автозапчасти.Designer.cs">
+      <DependentUpon>Автозапчасти.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Brands_and_models .cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Brands_and_models .Designer.cs">
+      <DependentUpon>Brands_and_models .cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Марки.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +138,12 @@
     <Compile Include="Forms\Модели.Designer.cs">
       <DependentUpon>Модели.cs</DependentUpon>
     </Compile>
+    <Compile Include="Производители.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Производители.Designer.cs">
+      <DependentUpon>Производители.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Forms\Поставщики.cs">
@@ -152,12 +176,18 @@
     <Compile Include="Forms\Переименование марки.Designer.cs">
       <DependentUpon>Переименование марки.cs</DependentUpon>
     </Compile>
-    <Compile Include="Переименование модели.cs">
+    <Compile Include="Forms\Переименование модели.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Переименование модели.Designer.cs">
+    <Compile Include="Forms\Переименование модели.Designer.cs">
       <DependentUpon>Переименование модели.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Автозапчасти.resx">
+      <DependentUpon>Автозапчасти.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Brands_and_models .resx">
+      <DependentUpon>Brands_and_models .cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Модели.resx">
       <DependentUpon>Модели.cs</DependentUpon>
     </EmbeddedResource>
@@ -212,8 +242,14 @@
     <EmbeddedResource Include="Forms\Переименование марки.resx">
       <DependentUpon>Переименование марки.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Переименование модели.resx">
+    <EmbeddedResource Include="Forms\Переименование модели.resx">
       <DependentUpon>Переименование модели.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Добавление автозапчасти.resx">
+      <DependentUpon>Добавление автозапчасти.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Производители.resx">
+      <DependentUpon>Производители.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

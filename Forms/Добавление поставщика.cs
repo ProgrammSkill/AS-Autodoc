@@ -163,6 +163,7 @@ namespace AS_Autodoc
         private void Button1_Click(object sender, EventArgs e)
         {
             Insertion();
+            Maxid();
             Suppliers f = (Suppliers)this.Owner;
             f.LoadAll();
         }

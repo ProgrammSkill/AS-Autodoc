@@ -57,5 +57,28 @@ namespace AS_Autodoc
             Brands f = new Brands();
             f.ShowDialog();
         }
+
+        private void АвтозапчастиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ПроизводителиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Manufacturers f = new Manufacturers();
+            f.ShowDialog();
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            Brands_and_models f = new Brands_and_models();
+            f.ShowDialog();
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            Autoparts f = new Autoparts();
+            f.ShowDialog();
+        }
     }
 }

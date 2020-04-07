@@ -33,12 +33,12 @@ Title_model CHAR(50))
 
 CREATE TABLE Brands (
 ID_brand INT PRIMARY KEY,
-Brand CHAR(30))
+Title_brand CHAR(30))
 
-CREATE TABLE Car (
-ID_car INT PRIMARY KEY,
+CREATE TABLE Brands_and_models (
+ID_brd_mdl INT PRIMARY KEY,
 ID_brand INT FOREIGN KEY REFERENCES Brands(ID_brand),
-ID_model INT FOREIGN KEY REFERENCES Models(ID_models))
+ID_model INT FOREIGN KEY REFERENCES Models(ID_model))
 
 CREATE TABLE Manufacturers(
 ID_manufacturer INT PRIMARY KEY,
@@ -217,7 +217,7 @@ AS
 BEGIN
 INSERT INTO [dbo].[Brands]
            ([ID_brand]
-           ,[Brand])
+           ,[Title_brand])
      VALUES
            (@id,
             @b)
@@ -231,7 +231,7 @@ AS
 BEGIN
 UPDATE [dbo].[Brands]
    SET [ID_brand] =@id,
-       [Brand] = @b
+       [Title_brand] = @b
  WHERE ID_brand=@id
 END
 GO
@@ -264,13 +264,72 @@ GO
 
 
 
+CREATE PROCEDURE dbo.SelectManufacturers
+AS
+BEGIN
+SELECT Manufacturers.ID_manufacturer, Manufacturers.Manufacturer, Country.Country
+FROM Manufacturers INNER JOIN Country
+ON Manufacturers.ID_country=Country.ID_country
+END
+GO
+EXECUTE dbo.SelectManufacturers
 
-SELECT Autoparts.ID_autoparts, Autoparts.Article, Autoparts.Title, Autoparts.ID_Car, Car.ID_brand, Brands.Brand, Car.ID_model, Models.Title_model, Autoparts.Price, Autoparts.Comment
-FROM Autoparts INNER JOIN  Car 
-ON Autoparts.ID_car=Car.ID_car
-INNER JOIN Brands ON Brands.ID_brand=Car.ID_brand
-INNER JOIN Models ON Models.ID_model=Car.ID_model
+CREATE PROCEDURE dbo.InsertManufacturer
+@id INT,
+@m CHAR(30),
+@c INT
+AS
+BEGIN
+INSERT INTO [dbo].[Manufacturers]
+           ([ID_manufacturer]
+           ,[Manufacturer]
+           ,[ID_country])
+     VALUES
+           (@id,
+            @m,
+            @c)
+END
+GO
 
+
+
+CREATE PROCEDURE dbo.SelectBrands_and_models
+AS
+BEGIN
+SELECT Brands_and_models.ID_brd_mdl, Brands.Title_brand, Models.Title_model
+FROM Brands_and_models INNER JOIN Brands
+ON Brands_and_models.ID_brand=Brands.ID_brand
+INNER JOIN Models ON Brands_and_models.ID_model=Models.ID_model
+END
+GO
+
+CREATE PROCEDURE dbo.InsertBrand_and_model
+@id INT,
+@b INT,
+@m INT
+AS
+BEGIN
+INSERT INTO [dbo].[Brands_and_models]
+           ([ID_brd_mdl]
+           ,[ID_brand]
+           ,[ID_model])
+     VALUES
+           (@id,
+            @b,
+            @m)
+END
+GO
+
+
+
+
+SELECT Autoparts.ID_autoparts, Autoparts.Article, Autoparts.Title, Autoparts.ID_brd_mdl, Brands.Title_brand, Models.Title_model, Manufacturers.Manufacturer, Country.Country, Autoparts.Comment
+FROM Autoparts INNER JOIN  Brands_and_models 
+ON Autoparts.ID_brd_mdl=Brands_and_models.ID_brd_mdl
+INNER JOIN Brands ON Brands.ID_brand=Brands_and_models.ID_brand
+INNER JOIN Models ON Models.ID_model=Brands_and_models.ID_model
+INNER JOIN Manufacturers ON Manufacturers.ID_manufacturer=Autoparts.ID_manufacturer
+INNER JOIN Country ON Manufacturers.ID_country=Country.Country
 
 CREATE PROCEDURE dbo.SelectSuppliers
 AS
@@ -362,14 +421,56 @@ GO
 CREATE PROCEDURE dbo.SelectAutoparts
 AS
 BEGIN
-SELECT Autoparts.ID_autoparts, Autoparts.Article, Autoparts.Title, Autoparts.ID_Car, Car.ID_brand, Brands.Brand, Car.ID_model, Models.Title_model, Autoparts.Price, Autoparts.Comment
-FROM Autoparts INNER JOIN  Car 
-ON Autoparts.ID_car=Car.ID_car
-INNER JOIN Brands ON Brands.ID_brand=Car.ID_brand
-INNER JOIN Models ON Models.ID_model=Car.ID_model
+SELECT Autoparts.ID_autoparts, Autoparts.Article, Autoparts.Title, Autoparts.ID_brd_mdl, Brands.Title_brand, Models.Title_model, Manufacturers.Manufacturer, Country.Country, Autoparts.Comment
+FROM Autoparts INNER JOIN  Brands_and_models 
+ON Autoparts.ID_brd_mdl=Brands_and_models.ID_brd_mdl
+INNER JOIN Brands ON Brands.ID_brand=Brands_and_models.ID_brand
+INNER JOIN Models ON Models.ID_model=Brands_and_models.ID_model
+INNER JOIN Manufacturers ON Manufacturers.ID_manufacturer=Autoparts.ID_manufacturer
+INNER JOIN Country ON Manufacturers.ID_country=Country.ID_country
 END
 GO
-EXECUTE dbo.SelectAutoparts
+
+CREATE PROCEDURE dbo.SelectAnotherModels
+@b CHAR(30)
+AS
+BEGIN
+SELECT Brands_and_models.ID_brd_mdl, Brands_and_models.ID_brand, Brands_and_models.ID_model, Models.Title_model
+FROM Brands_and_models INNER JOIN Models
+ON Brands_and_models.ID_model=Models.ID_model
+INNER JOIN Brands ON Brands_and_models.ID_brand=Brands.ID_brand AND  Brands.Title_brand=@b
+END
+GO
+
+
+CREATE PROCEDURE dbo.InsertAutopart
+@id INT,
+@a CHAR(50),
+@t CHAR(50),
+@bm INT,
+@m INT,
+@c CHAR(150)
+AS
+BEGIN
+INSERT INTO [dbo].[Autoparts]
+           ([ID_autoparts]
+           ,[Article]
+           ,[Title]
+           ,[ID_brd_mdl]
+           ,[ID_manufacturer]
+           ,[Comment])
+     VALUES
+           (@id,
+            @a,
+            @t,
+            @bm,
+            @m,
+            @c)
+END
+GO
+
+
+
 
 
 CREATE PROCEDURE dbo.InsertAutopart

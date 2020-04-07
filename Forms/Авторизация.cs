@@ -46,7 +46,7 @@ namespace AS_Autodoc
                     }
                     else
                     {
-                        MessageBox.Show("Неверный логин или пароль");
+                        MessageBox.Show("Неверный логин или пароль!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         j++;
                         i += j;
                         if (i > 3)
@@ -55,14 +55,12 @@ namespace AS_Autodoc
                         }
 
                     }
-
                     textBox1.Clear();
                     textBox2.Clear();
-
                 }
                 else
                 {
-                    MessageBox.Show("Заполните все поля");
+                    MessageBox.Show("Введите логин и пароль!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }

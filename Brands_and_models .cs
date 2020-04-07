@@ -11,23 +11,55 @@ using System.Data.SqlClient;
 
 namespace AS_Autodoc
 {
-    public partial class Country : Form
+    public partial class Brands_and_models : Form
     {
         string con = Connect.getConnect();
-        public Country()
+        List<int> id_brand;
+        List<int> id_model;
+        public Brands_and_models()
         {
             InitializeComponent();
+            id_brand = new List<int>();
+            using (SqlConnection connect = new SqlConnection(con))
+            {
+                connect.Open();
+                SqlCommand com = new SqlCommand("SELECT * FROM Brands", connect);
+                using (SqlDataReader r = com.ExecuteReader())
+                {
+                    while (r.Read())
+                    {
+                        id_brand.Add(Convert.ToInt32(r[0]));
+                        comboBox1.Items.Add(r[1].ToString());
+                    }
+                }
+            }
+
+            id_model = new List<int>();
+            using (SqlConnection connect = new SqlConnection(con))
+            {
+                connect.Open();
+                SqlCommand com = new SqlCommand("SELECT * FROM Models", connect);
+                using (SqlDataReader r = com.ExecuteReader())
+                {
+                    while (r.Read())
+                    {
+                        id_model.Add(Convert.ToInt32(r[0]));
+                        comboBox2.Items.Add(r[1].ToString());
+                    }
+                }
+            }
         }
         public int insertId;
-        public int ID_country;
-        public string country;
+        public int ID_brd_mdl;
+        public string title_brand;
+        public string title_model;
 
         public void LoadAll()
         {
             using (SqlConnection conn = new SqlConnection(con))
             {
                 conn.Open();
-                SqlCommand com = new SqlCommand("SELECT * FROM Country", conn);
+                SqlCommand com = new SqlCommand("dbo.SelectBrands_and_models", conn);
                 int i = 0;
                 dataGridView1.Rows.Clear();
                 using (SqlDataReader r = com.ExecuteReader())
@@ -37,6 +69,7 @@ namespace AS_Autodoc
                         dataGridView1.Rows.Add();
                         dataGridView1[0, i].Value = r[0].ToString();
                         dataGridView1[1, i].Value = r[1].ToString();
+                        dataGridView1[2, i].Value = r[2].ToString();
                         i++;
                     }
                 }
@@ -48,7 +81,7 @@ namespace AS_Autodoc
         {
             string title_country = dataGridView1[1, dataGridView1.CurrentRow.Index].Value.ToString();
             DialogResult result = MessageBox.Show(
-            "Вы точно хотите удалить страну из списка?",
+            "Вы точно хотите удалить проиизводителя из списка?",
             "Предупреждение",
             MessageBoxButtons.YesNo,
             MessageBoxIcon.Question,
@@ -60,9 +93,8 @@ namespace AS_Autodoc
                 {
                     connect.Open();
                     int id = Convert.ToInt32(dataGridView1[0, dataGridView1.CurrentRow.Index].Value);
-                    SqlCommand com = new SqlCommand("DELETE FROM Country WHERE ID_country='" + id + "'", connect);
+                    SqlCommand com = new SqlCommand("DELETE FROM Brands_and_models WHERE ID_brd_mdl='" + id + "'", connect);
                     com.ExecuteNonQuery();
-
                 }
             }
             this.TopMost = true;
@@ -75,12 +107,12 @@ namespace AS_Autodoc
                 connection.Open();
                 int id = 0;
                 int n = 1;
-                SqlCommand cm = new SqlCommand("SELECT * FROM Country", connection);
+                SqlCommand cm = new SqlCommand("SELECT * FROM Brands_and_models", connection);
                 SqlDataReader r = cm.ExecuteReader();
                 if (r.HasRows)
                 {
                     r.Close();
-                    cm = new SqlCommand("SELECT Max(ID_country) FROM Country", connection);
+                    cm = new SqlCommand("SELECT MAX(ID_brd_mdl) FROM Brands_and_models", connection);
                     r = cm.ExecuteReader();
                     while (r.Read())
                     {
@@ -96,19 +128,23 @@ namespace AS_Autodoc
         private void Insertion()
         {
             using (SqlConnection connect = new SqlConnection(con))
-            {              
-                    connect.Open();
-                    SqlCommand com = new SqlCommand("EXECUTE dbo.InsertCountry '" + insertId + "','" + textBox1.Text + "'", connect);
-                    com.ExecuteNonQuery();
+            {
+                connect.Open();
+                SqlCommand com = new SqlCommand("EXECUTE dbo.InsertBrand_and_model '" + insertId + "','" +
+                id_brand[comboBox1.SelectedIndex] + "','"+id_model[comboBox2.SelectedIndex] +"'", connect);
+                com.ExecuteNonQuery();
             }
-            textBox1.Clear();
         }
 
-
-        private void Country_Load(object sender, EventArgs e)
+        private void Brands_and_models_Load(object sender, EventArgs e)
         {
             LoadAll();
             Maxid();
+        }
+
+        private void ComboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void Button3_Click(object sender, EventArgs e)
@@ -119,7 +155,7 @@ namespace AS_Autodoc
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text != "")
+            if (comboBox1.Text != ""&& comboBox2.Text != "")
             {
                 Insertion();
                 Maxid();
@@ -129,42 +165,6 @@ namespace AS_Autodoc
             {
                 MessageBox.Show("Поле пустое.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void GroupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Button2_Click(object sender, EventArgs e)
-        {
-            if (dataGridView1.CurrentRow != null)
-            {
-                ID_country = Convert.ToInt32(dataGridView1[0, dataGridView1.CurrentRow.Index].Value);
-                country = dataGridView1[1, dataGridView1.CurrentRow.Index].Value.ToString();
-                Renaming_country f = new Renaming_country();
-                f.Owner = this;
-                f.Show();
-            }
-            else
-            {
-                MessageBox.Show("Не выбрана страна для переименования.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void TextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }

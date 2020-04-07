@@ -11,15 +11,32 @@ using System.Data.SqlClient;
 
 namespace AS_Autodoc
 {
-    public partial class Country : Form
+    public partial class Manufacturers : Form
     {
         string con = Connect.getConnect();
-        public Country()
+        List<int> id_country;
+        public Manufacturers()
         {
             InitializeComponent();
+
+            id_country= new List<int>();
+            using (SqlConnection connect = new SqlConnection(con))
+            {
+                connect.Open();
+                SqlCommand com = new SqlCommand("SELECT * FROM Country", connect);
+                using (SqlDataReader r = com.ExecuteReader())
+                {
+                    while (r.Read())
+                    {
+                        id_country.Add(Convert.ToInt32(r[0]));
+                        comboBox1.Items.Add(r[1].ToString());
+                    }
+                }
+            }
         }
         public int insertId;
-        public int ID_country;
+        public int ID_manufacturer;
+        public string manufacturer;
         public string country;
 
         public void LoadAll()
@@ -27,7 +44,7 @@ namespace AS_Autodoc
             using (SqlConnection conn = new SqlConnection(con))
             {
                 conn.Open();
-                SqlCommand com = new SqlCommand("SELECT * FROM Country", conn);
+                SqlCommand com = new SqlCommand("dbo.SelectManufacturers", conn);
                 int i = 0;
                 dataGridView1.Rows.Clear();
                 using (SqlDataReader r = com.ExecuteReader())
@@ -37,6 +54,7 @@ namespace AS_Autodoc
                         dataGridView1.Rows.Add();
                         dataGridView1[0, i].Value = r[0].ToString();
                         dataGridView1[1, i].Value = r[1].ToString();
+                        dataGridView1[2, i].Value = r[2].ToString();
                         i++;
                     }
                 }
@@ -48,7 +66,7 @@ namespace AS_Autodoc
         {
             string title_country = dataGridView1[1, dataGridView1.CurrentRow.Index].Value.ToString();
             DialogResult result = MessageBox.Show(
-            "Вы точно хотите удалить страну из списка?",
+            "Вы точно хотите удалить проиизводителя из списка?",
             "Предупреждение",
             MessageBoxButtons.YesNo,
             MessageBoxIcon.Question,
@@ -60,9 +78,8 @@ namespace AS_Autodoc
                 {
                     connect.Open();
                     int id = Convert.ToInt32(dataGridView1[0, dataGridView1.CurrentRow.Index].Value);
-                    SqlCommand com = new SqlCommand("DELETE FROM Country WHERE ID_country='" + id + "'", connect);
+                    SqlCommand com = new SqlCommand("DELETE FROM Manufacturers WHERE ID_manufacturer='" + id + "'", connect);
                     com.ExecuteNonQuery();
-
                 }
             }
             this.TopMost = true;
@@ -75,12 +92,12 @@ namespace AS_Autodoc
                 connection.Open();
                 int id = 0;
                 int n = 1;
-                SqlCommand cm = new SqlCommand("SELECT * FROM Country", connection);
+                SqlCommand cm = new SqlCommand("SELECT * FROM Manufacturers", connection);
                 SqlDataReader r = cm.ExecuteReader();
                 if (r.HasRows)
                 {
                     r.Close();
-                    cm = new SqlCommand("SELECT Max(ID_country) FROM Country", connection);
+                    cm = new SqlCommand("SELECT MAX(ID_manufacturer) FROM Manufacturers", connection);
                     r = cm.ExecuteReader();
                     while (r.Read())
                     {
@@ -96,19 +113,37 @@ namespace AS_Autodoc
         private void Insertion()
         {
             using (SqlConnection connect = new SqlConnection(con))
-            {              
-                    connect.Open();
-                    SqlCommand com = new SqlCommand("EXECUTE dbo.InsertCountry '" + insertId + "','" + textBox1.Text + "'", connect);
-                    com.ExecuteNonQuery();
+            {
+                connect.Open();
+                SqlCommand com = new SqlCommand("EXECUTE dbo.InsertManufacturer '" + insertId + "','" + textBox1.Text + "','"+
+                id_country[comboBox1.SelectedIndex]+ "'", connect);
+                com.ExecuteNonQuery();
             }
             textBox1.Clear();
         }
 
 
-        private void Country_Load(object sender, EventArgs e)
+        private void Manufacturers_Load(object sender, EventArgs e)
         {
             LoadAll();
             Maxid();
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow != null)
+            {
+                ID_manufacturer = Convert.ToInt32(dataGridView1[0, dataGridView1.CurrentRow.Index].Value);
+                manufacturer = dataGridView1[1, dataGridView1.CurrentRow.Index].Value.ToString();
+                country= dataGridView1[2, dataGridView1.CurrentRow.Index].Value.ToString();
+                Renaming__street f = new Renaming__street();
+                f.Owner = this;
+                f.Show();
+            }
+            else
+            {
+                MessageBox.Show("Не выбран производитель для редактирования.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void Button3_Click(object sender, EventArgs e)
@@ -119,7 +154,7 @@ namespace AS_Autodoc
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text != "")
+            if (textBox1.Text != ""&&comboBox1.Text!="")
             {
                 Insertion();
                 Maxid();
@@ -131,38 +166,7 @@ namespace AS_Autodoc
             }
         }
 
-        private void GroupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Button2_Click(object sender, EventArgs e)
-        {
-            if (dataGridView1.CurrentRow != null)
-            {
-                ID_country = Convert.ToInt32(dataGridView1[0, dataGridView1.CurrentRow.Index].Value);
-                country = dataGridView1[1, dataGridView1.CurrentRow.Index].Value.ToString();
-                Renaming_country f = new Renaming_country();
-                f.Owner = this;
-                f.Show();
-            }
-            else
-            {
-                MessageBox.Show("Не выбрана страна для переименования.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void TextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void TextBox2_TextChanged(object sender, EventArgs e)
         {
 
         }
