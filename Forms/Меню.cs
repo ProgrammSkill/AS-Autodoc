@@ -80,5 +80,11 @@ namespace AS_Autodoc
             Autoparts f = new Autoparts();
             f.ShowDialog();
         }
+
+        private void Button3_Click(object sender, EventArgs e)
+        {
+            Supply f = new Supply();
+            f.ShowDialog();
+        }
     }
 }

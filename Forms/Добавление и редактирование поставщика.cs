@@ -77,6 +77,7 @@ namespace AS_Autodoc
 
             }
         }
+        string id;
 
 
         void Maxid()
@@ -104,20 +105,6 @@ namespace AS_Autodoc
             }
         }
 
-        string Check()
-        {
-            Suppliers f = (Suppliers)this.Owner;
-            if(f.InsertOrEdit=="Добавление")
-            {
-                return "Добавление";
-            }
-            else
-            {
-                return "Редактирование";
-            }
-
-        }
-
         private void Insertion()
         {
             using (SqlConnection connect = new SqlConnection(con))
@@ -129,30 +116,83 @@ namespace AS_Autodoc
                 textBox6.Text+"','"+textBox7.Text+"'", connect);
                 com.ExecuteNonQuery();
             }
-
         }
 
-        private void AddingSupplier_Load(object sender, EventArgs e)
+        public void Edit()
         {
-            AddingSupplier f = new AddingSupplier();
-            Suppliers f1 = new Suppliers();
-            //if(Check()=="Добавить")
-            //{
-            //    f.Text = "Добавленпаппапие поставщика";
-            //}
-            //else
-            //{
-            //    f.Text = "Редактирование поставщика";
-            //}
-            if(f1.InsertOrEdit=="Добавить")
+            string con = Connect.getConnect();
+            using (SqlConnection connect = new SqlConnection(con))
             {
-                f.Text = "INSERT";
+                connect.Open();
+                SqlCommand com = new SqlCommand("EXECUTE dbo.EditSupplier '" + insertId + "','" + textBox1.Text + "','" + textBox2.Text +
+                "','" + textBox3.Text + "','" + textBox4.Text + "','" + id_country[comboBox1.SelectedIndex] +
+                "','" + id_city[comboBox2.SelectedIndex] + "','" + id_street[comboBox3.SelectedIndex] + "','" + textBox5.Text + "','" +
+                textBox6.Text + "','" + textBox7.Text + "'", connect);
+                com.ExecuteNonQuery();
+            }
+        }
+
+    private void AddingSupplier_Load(object sender, EventArgs e)
+        {
+            Suppliers f = (Suppliers)this.Owner;
+            if (f.InsertOrEdit.ToString()=="Добавить")
+            {
+               this.Text = "Добавление нового поставщика";
+
+                using (SqlConnection connect = new SqlConnection(con))
+                {
+                    connect.Open();
+                    SqlCommand com = new SqlCommand("SELECT Country FROM Country", connect);
+                    using (SqlDataReader r = com.ExecuteReader())
+                    {
+                        while (r.Read())
+                        {
+                            comboBox1.Text = r[0].ToString();
+                        }
+                    }
+                }
+
+                using (SqlConnection connect = new SqlConnection(con))
+                {
+                    connect.Open();
+                    SqlCommand com = new SqlCommand("SELECT City FROM City", connect);
+                    using (SqlDataReader r = com.ExecuteReader())
+                    {
+                        while (r.Read())
+                        {
+                            comboBox2.Text = r[0].ToString();
+                        }
+                    }
+                }
+
+                using (SqlConnection connect = new SqlConnection(con))
+                {
+                    connect.Open();
+                    SqlCommand com = new SqlCommand("SELECT Street FROM Street", connect);
+                    using (SqlDataReader r = com.ExecuteReader())
+                    {
+                        while (r.Read())
+                        {
+                            comboBox3.Text = r[0].ToString();
+                        }
+                    }
+                }
             }
             else
             {
-                f.Text = "edit";
+                this.Text = "Редактирование данных поставщика";
+                id = f.ID_supplier.ToString();
+                textBox1.Text = f.Title.ToString();
+                textBox2.Text = f.TIN.ToString();
+                textBox3.Text = f.CIO.ToString();
+                textBox4.Text = f.FIO_director.ToString();
+                comboBox1.SelectedItem = f.Country.ToString();
+                comboBox2.SelectedItem = f.City.ToString();
+                comboBox3.SelectedItem = f.Street.ToString();
+                textBox5.Text = f.House.ToString();
+                textBox6.Text = f.Telephone.ToString();
+                textBox7.Text = f.Email.ToString();
             }
-            textBox2.Text = f1.InsertOrEdit;
         }
 
         private void TextBox5_TextChanged(object sender, EventArgs e)
@@ -162,9 +202,16 @@ namespace AS_Autodoc
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            Insertion();
-            Maxid();
             Suppliers f = (Suppliers)this.Owner;
+            if (f.InsertOrEdit.ToString() == "Добавить")
+            {
+                Insertion();
+                Maxid();
+            }
+            else
+            {
+                Edit();
+            }
             f.LoadAll();
         }
 

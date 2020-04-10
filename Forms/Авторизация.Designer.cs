@@ -41,7 +41,7 @@
             this.enter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.enter.Location = new System.Drawing.Point(222, 257);
             this.enter.Name = "enter";
-            this.enter.Size = new System.Drawing.Size(132, 28);
+            this.enter.Size = new System.Drawing.Size(132, 24);
             this.enter.TabIndex = 0;
             this.enter.Text = "Войти";
             this.enter.UseVisualStyleBackColor = true;
@@ -84,7 +84,7 @@
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button1.Location = new System.Drawing.Point(381, 257);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(132, 28);
+            this.button1.Size = new System.Drawing.Size(132, 24);
             this.button1.TabIndex = 5;
             this.button1.Text = "Выход";
             this.button1.UseVisualStyleBackColor = true;

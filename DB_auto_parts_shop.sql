@@ -40,7 +40,7 @@ ID_brd_mdl INT PRIMARY KEY,
 ID_brand INT FOREIGN KEY REFERENCES Brands(ID_brand),
 ID_model INT FOREIGN KEY REFERENCES Models(ID_model))
 
-CREATE TABLE Manufacturers(
+CREATE TABLE Manufacturers (
 ID_manufacturer INT PRIMARY KEY,
 Manufacturer CHAR(30),
 ID_country INT FOREIGN KEY REFERENCES  Country(ID_country))
@@ -49,9 +49,17 @@ CREATE TABLE Autoparts (
 ID_autoparts INT PRIMARY KEY,
 Article CHAR(50),
 Title CHAR(50),
-ID_Car INT FOREIGN KEY REFERENCES Car(ID_Car),
+ID_brd_mdl INT FOREIGN KEY REFERENCES Car(ID_Car),
 ID_manufacturer INT FOREIGN KEY REFERENCES Manufacturers(ID_manufacturer),
 Comment CHAR(150))
+
+CREATE TABLE Supply (
+ID_supply INT PRIMARY KEY,
+ID_supplier INT FOREIGN KEY REFERENCES Suppliers(ID_supplier),
+ID_autoparts INT FOREIGN KEY REFERENCES Autoparts(ID_autoparts),
+Purchase_price NUMERIC,
+Quantity INT,
+Delivery_date DATE)
 
 CREATE TABLE Role_(
 ID_role INT PRIMARY KEY,
@@ -321,16 +329,6 @@ END
 GO
 
 
-
-
-SELECT Autoparts.ID_autoparts, Autoparts.Article, Autoparts.Title, Autoparts.ID_brd_mdl, Brands.Title_brand, Models.Title_model, Manufacturers.Manufacturer, Country.Country, Autoparts.Comment
-FROM Autoparts INNER JOIN  Brands_and_models 
-ON Autoparts.ID_brd_mdl=Brands_and_models.ID_brd_mdl
-INNER JOIN Brands ON Brands.ID_brand=Brands_and_models.ID_brand
-INNER JOIN Models ON Models.ID_model=Brands_and_models.ID_model
-INNER JOIN Manufacturers ON Manufacturers.ID_manufacturer=Autoparts.ID_manufacturer
-INNER JOIN Country ON Manufacturers.ID_country=Country.Country
-
 CREATE PROCEDURE dbo.SelectSuppliers
 AS
 BEGIN
@@ -469,33 +467,39 @@ INSERT INTO [dbo].[Autoparts]
 END
 GO
 
-
-
-
-
-CREATE PROCEDURE dbo.InsertAutopart
-@id int,
-@a char(50),
-@t char(50),
-@idc int,
-@p float,
-@comm char(150)
+CREATE PROCEDURE dbo.EditAutopart
+@id INT,
+@a CHAR(50),
+@t CHAR(50),
+@bm INT,
+@m INT,
+@c CHAR(150)
 AS
 BEGIN
-INSERT INTO [dbo].[Autoparts]
-           ([ID_autoparts]
-           ,[Article]
-           ,[Title]
-           ,[ID_Car]
-           ,[Price]
-           ,[Comment])
-     VALUES
-           (<ID_autoparts, int,>
-           ,<Article, char(50),>
-           ,<Title, char(50),>
-           ,<ID_Car, int,>
-           ,<Price, float,>
-           ,<Comment, char(150),>)
+UPDATE [dbo].[Autoparts]
+   SET [ID_autoparts] = @id,
+       [Article] = @a,
+       [Title] = @t,
+       [ID_brd_mdl] = @bm,
+       [ID_manufacturer] = @m,
+       [Comment] = @c
+ WHERE ID_autoparts=@id
+END
 GO
+
+
+
+CREATE PROCEDURE dbo.SelectSuppply
+AS
+BEGIN
+SELECT Supply.ID_supply, Suppliers.Title, Autoparts.Title, Supply.Purchase_price, Supply.Quantity, Purchase_price*Quantity AS Sum_, Supply.Delivery_date
+FROM Supply INNER JOIN Suppliers
+ON Supply.ID_supplier=Suppliers.ID_supplier
+INNER JOIN Autoparts
+ON Supply.ID_autoparts=Autoparts.ID_autoparts
+END
+GO
+EXECUTE dbo.SelectSuppply
+
 
 

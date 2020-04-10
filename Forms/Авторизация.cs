@@ -49,7 +49,7 @@ namespace AS_Autodoc
                         MessageBox.Show("Неверный логин или пароль!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         j++;
                         i += j;
-                        if (i > 3)
+                        if (i > 2)
                         {
                             Close();
                         }

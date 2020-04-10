@@ -14,11 +14,22 @@ namespace AS_Autodoc
     public partial class Suppliers : Form
     {
         string con = Connect.getConnect();
-        public string InsertOrEdit;
         public Suppliers()
         {
             InitializeComponent();
         }
+        public string InsertOrEdit { get; set; }
+        public int ID_supplier { get; set; }
+        public string Title { get; set; }
+        public decimal TIN { get; set; }
+        public decimal CIO { get; set; }
+        public string FIO_director { get; set; }
+        public string Country { get; set; }
+        public string City { get; set; }
+        public string Street { get; set; }
+        public string House { get; set; }
+        public string Telephone { get; set; }
+        public string Email { get; set; }
 
         public void LoadAll()
         {
@@ -86,10 +97,10 @@ namespace AS_Autodoc
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            AddingSupplier f = new AddingSupplier();
             InsertOrEdit = "Добавить";
+            AddingSupplier f = new AddingSupplier();
             f.Owner = this;
-            f.ShowDialog();
+            f.Show();
         }
 
         private void Button3_Click(object sender, EventArgs e)
@@ -100,10 +111,30 @@ namespace AS_Autodoc
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            InsertOrEdit = "Редактировать";
-            AddingSupplier f = new AddingSupplier();
-            f.Owner = this;
-            f.Show();
+
+            if (dataGridView1.CurrentRow != null)
+            {
+                ID_supplier = Convert.ToInt32(dataGridView1[0, dataGridView1.CurrentRow.Index].Value);
+                Title = dataGridView1[1, dataGridView1.CurrentRow.Index].Value.ToString();
+                TIN = Convert.ToDecimal(dataGridView1[2, dataGridView1.CurrentRow.Index].Value);
+                CIO = Convert.ToDecimal(dataGridView1[3, dataGridView1.CurrentRow.Index].Value);
+                FIO_director = dataGridView1[4, dataGridView1.CurrentRow.Index].Value.ToString();
+                Country = dataGridView1[5, dataGridView1.CurrentRow.Index].Value.ToString();
+                City = dataGridView1[6, dataGridView1.CurrentRow.Index].Value.ToString();
+                Street = dataGridView1[7, dataGridView1.CurrentRow.Index].Value.ToString();
+                House= dataGridView1[8, dataGridView1.CurrentRow.Index].Value.ToString();
+                Telephone= dataGridView1[9, dataGridView1.CurrentRow.Index].Value.ToString();
+                Email = dataGridView1[10, dataGridView1.CurrentRow.Index].Value.ToString();
+                InsertOrEdit = "Редактировать";
+                AddingSupplier f = new AddingSupplier();
+                f.Owner = this;
+                f.Show();
+            }
+            else
+            {
+                MessageBox.Show("Не выбрана страна для переименования.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
     }
 }

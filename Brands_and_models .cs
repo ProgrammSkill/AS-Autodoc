@@ -166,5 +166,10 @@ namespace AS_Autodoc
                 MessageBox.Show("Поле пустое.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

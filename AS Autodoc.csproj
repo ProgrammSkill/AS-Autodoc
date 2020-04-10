@@ -52,16 +52,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Добавление автозапчасти.cs">
+    <Compile Include="Forms\Добавление и редактирование автозапчасти.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Добавление автозапчасти.Designer.cs">
-      <DependentUpon>Добавление автозапчасти.cs</DependentUpon>
+    <Compile Include="Forms\Добавление и редактирование автозапчасти.Designer.cs">
+      <DependentUpon>Добавление и редактирование автозапчасти.cs</DependentUpon>
     </Compile>
-    <Compile Include="Автозапчасти.cs">
+    <Compile Include="Forms\Поставка автозапчастей.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Автозапчасти.Designer.cs">
+    <Compile Include="Forms\Поставка автозапчастей.Designer.cs">
+      <DependentUpon>Поставка автозапчастей.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Автозапчасти.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Автозапчасти.Designer.cs">
       <DependentUpon>Автозапчасти.cs</DependentUpon>
     </Compile>
     <Compile Include="Brands_and_models .cs">
@@ -112,11 +118,11 @@
     <Compile Include="Forms\Страна.Designer.cs">
       <DependentUpon>Страна.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Добавление поставщика.cs">
+    <Compile Include="Forms\Добавление и редактирование поставщика.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Добавление поставщика.Designer.cs">
-      <DependentUpon>Добавление поставщика.cs</DependentUpon>
+    <Compile Include="Forms\Добавление и редактирование поставщика.Designer.cs">
+      <DependentUpon>Добавление и редактирование поставщика.cs</DependentUpon>
     </Compile>
     <Compile Include="Class\Connect.cs" />
     <Compile Include="Forms\Авторизация.cs">
@@ -138,10 +144,10 @@
     <Compile Include="Forms\Модели.Designer.cs">
       <DependentUpon>Модели.cs</DependentUpon>
     </Compile>
-    <Compile Include="Производители.cs">
+    <Compile Include="Forms\Производители.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Производители.Designer.cs">
+    <Compile Include="Forms\Производители.Designer.cs">
       <DependentUpon>Производители.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -182,7 +188,13 @@
     <Compile Include="Forms\Переименование модели.Designer.cs">
       <DependentUpon>Переименование модели.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Автозапчасти.resx">
+    <EmbeddedResource Include="Forms\Добавление и редактирование автозапчасти.resx">
+      <DependentUpon>Добавление и редактирование автозапчасти.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Поставка автозапчастей.resx">
+      <DependentUpon>Поставка автозапчастей.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Автозапчасти.resx">
       <DependentUpon>Автозапчасти.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Brands_and_models .resx">
@@ -209,8 +221,8 @@
     <EmbeddedResource Include="Forms\Страна.resx">
       <DependentUpon>Страна.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Добавление поставщика.resx">
-      <DependentUpon>Добавление поставщика.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Добавление и редактирование поставщика.resx">
+      <DependentUpon>Добавление и редактирование поставщика.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Авторизация.resx">
       <DependentUpon>Авторизация.cs</DependentUpon>
@@ -245,10 +257,7 @@
     <EmbeddedResource Include="Forms\Переименование модели.resx">
       <DependentUpon>Переименование модели.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Добавление автозапчасти.resx">
-      <DependentUpon>Добавление автозапчасти.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Производители.resx">
+    <EmbeddedResource Include="Forms\Производители.resx">
       <DependentUpon>Производители.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />

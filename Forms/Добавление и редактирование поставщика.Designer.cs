@@ -255,7 +255,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.Name = "AddingSupplier";
-            this.Text = "Добавление поставщика";
+            this.Text = "Добавление и редактирование поставщика";
             this.Load += new System.EventHandler(this.AddingSupplier_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
