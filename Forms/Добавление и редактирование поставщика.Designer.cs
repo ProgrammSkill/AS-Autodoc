@@ -181,7 +181,7 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(35, 262);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(212, 21);
+            this.comboBox1.Size = new System.Drawing.Size(218, 21);
             this.comboBox1.TabIndex = 0;
             // 
             // label9
@@ -222,7 +222,7 @@
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button1.Location = new System.Drawing.Point(433, 563);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(139, 26);
+            this.button1.Size = new System.Drawing.Size(132, 24);
             this.button1.TabIndex = 17;
             this.button1.Text = "Готово";
             this.button1.UseVisualStyleBackColor = true;

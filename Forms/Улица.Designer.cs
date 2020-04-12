@@ -46,7 +46,7 @@
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button3.Location = new System.Drawing.Point(177, 245);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(132, 23);
+            this.button3.Size = new System.Drawing.Size(132, 24);
             this.button3.TabIndex = 17;
             this.button3.Text = "Удалить";
             this.button3.UseVisualStyleBackColor = true;
@@ -57,7 +57,7 @@
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button2.Location = new System.Drawing.Point(21, 245);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(132, 23);
+            this.button2.Size = new System.Drawing.Size(132, 24);
             this.button2.TabIndex = 16;
             this.button2.Text = "Переименовать";
             this.button2.UseVisualStyleBackColor = true;
@@ -81,7 +81,7 @@
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button1.Location = new System.Drawing.Point(9, 81);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(132, 23);
+            this.button1.Size = new System.Drawing.Size(132, 24);
             this.button1.TabIndex = 3;
             this.button1.Text = "Готово";
             this.button1.UseVisualStyleBackColor = true;

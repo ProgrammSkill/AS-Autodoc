@@ -86,5 +86,10 @@ namespace AS_Autodoc
             Supply f = new Supply();
             f.ShowDialog();
         }
+
+        private void Button4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

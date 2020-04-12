@@ -57,24 +57,45 @@ CREATE TABLE Supply (
 ID_supply INT PRIMARY KEY,
 ID_supplier INT FOREIGN KEY REFERENCES Suppliers(ID_supplier),
 ID_autoparts INT FOREIGN KEY REFERENCES Autoparts(ID_autoparts),
-Purchase_price NUMERIC,
+Purchase_price NUMERIC(8,2),
 Quantity INT,
 Delivery_date DATE)
 
+CREATE TABLE Department_store (
+ID_department INT PRIMARY KEY,
+ID_city INT FOREIGN KEY REFERENCES City(ID_city),
+ID_street INT FOREIGN KEY REFERENCES Street(ID_street),
+House CHAR(15),
+Telephone CHAR(20))
+
+CREATE TABLE Availability_auto_parts (
+ID_availability INT PRIMARY KEY,
+ID_department INT FOREIGN KEY REFERENCES Department_store(ID_department),
+ID_autoparts INT FOREIGN KEY REFERENCES Autoparts(ID_autoparts),
+Price_holiday NUMERIC,
+Amount INT)
+
+CREATE TABLE Sale (
+ID_sale INT PRIMARY KEY,
+ID_department INT FOREIGN KEY REFERENCES Department_store(ID_department),
+ID_autoparts INT FOREIGN KEY REFERENCES Autoparts(ID_autoparts),
+Amount INT,
+Date_of_sale DATE)
+
 CREATE TABLE Role_(
 ID_role INT PRIMARY KEY,
-Name_role char(20));
+Role_ CHAR(20));
 
 CREATE TABLE Position (
 ID_position INT PRIMARY KEY,
-Title char(30))
+Position CHAR(30))
 
-CREATE TABLE Users(
+CREATE TABLE Users (
 Login_ CHAR(15) PRIMARY KEY,
 Password_ char(15),
 ID_role INT FOREIGN KEY REFERENCES Role_(ID_role))
 
-CREATE TABLE InfoUsers(
+CREATE TABLE InfoUsers (
 Login_ CHAR(15) FOREIGN KEY REFERENCES Users(Login_),
 Surname char(20),
 First_name char(20),
@@ -502,4 +523,64 @@ GO
 EXECUTE dbo.SelectSuppply
 
 
+CREATE PROCEDURE dbo.SelectDepartmentCity
+AS
+BEGIN
+SELECT Department_store.ID_department, City.City
+FROM Department_store INNER JOIN City
+ON Department_store.ID_city=City.ID_city
+END
+GO
+
+
+CREATE PROCEDURE dbo.SelectDepartmentStreet
+@city CHAR(30)
+AS
+BEGIN
+SELECT Department_store.ID_department, Street.Street
+FROM Department_store INNER JOIN Street
+ON Department_store.ID_street=Street.ID_street
+INNER JOIN City ON Department_store.ID_city=City.ID_city
+AND City.City=@city
+END
+GO
+
+
+CREATE PROCEDURE dbo.SelectDepartmentHouse
+@street CHAR(30)
+AS
+BEGIN
+SELECT Department_store.ID_department, Department_store.House
+FROM Department_store INNER JOIN Street
+ON Department_store.ID_street=Street.ID_street
+AND Street.Street=@street
+END
+GO
+
+
+CREATE PROCEDURE dbo.InsertSupply
+@id INT,
+@id_s INT,
+@id_a INT,
+@p NUMERIC(8,2),
+@q INT,
+@d DATE
+AS
+BEGIN
+INSERT INTO [dbo].[Supply]
+           ([ID_supply]
+           ,[ID_supplier]
+           ,[ID_autoparts]
+           ,[Purchase_price]
+           ,[Quantity]
+           ,[Delivery_date])
+     VALUES
+           (@id,
+            @id_s,
+            @id_a,
+            @p,
+            @q,
+            @d)
+END
+GO
 

@@ -54,5 +54,11 @@ namespace AS_Autodoc
         {
 
         }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            AddingAndEditingDelivery f = new AddingAndEditingDelivery();
+            f.ShowDialog();
+        }
     }
 }

@@ -41,6 +41,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,17 +53,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Добавление и редактирование поставки.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Добавление и редактирование поставки.Designer.cs">
+      <DependentUpon>Добавление и редактирование поставки.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Добавление и редактирование автозапчасти.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Добавление и редактирование автозапчасти.Designer.cs">
       <DependentUpon>Добавление и редактирование автозапчасти.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Поставка автозапчастей.cs">
+    <Compile Include="Forms\Поставка.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Поставка автозапчастей.Designer.cs">
-      <DependentUpon>Поставка автозапчастей.cs</DependentUpon>
+    <Compile Include="Forms\Поставка.Designer.cs">
+      <DependentUpon>Поставка.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Автозапчасти.cs">
       <SubType>Form</SubType>
@@ -70,11 +77,11 @@
     <Compile Include="Forms\Автозапчасти.Designer.cs">
       <DependentUpon>Автозапчасти.cs</DependentUpon>
     </Compile>
-    <Compile Include="Brands_and_models .cs">
+    <Compile Include="Соответствие марок и моделей.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Brands_and_models .Designer.cs">
-      <DependentUpon>Brands_and_models .cs</DependentUpon>
+    <Compile Include="Соответствие марок и моделей.Designer.cs">
+      <DependentUpon>Соответствие марок и моделей.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Марки.cs">
       <SubType>Form</SubType>
@@ -188,17 +195,20 @@
     <Compile Include="Forms\Переименование модели.Designer.cs">
       <DependentUpon>Переименование модели.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Добавление и редактирование поставки.resx">
+      <DependentUpon>Добавление и редактирование поставки.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Добавление и редактирование автозапчасти.resx">
       <DependentUpon>Добавление и редактирование автозапчасти.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Поставка автозапчастей.resx">
-      <DependentUpon>Поставка автозапчастей.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Поставка.resx">
+      <DependentUpon>Поставка.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Автозапчасти.resx">
       <DependentUpon>Автозапчасти.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Brands_and_models .resx">
-      <DependentUpon>Brands_and_models .cs</DependentUpon>
+    <EmbeddedResource Include="Соответствие марок и моделей.resx">
+      <DependentUpon>Соответствие марок и моделей.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Модели.resx">
       <DependentUpon>Модели.cs</DependentUpon>

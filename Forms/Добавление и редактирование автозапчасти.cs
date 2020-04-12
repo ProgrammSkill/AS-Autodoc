@@ -231,5 +231,10 @@ namespace AS_Autodoc
         {
 
         }
+
+        private void ComboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
