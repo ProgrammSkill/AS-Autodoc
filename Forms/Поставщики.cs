@@ -33,10 +33,10 @@ namespace AS_Autodoc
 
         public void LoadAll()
         {
-            using (SqlConnection conn = new SqlConnection(con))
+            using (SqlConnection connect = new SqlConnection(con))
             {
-                conn.Open();
-                SqlCommand com = new SqlCommand("EXECUTE dbo.SelectSuppliers", conn);
+                connect.Open();
+                SqlCommand com = new SqlCommand("EXECUTE dbo.SelectSuppliers", connect);
                 int i = 0;
                 dataGridView1.Rows.Clear();
                 using (SqlDataReader r = com.ExecuteReader())

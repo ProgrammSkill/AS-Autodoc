@@ -58,7 +58,7 @@ ID_supply INT PRIMARY KEY,
 ID_supplier INT FOREIGN KEY REFERENCES Suppliers(ID_supplier),
 ID_autoparts INT FOREIGN KEY REFERENCES Autoparts(ID_autoparts),
 Purchase_price NUMERIC(8,2),
-Quantity INT,
+Amount INT,
 Delivery_date DATE)
 
 CREATE TABLE Department_store (
@@ -72,7 +72,7 @@ CREATE TABLE Availability_auto_parts (
 ID_availability INT PRIMARY KEY,
 ID_department INT FOREIGN KEY REFERENCES Department_store(ID_department),
 ID_autoparts INT FOREIGN KEY REFERENCES Autoparts(ID_autoparts),
-Price_holiday NUMERIC,
+Price_holiday NUMERIC(8,2),
 Amount INT)
 
 CREATE TABLE Sale (
@@ -513,15 +513,13 @@ GO
 CREATE PROCEDURE dbo.SelectSuppply
 AS
 BEGIN
-SELECT Supply.ID_supply, Suppliers.Title, Autoparts.Title, Supply.Purchase_price, Supply.Quantity, Purchase_price*Quantity AS Sum_, Supply.Delivery_date
+SELECT Supply.ID_supply, Suppliers.Title, Autoparts.Title, Supply.Purchase_price, Supply.Amount , Purchase_price*Amount AS Sum_, Supply.Delivery_date
 FROM Supply INNER JOIN Suppliers
 ON Supply.ID_supplier=Suppliers.ID_supplier
 INNER JOIN Autoparts
 ON Supply.ID_autoparts=Autoparts.ID_autoparts
 END
 GO
-EXECUTE dbo.SelectSuppply
-
 
 CREATE PROCEDURE dbo.SelectDepartmentCity
 AS
@@ -563,7 +561,7 @@ CREATE PROCEDURE dbo.InsertSupply
 @id_s INT,
 @id_a INT,
 @p NUMERIC(8,2),
-@q INT,
+@a INT,
 @d DATE
 AS
 BEGIN
@@ -572,15 +570,71 @@ INSERT INTO [dbo].[Supply]
            ,[ID_supplier]
            ,[ID_autoparts]
            ,[Purchase_price]
-           ,[Quantity]
+           ,[Amount]
            ,[Delivery_date])
      VALUES
            (@id,
             @id_s,
             @id_a,
             @p,
-            @q,
+            @a,
             @d)
 END
 GO
 
+CREATE PROCEDURE dbo.CheckAutoparts
+@id_d INT,
+@id_a INT
+AS
+BEGIN
+SELECT COUNT(*)
+FROM Availability_auto_parts
+WHERE Availability_auto_parts.ID_department=@id_d
+AND Availability_auto_parts.ID_autoparts=@id_a
+END
+GO
+
+
+
+
+CREATE PROCEDURE dbo.InsertAvailability_auto_parts
+@id INT,
+@id_d INT,
+@id_a INT,
+@p NUMERIC(8,2),
+@a INT
+AS
+BEGIN
+INSERT INTO [dbo].[Availability_auto_parts]
+           ([ID_availability]
+           ,[ID_department]
+           ,[ID_autoparts]
+           ,[Price_holiday]
+           ,[Amount])
+     VALUES
+           (@id,
+            @id_d,
+            @id_a,
+            @p,
+            @a)
+END
+GO
+
+
+CREATE PROCEDURE dbo.EditAvailability_auto_parts
+@id INT,
+@id_d INT,
+@id_a INT,
+@p NUMERIC(8,2),
+@a INT
+AS
+BEGIN
+UPDATE [dbo].[Availability_auto_parts]
+   SET [ID_availability] = @id,
+       [ID_department] = @id_d,
+       [ID_autoparts] = @id_a,
+       [Price_holiday] = @p,
+       [Amount] = @a
+ WHERE ID_availability=@id
+END
+GO

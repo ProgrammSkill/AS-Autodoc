@@ -27,7 +27,14 @@ namespace AS_Autodoc
             SelectComboBox();
         }
         public int insertId;
+        public int insertIdAvailability;
         public string id;
+
+        public string ID_availability;
+        public string ID_department;
+        public string ID_autoparts;
+        public string Price_holiday;
+        public string Amount;
 
         void SelectComboBox()
         {
@@ -77,7 +84,7 @@ namespace AS_Autodoc
             }
         }
 
-        void Maxid()
+        void MaxId()
         {
             using (SqlConnection connection = new SqlConnection(con))
             {
@@ -102,6 +109,30 @@ namespace AS_Autodoc
             }
         }
 
+        void MaxIdAvailability()
+        {
+            using (SqlConnection connection = new SqlConnection(con))
+            {
+                connection.Open();
+                int id = 0;
+                int n = 1;
+                SqlCommand cm = new SqlCommand("SELECT * FROM Availability_auto_parts", connection);
+                SqlDataReader r = cm.ExecuteReader();
+                if (r.HasRows)
+                {
+                    r.Close();
+                    cm = new SqlCommand("SELECT MAX(ID_availability) FROM Availability_auto_parts", connection);
+                    r = cm.ExecuteReader();
+                    while (r.Read())
+                    {
+                        id = Convert.ToInt32(r[0]) + 1;
+                        insertIdAvailability = id;
+                    }
+                }
+                else insertIdAvailability = n;
+            }
+        }
+
         private void NewSupply()
         {
             using (SqlConnection connect = new SqlConnection(con))
@@ -112,17 +143,69 @@ namespace AS_Autodoc
                 maskedTextBox1.Text+"'", connect);
                 com.ExecuteNonQuery();
             }
-                
-            decimal a = 455.22m;
-            //decimal b = Convert.ToDecimal(textBox1.Text.ToString());
-            //string s = textBox1.Text;
-            //string b = textBox1.Text+"m";
-            //decimal c =Convert.ToDecimal(b);
+
+            int department = id_department[comboBox4.SelectedIndex];
+            int autopart = id_autoparts[comboBox5.SelectedIndex];
+            decimal price = Convert.ToDecimal(textBox1.Text.ToString().Replace(".", ","));
+            decimal amount = numericUpDown1.Value;
+
+            using (SqlConnection connect = new SqlConnection(con))
+            {
+                SqlDataAdapter sda = new SqlDataAdapter("dbo.CheckAutoparts " + department + "," + autopart, connect);
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                if (dt.Rows[0][0].ToString() != "1")
+                {
+                    connect.Open();
+                    SqlCommand com = new SqlCommand("EXECUTE dbo.InsertAvailability_auto_parts " + insertIdAvailability +
+                    "," + department + "," + autopart + "," + textBox1.Text + "," + amount, connect);
+                    com.ExecuteNonQuery();
+                }
+                else
+                {
+                    connect.Open();
+                    SqlCommand com = new SqlCommand("SELECT * FROM Availability_auto_parts WHERE ID_department="+department+
+                    " AND ID_autoparts="+ autopart+"", connect);
+                    using (SqlDataReader r = com.ExecuteReader())
+                    {
+                        while (r.Read())
+                        {
+                            ID_availability = r[0].ToString();
+                            ID_department = r[1].ToString();
+                            ID_autoparts = r[2].ToString();
+                            Price_holiday = r[3].ToString();
+                            Amount = r[4].ToString();
+                        }
+                    }
+
+                    decimal p = Convert.ToDecimal(Price_holiday.ToString().Replace(".", ","));
+                    int a = Convert.ToInt32(Amount);
+                    decimal max;
+
+                    if (price > p)
+                    {
+                        max = price;
+                    }
+                    else
+                    {
+                        max = p;
+                    }
+                    string MaxStr = Convert.ToString(max).Replace(",",".");
+                    int newAmount = a + Convert.ToInt32(amount);
+
+                    connect.Close();
+                    connect.Open();
+                    SqlCommand EditAvailability = new SqlCommand("EXECUTE dbo.EditAvailability_auto_parts " + Convert.ToInt32(ID_availability) +
+                    "," + Convert.ToInt32(ID_department) + "," + Convert.ToInt32(ID_autoparts) + "," + MaxStr + "," + newAmount, connect);
+                    EditAvailability.ExecuteNonQuery();
+                }
+            }
         }
 
         private void AddingAndEditingDelivery_Load(object sender, EventArgs e)
         {
-            Maxid();
+            MaxId();
+            MaxIdAvailability();
         }
 
         private void GroupBox1_Enter(object sender, EventArgs e)
@@ -136,6 +219,8 @@ namespace AS_Autodoc
             id_street = new List<int>();
             comboBox3.Items.Clear();
             comboBox3.Text = "";
+            comboBox4.Items.Clear();
+            comboBox4.Text = "";
             using (SqlConnection connect = new SqlConnection(con))
             {
                 connect.Open();
@@ -205,7 +290,8 @@ namespace AS_Autodoc
         private void Button1_Click(object sender, EventArgs e)
         {
             NewSupply();
-            Maxid();
+            MaxId();
+            MaxIdAvailability();
         }
     }
 }
