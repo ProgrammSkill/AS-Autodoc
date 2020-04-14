@@ -19,6 +19,7 @@ namespace AS_Autodoc
         public Brands_and_models()
         {
             InitializeComponent();
+
             id_brand = new List<int>();
             using (SqlConnection connect = new SqlConnection(con))
             {
@@ -51,8 +52,8 @@ namespace AS_Autodoc
         }
         public int insertId;
         public int ID_brd_mdl;
-        public string title_brand;
-        public string title_model;
+        public string Title_brand;
+        public string Title_model;
 
         public void LoadAll()
         {
@@ -163,13 +164,26 @@ namespace AS_Autodoc
             }
             else
             {
-                MessageBox.Show("Поле пустое.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Заполните все поля!.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void Button2_Click(object sender, EventArgs e)
         {
+            if (dataGridView1.CurrentRow != null)
+            {
+                ID_brd_mdl = Convert.ToInt32(dataGridView1[0, dataGridView1.CurrentRow.Index].Value);
+                Title_brand = dataGridView1[1, dataGridView1.CurrentRow.Index].Value.ToString();
+                Title_model = dataGridView1[2, dataGridView1.CurrentRow.Index].Value.ToString();
 
+                EditingBrandAndModel f = new EditingBrandAndModel();
+                f.Owner = this;
+                f.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Не выбрана связь марки и модели для редактирования.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

@@ -350,6 +350,21 @@ END
 GO
 
 
+CREATE PROCEDURE dbo.EditBrand_and_model
+@id INT,
+@b INT,
+@m INT
+AS
+BEGIN
+UPDATE [dbo].[Brands_and_models]
+   SET [ID_brd_mdl] = @id,
+       [ID_brand] = @b,
+       [ID_model] = @m
+ WHERE ID_brd_mdl=@id
+END
+GO
+
+
 CREATE PROCEDURE dbo.SelectSuppliers
 AS
 BEGIN

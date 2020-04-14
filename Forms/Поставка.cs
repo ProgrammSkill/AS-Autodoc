@@ -18,6 +18,14 @@ namespace AS_Autodoc
         {
             InitializeComponent();
         }
+        public string InsertOrEdit { get; set; }
+
+        public int id_supply;
+        public string supplier;
+        public string autopart;
+        public string price_holiday;
+        public int amount;
+        public string delivery_date;
 
         public void LoadAll()
         {
@@ -57,8 +65,32 @@ namespace AS_Autodoc
 
         private void Button1_Click(object sender, EventArgs e)
         {
+            InsertOrEdit = "Добавить";
             AddingAndEditingDelivery f = new AddingAndEditingDelivery();
+            f.Owner = this;
             f.ShowDialog();
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow != null)
+            {
+                InsertOrEdit = "Редактировать";
+                id_supply = Convert.ToInt32(dataGridView1[0, dataGridView1.CurrentRow.Index].Value);
+                supplier = dataGridView1[1, dataGridView1.CurrentRow.Index].Value.ToString();
+                autopart = dataGridView1[2, dataGridView1.CurrentRow.Index].Value.ToString();
+                price_holiday = dataGridView1[3, dataGridView1.CurrentRow.Index].Value.ToString();
+                amount = Convert.ToInt32(dataGridView1[4, dataGridView1.CurrentRow.Index].Value);
+                delivery_date = dataGridView1[6, dataGridView1.CurrentRow.Index].Value.ToString();
+
+                AddingAndEditingDelivery f = new AddingAndEditingDelivery();
+                f.Owner = this;
+                f.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Не выбрана поставка для редактирования.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

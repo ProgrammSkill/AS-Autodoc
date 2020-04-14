@@ -174,7 +174,7 @@ namespace AS_Autodoc
             }
             else
             {
-                MessageBox.Show("Не выбрана страна для переименования.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Не выбрана автозапчасть для редактирования.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

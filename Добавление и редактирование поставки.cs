@@ -204,8 +204,24 @@ namespace AS_Autodoc
 
         private void AddingAndEditingDelivery_Load(object sender, EventArgs e)
         {
-            MaxId();
-            MaxIdAvailability();
+            Supply f = (Supply)this.Owner;
+            if (f.InsertOrEdit.ToString() == "Добавить")
+            {
+                this.Text = "Новая поставка";
+
+                MaxId();
+                MaxIdAvailability();
+            }
+            else
+            {
+                this.Text = "Редактирование данных о поставке";
+                id = f.id_supply.ToString();
+                comboBox1.SelectedItem = f.supplier.ToString();
+                comboBox5.SelectedItem = f.autopart.ToString();
+                textBox1.Text = f.price_holiday.ToString().TrimEnd();
+                numericUpDown1.Value = f.amount;
+                maskedTextBox1.Text = f.delivery_date.ToString();
+            }
         }
 
         private void GroupBox1_Enter(object sender, EventArgs e)

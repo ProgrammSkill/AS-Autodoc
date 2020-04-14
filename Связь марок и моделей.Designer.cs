@@ -175,7 +175,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Brands_and_models";
-            this.Text = "Соответствие марок и моделей";
+            this.Text = "Связь марок и моделй";
             this.Load += new System.EventHandler(this.Brands_and_models_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
