@@ -53,10 +53,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Отделы магазина.cs">
+    <Compile Include="Forms\Отделы магазина.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Отделы магазина.Designer.cs">
+    <Compile Include="Forms\Отделы магазина.Designer.cs">
       <DependentUpon>Отделы магазина.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Редактирование связи марки и модели.cs">
@@ -201,13 +201,13 @@
     <Compile Include="Forms\Переименование модели.Designer.cs">
       <DependentUpon>Переименование модели.cs</DependentUpon>
     </Compile>
-    <Compile Include="Редактирование отдела.cs">
+    <Compile Include="Forms\Редактирование отдела.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Редактирование отдела.Designer.cs">
+    <Compile Include="Forms\Редактирование отдела.Designer.cs">
       <DependentUpon>Редактирование отдела.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Отделы магазина.resx">
+    <EmbeddedResource Include="Forms\Отделы магазина.resx">
       <DependentUpon>Отделы магазина.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Редактирование связи марки и модели.resx">
@@ -285,7 +285,7 @@
     <EmbeddedResource Include="Forms\Производители.resx">
       <DependentUpon>Производители.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Редактирование отдела.resx">
+    <EmbeddedResource Include="Forms\Редактирование отдела.resx">
       <DependentUpon>Редактирование отдела.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />

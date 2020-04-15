@@ -536,39 +536,64 @@ ON Supply.ID_autoparts=Autoparts.ID_autoparts
 END
 GO
 
-CREATE PROCEDURE dbo.SelectDepartmentCity
+
+CREATE PROCEDURE dbo.SelectManufacturersAutoparts
+@a CHAR(50)
 AS
 BEGIN
-SELECT Department_store.ID_department, City.City
-FROM Department_store INNER JOIN City
-ON Department_store.ID_city=City.ID_city
+SELECT Autoparts.ID_autoparts, Manufacturers.Manufacturer
+FROM Autoparts INNER JOIN Manufacturers
+ON Autoparts.ID_manufacturer=Manufacturers.ID_manufacturer
+AND Autoparts.Title=@a
+END
+GO
+
+CREATE PROCEDURE dbo.SelectArticleAutoparts
+@a CHAR(50),
+@m CHAR(30)
+AS
+BEGIN
+SELECT Autoparts.ID_autoparts, Autoparts.Article
+FROM Autoparts INNER JOIN Manufacturers
+ON Autoparts.ID_manufacturer=Manufacturers.ID_manufacturer
+AND Autoparts.Title=@a AND Manufacturers.Manufacturer=@m
 END
 GO
 
 
-CREATE PROCEDURE dbo.SelectDepartmentStreet
-@city CHAR(30)
-AS
-BEGIN
-SELECT Department_store.ID_department, Street.Street
-FROM Department_store INNER JOIN Street
-ON Department_store.ID_street=Street.ID_street
-INNER JOIN City ON Department_store.ID_city=City.ID_city
-AND City.City=@city
-END
-GO
+--CREATE PROCEDURE dbo.SelectDepartmentCity
+--AS
+--BEGIN
+--SELECT Department_store.ID_department, City.City
+--FROM Department_store INNER JOIN City
+--ON Department_store.ID_city=City.ID_city
+--END
+--GO
 
 
-CREATE PROCEDURE dbo.SelectDepartmentHouse
-@street CHAR(30)
-AS
-BEGIN
-SELECT Department_store.ID_department, Department_store.House
-FROM Department_store INNER JOIN Street
-ON Department_store.ID_street=Street.ID_street
-AND Street.Street=@street
-END
-GO
+--CREATE PROCEDURE dbo.SelectDepartmentStreet
+--@city CHAR(30)
+--AS
+--BEGIN
+--SELECT Department_store.ID_department, Street.Street
+--FROM Department_store INNER JOIN Street
+--ON Department_store.ID_street=Street.ID_street
+--INNER JOIN City ON Department_store.ID_city=City.ID_city
+--AND City.City=@city
+--END
+--GO
+
+
+--CREATE PROCEDURE dbo.SelectDepartmentHouse
+--@street CHAR(30)
+--AS
+--BEGIN
+--SELECT Department_store.ID_department, Department_store.House
+--FROM Department_store INNER JOIN Street
+--ON Department_store.ID_street=Street.ID_street
+--AND Street.Street=@street
+--END
+--GO
 
 
 CREATE PROCEDURE dbo.InsertSupply
