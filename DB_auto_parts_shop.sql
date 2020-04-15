@@ -653,3 +653,58 @@ UPDATE [dbo].[Availability_auto_parts]
  WHERE ID_availability=@id
 END
 GO
+
+
+CREATE PROCEDURE dbo.SelectDepartment_store
+AS
+BEGIN
+SELECT Department_store.ID_department, City.City, Street.Street, House, Telephone
+FROM Department_store INNER JOIN City
+ON Department_store.ID_city=City.ID_city
+INNER JOIN Street
+ON Department_store.ID_street=Street.ID_street
+END
+GO
+
+
+CREATE PROCEDURE dbo.InsertDepartment_store
+@id INT,
+@city INT,
+@street INT,
+@h CHAR(15),
+@t CHAR(20)
+AS
+BEGIN
+INSERT INTO [dbo].[Department_store]
+           ([ID_department]
+           ,[ID_city]
+           ,[ID_street]
+           ,[House]
+           ,[Telephone])
+     VALUES
+           (@id,
+            @city,
+            @street,
+            @h,
+            @t)
+END
+GO
+
+CREATE PROCEDURE dbo.EditDepartment_store
+@id INT,
+@city INT,
+@street INT,
+@h CHAR(15),
+@t CHAR(20)
+AS
+BEGIN
+UPDATE [dbo].[Department_store]
+   SET [ID_department] = @id,
+       [ID_city] = @city,
+       [ID_street] = @street,
+       [House] = @h,
+       [Telephone] = @t
+ WHERE ID_department=@id
+END
+GO
+

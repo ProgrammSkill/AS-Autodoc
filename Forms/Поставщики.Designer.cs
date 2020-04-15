@@ -66,7 +66,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(27, 80);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(1046, 387);
+            this.dataGridView1.Size = new System.Drawing.Size(1085, 387);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick);
             // 
@@ -133,6 +133,7 @@
             this.Column5.HeaderText = "Руководитель";
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
+            this.Column5.Width = 140;
             // 
             // Column6
             // 
@@ -174,7 +175,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1100, 534);
+            this.ClientSize = new System.Drawing.Size(1139, 534);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);

@@ -77,7 +77,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(28, 28);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(385, 288);
+            this.dataGridView1.Size = new System.Drawing.Size(384, 288);
             this.dataGridView1.TabIndex = 0;
             // 
             // groupBox1
@@ -88,7 +88,7 @@
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox1.Location = new System.Drawing.Point(463, 28);
+            this.groupBox1.Location = new System.Drawing.Point(459, 28);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(239, 182);
             this.groupBox1.TabIndex = 12;
@@ -169,7 +169,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(730, 376);
+            this.ClientSize = new System.Drawing.Size(727, 376);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.groupBox1);

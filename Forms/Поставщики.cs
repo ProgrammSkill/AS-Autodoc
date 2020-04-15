@@ -75,11 +75,12 @@ namespace AS_Autodoc
             {
                 using (SqlConnection connect = new SqlConnection(con))
                 {
-                    connect.Open();
+                    connect.Open();                
                     int id = Convert.ToInt32(dataGridView1[0, dataGridView1.CurrentRow.Index].Value);
-                    SqlCommand com = new SqlCommand("EXECUTE dbo.DeleteSupplier '" + id + "'", connect);
+                    SqlCommand com = new SqlCommand("DELETE FROM Supply WHERE ID_supplier = '" + id + "'", connect);
                     com.ExecuteNonQuery();
-
+                    com = new SqlCommand("DELETE FROM Suppliers WHERE ID_supplier = '" + id + "'", connect);
+                    com.ExecuteNonQuery();
                 }
             }
             this.TopMost = true;

@@ -113,7 +113,7 @@ namespace AS_Autodoc
                 SqlCommand com = new SqlCommand("EXECUTE dbo.InsertSupplier '" + insertId + "','" + textBox1.Text + "','" + textBox2.Text +
                 "','" + textBox3.Text + "','" + textBox4.Text + "','" + id_country[comboBox1.SelectedIndex] +
                 "','" + id_city[comboBox2.SelectedIndex] + "','" + id_street[comboBox3.SelectedIndex] + "','" + textBox5.Text+"','"+
-                textBox6.Text+"','"+textBox7.Text+"'", connect);
+                maskedTextBox1.Text+"','"+textBox6.Text+"'", connect);
                 com.ExecuteNonQuery();
             }
         }
@@ -127,7 +127,7 @@ namespace AS_Autodoc
                 SqlCommand com = new SqlCommand("EXECUTE dbo.EditSupplier '" + insertId + "','" + textBox1.Text + "','" + textBox2.Text +
                 "','" + textBox3.Text + "','" + textBox4.Text + "','" + id_country[comboBox1.SelectedIndex] +
                 "','" + id_city[comboBox2.SelectedIndex] + "','" + id_street[comboBox3.SelectedIndex] + "','" + textBox5.Text + "','" +
-                textBox6.Text + "','" + textBox7.Text + "'", connect);
+                maskedTextBox1.Text + "','" + textBox6.Text + "'", connect);
                 com.ExecuteNonQuery();
             }
         }
@@ -190,8 +190,8 @@ namespace AS_Autodoc
                 comboBox2.SelectedItem = f.City.ToString();
                 comboBox3.SelectedItem = f.Street.ToString();
                 textBox5.Text = f.House.ToString();
-                textBox6.Text = f.Telephone.ToString();
-                textBox7.Text = f.Email.ToString();
+                maskedTextBox1.Text = f.Telephone.ToString();
+                textBox6.Text = f.Email.ToString();
             }
         }
 
@@ -221,6 +221,11 @@ namespace AS_Autodoc
         }
 
         private void TextBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MaskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
 
         }

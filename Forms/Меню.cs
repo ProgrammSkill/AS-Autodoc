@@ -91,5 +91,11 @@ namespace AS_Autodoc
         {
 
         }
+
+        private void Button5_Click(object sender, EventArgs e)
+        {
+            DepartmentStore f = new DepartmentStore();
+            f.ShowDialog();
+        }
     }
 }

@@ -42,6 +42,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -84,42 +85,42 @@
             // маркиToolStripMenuItem
             // 
             this.маркиToolStripMenuItem.Name = "маркиToolStripMenuItem";
-            this.маркиToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.маркиToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.маркиToolStripMenuItem.Text = "Марки";
             this.маркиToolStripMenuItem.Click += new System.EventHandler(this.МаркиToolStripMenuItem_Click);
             // 
             // моделиToolStripMenuItem
             // 
             this.моделиToolStripMenuItem.Name = "моделиToolStripMenuItem";
-            this.моделиToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.моделиToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.моделиToolStripMenuItem.Text = "Модели";
             this.моделиToolStripMenuItem.Click += new System.EventHandler(this.МоделиToolStripMenuItem_Click);
             // 
             // производителиToolStripMenuItem
             // 
             this.производителиToolStripMenuItem.Name = "производителиToolStripMenuItem";
-            this.производителиToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.производителиToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.производителиToolStripMenuItem.Text = "Производители";
             this.производителиToolStripMenuItem.Click += new System.EventHandler(this.ПроизводителиToolStripMenuItem_Click);
             // 
             // странаToolStripMenuItem
             // 
             this.странаToolStripMenuItem.Name = "странаToolStripMenuItem";
-            this.странаToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.странаToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.странаToolStripMenuItem.Text = "Страна";
             this.странаToolStripMenuItem.Click += new System.EventHandler(this.СтранаToolStripMenuItem_Click);
             // 
             // городToolStripMenuItem
             // 
             this.городToolStripMenuItem.Name = "городToolStripMenuItem";
-            this.городToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.городToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.городToolStripMenuItem.Text = "Город";
             this.городToolStripMenuItem.Click += new System.EventHandler(this.ГородToolStripMenuItem_Click);
             // 
             // улицаToolStripMenuItem
             // 
             this.улицаToolStripMenuItem.Name = "улицаToolStripMenuItem";
-            this.улицаToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.улицаToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.улицаToolStripMenuItem.Text = "Улица";
             this.улицаToolStripMenuItem.Click += new System.EventHandler(this.УлицаToolStripMenuItem_Click);
             // 
@@ -175,11 +176,23 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.Button4_Click);
             // 
+            // button5
+            // 
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button5.Location = new System.Drawing.Point(32, 210);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(162, 29);
+            this.button5.TabIndex = 7;
+            this.button5.Text = "Отделы магазина";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.Button5_Click);
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -213,5 +226,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
     }
 }

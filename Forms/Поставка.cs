@@ -92,5 +92,10 @@ namespace AS_Autodoc
                 MessageBox.Show("Не выбрана поставка для редактирования.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void Button3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

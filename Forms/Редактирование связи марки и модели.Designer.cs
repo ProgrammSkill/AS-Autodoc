@@ -74,7 +74,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(292, 149);
+            this.button1.Location = new System.Drawing.Point(301, 158);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(132, 24);
             this.button1.TabIndex = 38;
@@ -93,7 +93,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label4);
             this.Name = "EditingBrandAndModel";
-            this.Text = "EditingBrandAndModel";
+            this.Text = "Редактирование связи марки и модели";
             this.Load += new System.EventHandler(this.EditingBrandAndModel_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
