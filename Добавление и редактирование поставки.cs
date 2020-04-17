@@ -142,7 +142,7 @@ namespace AS_Autodoc
                 connect.Open();
                 SqlCommand com = new SqlCommand("EXECUTE dbo.InsertSupply '" + insertId + "','" + id_supplier[comboBox1.SelectedIndex]+"','" + 
                 id_autoparts[comboBox4.SelectedIndex] + "','"+textBox1.Text+"','"+numericUpDown1.Value+"','"+
-                maskedTextBox1.Text+"'", connect);
+                maskedTextBox1.Text+"','Новая'", connect);
                 com.ExecuteNonQuery();
             }
 
@@ -204,6 +204,18 @@ namespace AS_Autodoc
             //}
         }
 
+        private void Edit()
+        {
+            using (SqlConnection connect = new SqlConnection(con))
+            {
+                connect.Open();
+                SqlCommand com = new SqlCommand("EXECUTE dbo.EditSupply '" + id + "','" + id_supplier[comboBox1.SelectedIndex] + "','" +
+                id_autoparts[comboBox4.SelectedIndex] + "','" + textBox1.Text.ToString().Replace(",",".") + "','" + numericUpDown1.Value + "','" +
+                maskedTextBox1.Text + "'", connect);
+                com.ExecuteNonQuery();
+            }
+        }
+
         private void AddingAndEditingDelivery_Load(object sender, EventArgs e)
         {
             Supply f = (Supply)this.Owner;
@@ -219,7 +231,9 @@ namespace AS_Autodoc
                 this.Text = "Редактирование данных о поставке";
                 id = f.id_supply.ToString();
                 comboBox1.SelectedItem = f.supplier.ToString();
-                comboBox4.SelectedItem = f.autopart.ToString();
+                comboBox2.SelectedItem = f.autopart.ToString();
+                comboBox3.Text = f.manufacturer.ToString();
+                comboBox4.Text = f.article.ToString();
                 textBox1.Text = f.price_holiday.ToString().TrimEnd();
                 numericUpDown1.Value = f.amount;
                 maskedTextBox1.Text = f.delivery_date.ToString();
@@ -342,17 +356,33 @@ namespace AS_Autodoc
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            if (comboBox1.Text != "" && comboBox2.Text != "" && comboBox3.Text != "" && comboBox4.Text != "" && textBox1.Text != "" && maskedTextBox1.Text != "")
+            Supply f = (Supply)this.Owner;
+            if (f.InsertOrEdit.ToString() == "Добавить")
             {
-                NewSupply();
-                MaxId();
-                Supply f = (Supply)this.Owner;
-                f.LoadAll();
+                if (comboBox1.Text != "" && comboBox2.Text != "" && comboBox3.Text != "" && comboBox4.Text != "" && textBox1.Text != "" && maskedTextBox1.Text != "")
+                {
+                    NewSupply();
+                    MaxId();
+                    f.LoadAll();
+                }
+                else
+                {
+                    MessageBox.Show("Заполните все поля!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {
-                MessageBox.Show("Заполните все поля!.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (comboBox1.Text != "" && comboBox2.Text != "" && comboBox3.Text != "" && comboBox4.Text != "" && textBox1.Text != "" && maskedTextBox1.Text != "")
+                {
+                    Edit();
+                    f.LoadAll();
+                }
+                else
+                {
+                    MessageBox.Show("Заполните все поля!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
+
         }
 
         private void ComboBox4_SelectedIndexChanged_1(object sender, EventArgs e)

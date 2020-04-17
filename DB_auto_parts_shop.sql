@@ -59,7 +59,8 @@ ID_supplier INT FOREIGN KEY REFERENCES Suppliers(ID_supplier),
 ID_autoparts INT FOREIGN KEY REFERENCES Autoparts(ID_autoparts),
 Purchase_price NUMERIC(8,2),
 Amount INT,
-Delivery_date DATE)
+Delivery_date DATE,
+Status_ CHAR(20))
 
 CREATE TABLE Department_store (
 ID_department INT PRIMARY KEY,
@@ -524,18 +525,19 @@ END
 GO
 
 
-
 CREATE PROCEDURE dbo.SelectSuppply
 AS
 BEGIN
-SELECT Supply.ID_supply, Suppliers.Title, Autoparts.Title, Supply.Purchase_price, Supply.Amount , Purchase_price*Amount AS Sum_, Supply.Delivery_date
+SELECT Supply.ID_supply, Suppliers.Title, Autoparts.ID_autoparts, Autoparts.Title, Manufacturers.Manufacturer, Autoparts.Article, Supply.Purchase_price, Supply.Amount , Purchase_price*Amount AS Sum_, Supply.Delivery_date, Supply.Status_
 FROM Supply INNER JOIN Suppliers
 ON Supply.ID_supplier=Suppliers.ID_supplier
 INNER JOIN Autoparts
 ON Supply.ID_autoparts=Autoparts.ID_autoparts
+INNER JOIN Manufacturers
+ON Autoparts.ID_manufacturer=Manufacturers.ID_manufacturer
 END
 GO
-
+EXECUTE dbo.SelectSuppply
 
 CREATE PROCEDURE dbo.SelectManufacturersAutoparts
 @a CHAR(50)
@@ -602,7 +604,8 @@ CREATE PROCEDURE dbo.InsertSupply
 @id_a INT,
 @p NUMERIC(8,2),
 @a INT,
-@d DATE
+@d DATE,
+@s CHAR(20)
 AS
 BEGIN
 INSERT INTO [dbo].[Supply]
@@ -611,16 +614,41 @@ INSERT INTO [dbo].[Supply]
            ,[ID_autoparts]
            ,[Purchase_price]
            ,[Amount]
-           ,[Delivery_date])
+           ,[Delivery_date]
+		   ,[Status_])
      VALUES
            (@id,
             @id_s,
             @id_a,
             @p,
             @a,
-            @d)
+            @d,
+			@s)
 END
 GO
+
+
+CREATE PROCEDURE dbo.EditSupply
+@id INT,
+@id_s INT,
+@id_a INT,
+@p NUMERIC(8,2),
+@a INT,
+@d DATE
+AS
+BEGIN
+UPDATE [dbo].[Supply]
+   SET [ID_supply] = @id,
+       [ID_supplier] = @id_s,
+       [ID_autoparts] = @id_a ,
+       [Purchase_price] = @p,
+       [Amount] = @a,
+       [Delivery_date] = @d
+WHERE ID_supply=@id
+END
+GO
+
+
 
 CREATE PROCEDURE dbo.CheckAutoparts
 @id_d INT,
@@ -635,7 +663,17 @@ END
 GO
 
 
-
+CREATE PROCEDURE dbo.StatusChange
+@id INT,
+@s CHAR(20)
+AS
+BEGIN
+UPDATE [dbo].[Supply]
+   SET [ID_supply] = @id,
+       [Status_] = @s
+ WHERE ID_supply=@id
+END
+GO
 
 CREATE PROCEDURE dbo.InsertAvailability_auto_parts
 @id INT,
@@ -732,4 +770,7 @@ UPDATE [dbo].[Department_store]
  WHERE ID_department=@id
 END
 GO
+ 
+
+
 
