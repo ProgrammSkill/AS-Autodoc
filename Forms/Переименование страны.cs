@@ -24,13 +24,10 @@ namespace AS_Autodoc
         {
             using (SqlConnection connect = new SqlConnection(con))
             {
-
                 connect.Open();
                 SqlCommand com = new SqlCommand("EXECUTE dbo.EditCountry '" + id + "','" + textBox1.Text + "'", connect);
                 com.ExecuteNonQuery();
-
             }
-
         }
 
         private void Renaming_country_Load(object sender, EventArgs e)

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Globalization;
 
 namespace AS_Autodoc
 {
@@ -354,6 +355,18 @@ namespace AS_Autodoc
 
         }
 
+        static bool TextIsDate(string text)
+        {
+            //var dateFormat = "yyyy-MM-dd";
+            var dateFormat = "dd.MM.yyyy";
+            DateTime scheduleDate;
+            if (DateTime.TryParseExact(text, dateFormat, DateTimeFormatInfo.InvariantInfo, DateTimeStyles.None, out scheduleDate))
+            {
+                return true;
+            }
+            return false;
+        }
+
         private void Button1_Click(object sender, EventArgs e)
         {
             Supply f = (Supply)this.Owner;
@@ -361,9 +374,16 @@ namespace AS_Autodoc
             {
                 if (comboBox1.Text != "" && comboBox2.Text != "" && comboBox3.Text != "" && comboBox4.Text != "" && textBox1.Text != "" && maskedTextBox1.Text != "")
                 {
-                    NewSupply();
-                    MaxId();
-                    f.LoadAll();
+                    if (TextIsDate(maskedTextBox1.Text))
+                    {
+                        NewSupply();
+                        MaxId();
+                        f.LoadAll();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Введён неправельный формат даты", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {

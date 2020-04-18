@@ -144,8 +144,11 @@ namespace AS_Autodoc
 
         private void Button3_Click(object sender, EventArgs e)
         {
-            Delete();
-            LoadAll();
+            if (dataGridView1.CurrentRow != null)
+            {
+                Delete();
+                LoadAll();
+            }
         }
     }
 }

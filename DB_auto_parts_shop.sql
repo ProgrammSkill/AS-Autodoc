@@ -49,7 +49,7 @@ CREATE TABLE Autoparts (
 ID_autoparts INT PRIMARY KEY,
 Article CHAR(50),
 Title CHAR(50),
-ID_brd_mdl INT FOREIGN KEY REFERENCES Car(ID_Car),
+ID_brd_mdl INT FOREIGN KEY REFERENCES Brands_and_models(ID_brd_mdl),
 ID_manufacturer INT FOREIGN KEY REFERENCES Manufacturers(ID_manufacturer),
 Comment CHAR(150))
 
@@ -106,57 +106,6 @@ Address_ char(50),
 Telephone CHAR(20),
 Date_of_acceptance DATE,
 Date_of_termination DATE)
-
-
-CREATE PROCEDURE dbo.InsertUsers
-@login CHAR(15),
-@pass CHAR(15),
-@role INT,
-@surname CHAR(20),
-@f_name CHAR(20),
-@l_name CHAR(20),
-@pos INT,
-@adress CHAR(50),
-@tel CHAR(20),
-@da DATE,
-@dt DATE
-AS
-BEGIN
-INSERT INTO [dbo].[Users]
-           ([Login_]
-           ,[Password_]
-           ,[ID_role])
-     VALUES
-           (@login,
-            @pass,
-            @role)
-INSERT INTO [dbo].[InfoUsers]
-           ([Login_]
-           ,[Surname]
-           ,[First_name]
-           ,[Last_name]
-           ,[ID_position]
-           ,[Address_]
-           ,[Telephone]
-           ,[Date_of_acceptance]
-           ,[Date_of_termination])
-     VALUES
-           (@login,
-            @surname,
-            @f_name,
-            @l_name,
-            @pos,
-            @adress,
-            @tel,
-            @da,
-            @dt)
-END
-GO
-EXECUTE dbo.InsertUsers 'fvdfd', '3545fg', 2, 'xccsd', 'dss', 'dsss', 1, 'dsdsds', '343433', 31.12.99, 01.04.20
-
-
-
-
 
 
 CREATE PROCEDURE dbo.InsertCountry
@@ -321,6 +270,20 @@ INSERT INTO [dbo].[Manufacturers]
 END
 GO
 
+CREATE PROCEDURE dbo.EditManufacturer
+@id INT,
+@m CHAR(30),
+@c INT
+AS
+BEGIN
+UPDATE [dbo].[Manufacturers]
+   SET [ID_manufacturer] = @id,
+       [Manufacturer] = @m,
+       [ID_country] = @c
+ WHERE ID_manufacturer=@id
+END
+GO
+
 
 
 CREATE PROCEDURE dbo.SelectBrands_and_models
@@ -440,8 +403,6 @@ UPDATE [dbo].[Suppliers]
  WHERE ID_supplier=@id
 END
 GO
-
-
 
 
 CREATE PROCEDURE dbo.DeleteSupplier
@@ -771,6 +732,90 @@ UPDATE [dbo].[Department_store]
 END
 GO
  
+--Панель администратора
+
+CREATE PROCEDURE dbo.InsertRole
+@id INT,
+@r CHAR(20)
+AS
+BEGIN
+INSERT INTO [dbo].[Role_]
+           ([ID_role]
+           ,[Role_])
+     VALUES
+           (@id, @r )
+END
+GO
+
+EXECUTE dbo.InsertRole 1, 'Администратор'
+EXECUTE dbo.InsertRole 2, 'Менеджер'
+EXECUTE dbo.InsertRole 3, 'Продовец'
+EXECUTE dbo.InsertRole 4, 'Директор'
+EXECUTE dbo.InsertRole 5, 'Кладовшик'
 
 
+CREATE PROCEDURE dbo.InsertPosition
+@id INT,
+@p CHAR (30)
+AS
+BEGIN
+INSERT INTO [dbo].[Position]
+           ([ID_position]
+           ,[Position])
+     VALUES
+           (@id, @p)
+END
+GO
 
+EXECUTE dbo.InsertPosition 1, 'Администратор'
+EXECUTE dbo.InsertPosition 2, 'Менеджер'
+EXECUTE dbo.InsertPosition 3, 'Продовец'
+EXECUTE dbo.InsertPosition 4, 'Директор'
+EXECUTE dbo.InsertPosition 5, 'Кладовшик'
+
+
+CREATE PROCEDURE dbo.InsertUsers
+@login CHAR(15),
+@pass CHAR(15),
+@role INT,
+@surname CHAR(20),
+@f_name CHAR(20),
+@l_name CHAR(20),
+@pos INT,
+@adress CHAR(50),
+@tel CHAR(20),
+@da DATE,
+@dt DATE
+AS
+BEGIN
+INSERT INTO [dbo].[Users]
+           ([Login_]
+           ,[Password_]
+           ,[ID_role])
+     VALUES
+           (@login,
+            @pass,
+            @role)
+INSERT INTO [dbo].[InfoUsers]
+           ([Login_]
+           ,[Surname]
+           ,[First_name]
+           ,[Last_name]
+           ,[ID_position]
+           ,[Address_]
+           ,[Telephone]
+           ,[Date_of_acceptance]
+           ,[Date_of_termination])
+     VALUES
+           (@login,
+            @surname,
+            @f_name,
+            @l_name,
+            @pos,
+            @adress,
+            @tel,
+            @da,
+            @dt)
+END
+GO
+EXECUTE dbo.InsertUsers '111', '111', 2, 'xccsd', 'dss', 'dsss', 1, 'dsdsds', '343433', '31.12.1999', '01.04.2020'

@@ -135,14 +135,17 @@ namespace AS_Autodoc
 
         private void Button3_Click(object sender, EventArgs e)
         {
-            if (dataGridView1[10, dataGridView1.CurrentRow.Index].Value.ToString() != "Распределена")
+            if (dataGridView1.CurrentRow != null)
             {
-                Delete();
-                LoadAll();
-            }
-            else
-            {
-                MessageBox.Show("Невозможно удалить поставку, поскольку данная поставка распределена.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (dataGridView1[10, dataGridView1.CurrentRow.Index].Value.ToString() != "Распределена")
+                {
+                    Delete();
+                    LoadAll();
+                }
+                else
+                {
+                    MessageBox.Show("Невозможно удалить поставку, поскольку данная поставка распределена.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

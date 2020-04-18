@@ -136,7 +136,7 @@ namespace AS_Autodoc
                 ID_manufacturer = Convert.ToInt32(dataGridView1[0, dataGridView1.CurrentRow.Index].Value);
                 manufacturer = dataGridView1[1, dataGridView1.CurrentRow.Index].Value.ToString();
                 country= dataGridView1[2, dataGridView1.CurrentRow.Index].Value.ToString();
-                Renaming__street f = new Renaming__street();
+                EditingManufacturer f = new EditingManufacturer();
                 f.Owner = this;
                 f.Show();
             }
@@ -148,8 +148,11 @@ namespace AS_Autodoc
 
         private void Button3_Click(object sender, EventArgs e)
         {
-            Delete();
-            LoadAll();
+            if (dataGridView1.CurrentRow != null)
+            {
+                Delete();
+                LoadAll();
+            }
         }
 
         private void Button1_Click(object sender, EventArgs e)
