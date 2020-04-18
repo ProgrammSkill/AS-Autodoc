@@ -41,7 +41,7 @@ namespace AS_Autodoc
             using (SqlConnection connect = new SqlConnection(con))
             {
                 connect.Open();
-                SqlCommand com = new SqlCommand("EXECUTE dbo.EditCountry '" + id + "','" + id_country[comboBox1.SelectedIndex] + "'", connect);
+                SqlCommand com = new SqlCommand("EXECUTE dbo.EditManufacturer '" + id + "','" +textBox1.Text+"','"+ id_country[comboBox1.SelectedIndex] + "'", connect);
                 com.ExecuteNonQuery();
             }
         }
@@ -71,6 +71,11 @@ namespace AS_Autodoc
             {
                 MessageBox.Show("Заполните все поля!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
