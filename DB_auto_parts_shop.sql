@@ -73,7 +73,7 @@ CREATE TABLE Availability_auto_parts (
 ID_availability INT PRIMARY KEY,
 ID_department INT FOREIGN KEY REFERENCES Department_store(ID_department),
 ID_autoparts INT FOREIGN KEY REFERENCES Autoparts(ID_autoparts),
-Price_holiday NUMERIC(8,2),
+Sale_price NUMERIC(8,2),
 Amount INT)
 
 CREATE TABLE Sale (
@@ -636,6 +636,17 @@ UPDATE [dbo].[Supply]
 END
 GO
 
+CREATE PROCEDURE dbo.SelectAvailability_auto_parts
+AS
+BEGIN
+SELECT ID_availability, ID_department, Autoparts.ID_autoparts, Manufacturers.Manufacturer, Autoparts.Article, Sale_price, Amount, AS 
+FROM Availability_auto_parts INNER JOIN Autoparts
+ON Availability_auto_parts.ID_autoparts=Autoparts.ID_autoparts
+INNER JOIN Manufacturers
+ON Autoparts.ID_manufacturer=Manufacturers.ID_manufacturer
+GO
+END
+
 CREATE PROCEDURE dbo.InsertAvailability_auto_parts
 @id INT,
 @id_d INT,
@@ -648,7 +659,7 @@ INSERT INTO [dbo].[Availability_auto_parts]
            ([ID_availability]
            ,[ID_department]
            ,[ID_autoparts]
-           ,[Price_holiday]
+           ,[Sale_price]
            ,[Amount])
      VALUES
            (@id,
@@ -672,7 +683,7 @@ UPDATE [dbo].[Availability_auto_parts]
    SET [ID_availability] = @id,
        [ID_department] = @id_d,
        [ID_autoparts] = @id_a,
-       [Price_holiday] = @p,
+       [Sale_price] = @p,
        [Amount] = @a
  WHERE ID_availability=@id
 END
@@ -732,6 +743,88 @@ UPDATE [dbo].[Department_store]
 END
 GO
  
+
+CREATE PROCEDURE dbo.SelectSale
+AS
+BEGIN
+SELECT ID_sale, Sale.ID_department, Sale.ID_autoparts, Autoparts.Title, Manufacturer, Autoparts.Article, Availability_auto_parts.Sale_price, Sale.Amount, Availability_auto_parts.Sale_price*Sale.Amount AS Sum_, Sale.Date_of_sale
+FROM Sale INNER JOIN Autoparts
+ON Sale.ID_autoparts=Autoparts.ID_autoparts
+INNER JOIN Manufacturers
+ON Autoparts.ID_manufacturer=Manufacturers.ID_manufacturer
+INNER JOIN Availability_auto_parts
+ON Availability_auto_parts.ID_autoparts=Sale.ID_autoparts
+END
+GO
+
+CREATE PROCEDURE dbo.SelectComboBoxAutoparts
+@id_d INT
+AS
+BEGIN
+SELECT DISTINCT Autoparts.Title
+FROM Autoparts INNER JOIN Availability_auto_parts
+ON Autoparts.ID_autoparts=Availability_auto_parts.ID_autoparts
+AND Availability_auto_parts.ID_department=@id_d
+END
+GO
+
+CREATE PROCEDURE dbo.SelectAnotherAvailability_auto_parts
+@id INT
+AS
+BEGIN
+SELECT *
+FROM Availability_auto_parts 
+WHERE ID_autoparts=8
+END
+GO
+
+SELECT *
+FROM Sale
+ 
+CREATE PROCEDURE dbo.InsertSale
+@id INT,
+@id_d INT,
+@id_a INT,
+@a INT,
+@d DATE 
+AS
+BEGIN
+INSERT INTO [dbo].[Sale]
+           ([ID_sale]
+           ,[ID_department]
+           ,[ID_autoparts]
+           ,[Amount]
+           ,[Date_of_sale])
+     VALUES
+           (@id,
+            @id_d,
+            @id_a,
+            @a,
+            @d)
+END
+GO
+
+CREATE PROCEDURE dbo.EditSale
+@id INT,
+@id_d INT,
+@id_a INT,
+@a INT,
+@d DATE 
+AS
+BEGIN
+UPDATE [dbo].[Sale]
+   SET [ID_sale] = @id,
+       [ID_department] = @id_d,
+       [ID_autoparts] = @id_a, 
+       [Amount] = @a,
+       [Date_of_sale] = @d
+ WHERE ID_sale=@id
+END
+GO
+
+
+
+
 --Панель администратора
 
 CREATE PROCEDURE dbo.InsertRole

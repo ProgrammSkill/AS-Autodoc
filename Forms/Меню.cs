@@ -89,13 +89,20 @@ namespace AS_Autodoc
 
         private void Button4_Click(object sender, EventArgs e)
         {
-
+            Sale f = new Sale();
+            f.ShowDialog();
         }
 
         private void Button5_Click(object sender, EventArgs e)
         {
             DepartmentStore f = new DepartmentStore();
             f.ShowDialog();
+        }
+
+        private void Button6_Click(object sender, EventArgs e)
+        {
+            Sale f = new Sale();
+            f.LoadAll();
         }
     }
 }

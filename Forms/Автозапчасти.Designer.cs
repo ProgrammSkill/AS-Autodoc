@@ -197,7 +197,7 @@
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button4.Location = new System.Drawing.Point(21, 78);
+            this.button4.Location = new System.Drawing.Point(21, 76);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(132, 24);
             this.button4.TabIndex = 9;
@@ -231,7 +231,7 @@
             "Не указано"});
             this.comboBox1.Location = new System.Drawing.Point(21, 136);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(217, 21);
+            this.comboBox1.Size = new System.Drawing.Size(217, 24);
             this.comboBox1.TabIndex = 34;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.ComboBox1_SelectedIndexChanged);
             // 
@@ -252,7 +252,7 @@
             "Не указано"});
             this.comboBox2.Location = new System.Drawing.Point(274, 136);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(217, 21);
+            this.comboBox2.Size = new System.Drawing.Size(217, 24);
             this.comboBox2.TabIndex = 36;
             this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.ComboBox2_SelectedIndexChanged);
             // 
@@ -273,7 +273,7 @@
             "Не указано"});
             this.comboBox3.Location = new System.Drawing.Point(21, 227);
             this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(217, 21);
+            this.comboBox3.Size = new System.Drawing.Size(217, 24);
             this.comboBox3.TabIndex = 38;
             this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.ComboBox3_SelectedIndexChanged);
             // 
@@ -307,6 +307,7 @@
             this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox1.Location = new System.Drawing.Point(24, 11);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(509, 296);
@@ -361,8 +362,9 @@
             // 
             // button6
             // 
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button6.Location = new System.Drawing.Point(274, 78);
+            this.button6.Location = new System.Drawing.Point(274, 75);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(132, 24);
             this.button6.TabIndex = 41;
@@ -377,7 +379,7 @@
             "Не указано"});
             this.comboBox4.Location = new System.Drawing.Point(274, 227);
             this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(217, 21);
+            this.comboBox4.Size = new System.Drawing.Size(217, 24);
             this.comboBox4.TabIndex = 40;
             this.comboBox4.SelectedIndexChanged += new System.EventHandler(this.ComboBox4_SelectedIndexChanged);
             // 

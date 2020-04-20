@@ -172,7 +172,7 @@
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(162, 29);
             this.button4.TabIndex = 6;
-            this.button4.Text = "Новая поставка";
+            this.button4.Text = "Продажа";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.Button4_Click);
             // 
