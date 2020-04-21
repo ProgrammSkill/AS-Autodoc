@@ -115,7 +115,6 @@ namespace AS_Autodoc
 
         private void Button2_Click(object sender, EventArgs e)
         {
-
             if (dataGridView1.CurrentRow != null)
             {
                 ID_supplier = Convert.ToInt32(dataGridView1[0, dataGridView1.CurrentRow.Index].Value);

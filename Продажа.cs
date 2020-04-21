@@ -18,6 +18,16 @@ namespace AS_Autodoc
         {
             InitializeComponent();
         }
+        public string InsertOrEdit { get; set; }
+
+        public int ID_sale;
+        public int ID_department;
+        public int ID_auto_part;
+        public string Title_auto_part;
+        public string Manufacturer;
+        public string Article;
+        public int Amount;
+        public string Date_of_sale;
 
         public void LoadAll()
         {
@@ -41,28 +51,11 @@ namespace AS_Autodoc
                         dataGridView1[6, i].Value = r[6].ToString();
                         dataGridView1[7, i].Value = r[7].ToString();
                         dataGridView1[8, i].Value = r[8].ToString();
-                        dataGridView1[9, i].Value = r[9].ToString();
+                        dataGridView1[9, i].Value = r[9].ToString().Remove(10);
                         i++;
                     }
                 }
             }
-
-            //for (int i = 0; dataGridView1.Rows.Count > i; i++)
-            //{
-            //    using (SqlConnection connect = new SqlConnection(con))
-            //    {
-            //        connect.Open();
-            //        int id = Convert.ToInt32(dataGridView1[2, i].Value);
-            //        SqlCommand com = new SqlCommand("dbo.SelectAnotherGenre'" + id + "'", connect);
-            //        using (SqlDataReader r = com.ExecuteReader())
-            //        {
-            //            while (r.Read())
-            //            {
-            //                dataGridView1[3, i].Value = r[1].ToString();
-            //            }
-            //        }
-            //    }
-            //}
         }
 
         private void Sale_Load(object sender, EventArgs e)
@@ -72,9 +65,34 @@ namespace AS_Autodoc
 
         private void Button1_Click(object sender, EventArgs e)
         {
+            InsertOrEdit = "Добавить";
             AddingAndEditingSales f = new AddingAndEditingSales();
             f.Owner = this;
             f.ShowDialog();
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow != null)
+            {
+                InsertOrEdit = "Редактировать";
+                ID_sale = Convert.ToInt32(dataGridView1[0, dataGridView1.CurrentRow.Index].Value);
+                ID_department = Convert.ToInt32(dataGridView1[1, dataGridView1.CurrentRow.Index].Value);
+                ID_auto_part = Convert.ToInt32(dataGridView1[2, dataGridView1.CurrentRow.Index].Value);
+                Title_auto_part = dataGridView1[3, dataGridView1.CurrentRow.Index].Value.ToString();
+                Manufacturer = dataGridView1[4, dataGridView1.CurrentRow.Index].Value.ToString();
+                Article = dataGridView1[5, dataGridView1.CurrentRow.Index].Value.ToString();
+                Amount = Convert.ToInt32(dataGridView1[7, dataGridView1.CurrentRow.Index].Value);
+                Date_of_sale = dataGridView1[9, dataGridView1.CurrentRow.Index].Value.ToString();
+
+                AddingAndEditingSales f = new AddingAndEditingSales();
+                f.Owner = this;
+                f.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Не выбрана поставка для редактирования.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

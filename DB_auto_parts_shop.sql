@@ -753,9 +753,10 @@ ON Sale.ID_autoparts=Autoparts.ID_autoparts
 INNER JOIN Manufacturers
 ON Autoparts.ID_manufacturer=Manufacturers.ID_manufacturer
 INNER JOIN Availability_auto_parts
-ON Availability_auto_parts.ID_autoparts=Sale.ID_autoparts
+ON Availability_auto_parts.ID_autoparts=Sale.ID_autoparts AND Sale.ID_department=Availability_auto_parts.ID_department
 END
 GO
+
 
 CREATE PROCEDURE dbo.SelectComboBoxAutoparts
 @id_d INT
@@ -768,18 +769,6 @@ AND Availability_auto_parts.ID_department=@id_d
 END
 GO
 
-CREATE PROCEDURE dbo.SelectAnotherAvailability_auto_parts
-@id INT
-AS
-BEGIN
-SELECT *
-FROM Availability_auto_parts 
-WHERE ID_autoparts=8
-END
-GO
-
-SELECT *
-FROM Sale
  
 CREATE PROCEDURE dbo.InsertSale
 @id INT,
@@ -822,7 +811,8 @@ UPDATE [dbo].[Sale]
 END
 GO
 
-
+SELECT * FROM Department_store INNER JOIN Availability_auto_parts
+ON Department_store.ID_department=Availability_auto_parts.ID_department
 
 
 --Панель администратора

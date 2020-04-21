@@ -17,7 +17,6 @@ namespace AS_Autodoc
         string con = Connect.getConnect();
         List<int> id_supplier;
         List<int> id__manufacturer;
-        List<int> id__article;
         List<int> id_autoparts;
         public AddingAndEditingDelivery()
         {
@@ -117,9 +116,7 @@ namespace AS_Autodoc
             if (f.InsertOrEdit.ToString() == "Добавить")
             {
                 this.Text = "Новая поставка";
-
                 MaxId();
-                //MaxIdAvailability();
             }
             else
             {
@@ -225,35 +222,28 @@ namespace AS_Autodoc
         private void Button1_Click(object sender, EventArgs e)
         {
             Supply f = (Supply)this.Owner;
-            if (f.InsertOrEdit.ToString() == "Добавить")
+            if (comboBox1.Text != "" && comboBox2.Text != "" && comboBox3.Text != "" && comboBox4.Text != "" && textBox1.Text != "" && maskedTextBox1.Text != "")
             {
-                if (comboBox1.Text != "" && comboBox2.Text != "" && comboBox3.Text != "" && comboBox4.Text != "" && textBox1.Text != "" && maskedTextBox1.Text != "")
+                if (TextIsDate(maskedTextBox1.Text))
                 {
-                    if (TextIsDate(maskedTextBox1.Text))
+                    if (f.InsertOrEdit.ToString() == "Добавить")
                     {
                         NewSupply();
                         MaxId();
                     }
                     else
                     {
-                        MessageBox.Show("Введён неправельный формат даты", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Edit();
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Заполните все поля!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Введён неправельный формат даты", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                if (comboBox1.Text != "" && comboBox2.Text != "" && comboBox3.Text != "" && comboBox4.Text != "" && textBox1.Text != "" && maskedTextBox1.Text != "")
-                {
-                    Edit();
-                }
-                else
-                {
-                    MessageBox.Show("Заполните все поля!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                MessageBox.Show("Заполните все поля!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             f.LoadAll();
         }
