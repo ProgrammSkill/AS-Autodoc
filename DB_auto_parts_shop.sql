@@ -935,3 +935,21 @@ INSERT INTO [dbo].[InfoUsers]
 END
 GO
 EXECUTE dbo.InsertUsers '111', '111', 2, 'xccsd', 'dss', 'dsss', 1, 'dsdsds', '343433', '31.12.1999', '01.04.2020'
+
+
+
+CREATE PROCEDURE dbo.InsertUserSession
+@id INT,
+@id_user CHAR(15),
+@dt DATETIME
+AS
+BEGIN
+INSERT INTO [dbo].[UserSession]
+           ([ID_session]
+           ,[Login_]
+           ,[Date_of_entrance])
+     VALUES
+           (@id, @id_user,@dt)
+END
+GO
+

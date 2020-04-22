@@ -95,7 +95,6 @@ namespace AS_Autodoc
                 maskedTextBox1.Text+"','Новая'", connect);
                 com.ExecuteNonQuery();
             }
-
         }
 
         private void Edit()
