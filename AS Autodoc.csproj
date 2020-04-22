@@ -176,11 +176,11 @@
       <DependentUpon>Авторизация.cs</DependentUpon>
     </Compile>
     <Compile Include="GithubNETAPI\GithubNET.cs" />
-    <Compile Include="Forms\Меню.cs">
+    <Compile Include="Forms\Меню менеджера.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Меню.Designer.cs">
-      <DependentUpon>Меню.cs</DependentUpon>
+    <Compile Include="Forms\Меню менеджера.Designer.cs">
+      <DependentUpon>Меню менеджера.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Модели.cs">
       <SubType>Form</SubType>
@@ -298,8 +298,8 @@
     <EmbeddedResource Include="Forms\Авторизация.resx">
       <DependentUpon>Авторизация.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Меню.resx">
-      <DependentUpon>Меню.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Меню менеджера.resx">
+      <DependentUpon>Меню менеджера.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

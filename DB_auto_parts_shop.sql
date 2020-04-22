@@ -833,9 +833,22 @@ ON Availability_auto_parts.ID_autoparts=Sale.ID_autoparts AND Sale.ID_department
 WHERE Date_of_sale BETWEEN @startDate AND @endDate 
 END
 GO
-EXECUTE dbo.SearchDateSale '10.03.2019', '11.04.2019'
+
 
 --Панель администратора
+
+CREATE PROCEDURE dbo.SelectUserAuthentication
+@l CHAR(15)
+AS
+BEGIN
+SELECT Users.Login_, InfoUsers.Surname, InfoUsers.First_name, InfoUsers.Last_name, Role_.Role_
+FROM Users INNER JOIN InfoUsers ON Users.Login_=InfoUsers.Login_
+AND Users.Login_=@l
+INNER JOIN Role_
+ON Users.ID_role=Role_.ID_role
+END
+GO
+
 
 CREATE PROCEDURE dbo.InsertRole
 @id INT,

@@ -19,12 +19,14 @@ namespace AS_Autodoc
 
         private void Menu_Load(object sender, EventArgs e)
         {
-
+            Authorization_form f = (Authorization_form)this.Owner;
+            label1.Text += " "+f.Surname.ToString().TrimEnd()+" " + f.First_name.ToString().TrimEnd()+" "+f.Last_name.ToString().TrimEnd();
+            label2.Text += " "+f.Role.ToString().TrimEnd();
         }
 
         private void Enter_Click(object sender, EventArgs e)
         {
-            Form f = new Suppliers();
+            Suppliers f = new Suppliers();
             f.ShowDialog();
         }
 

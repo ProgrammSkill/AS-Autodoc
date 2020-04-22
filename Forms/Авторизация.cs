@@ -18,7 +18,11 @@ namespace AS_Autodoc
         {
             InitializeComponent();
         }
-        public string login;
+        public string Login;
+        public string Surname;
+        public string First_name;
+        public string Last_name;
+        public string Role;
         public int i;
 
         public void Authorization()
@@ -30,19 +34,29 @@ namespace AS_Autodoc
                 if (textBox1.Text != "" && textBox2.Text != "")
                 {
                     connect.Open();
-                    SqlDataAdapter sda = new SqlDataAdapter("SELECT COUNT(*) FROM Users WHERE Login_='" + textBox1.Text +
-                    "' and Password_= '" + textBox2.Text + "'", connect);
+                    SqlDataAdapter sda = new SqlDataAdapter("SELECT COUNT(*) FROM Role_ join Users ON Role_.ID_role=Users.ID_role AND Login_='" + textBox1.Text +
+                    "'AND Password_= '" + textBox2.Text + "' AND Role_='Менеджер'", connect);
                     DataTable dt = new DataTable();
                     sda.Fill(dt);
+                    SqlCommand com = new SqlCommand("EXECUTE dbo.SelectUserAuthentication '" + textBox1.Text + "'", connect);
+                    using (SqlDataReader r = com.ExecuteReader())
+                    {
+                        while (r.Read())
+                        {
+                            Login = r[0].ToString();
+                            Surname= r[1].ToString();
+                            First_name = r[2].ToString();
+                            Last_name = r[3].ToString();
+                            Role = r[4].ToString();
+                        }
+                    }
                     if (dt.Rows[0][0].ToString() == "1")
                     {
-                        //login = textBox1.Text.ToString();
                         ManagerMenu f = new ManagerMenu();
                         f.Owner = this;
                         f.FormClosing += F_FormClosing;
                         f.Show();
                         Hide();
-
                     }
                     else
                     {
