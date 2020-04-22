@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace AS_Autodoc
 {
-    public partial class Menu : Form
+    public partial class ManagerMenu : Form
     {
-        public Menu()
+        public ManagerMenu()
         {
             InitializeComponent();
         }

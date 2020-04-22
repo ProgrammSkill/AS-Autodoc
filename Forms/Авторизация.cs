@@ -37,7 +37,7 @@ namespace AS_Autodoc
                     if (dt.Rows[0][0].ToString() == "1")
                     {
                         //login = textBox1.Text.ToString();
-                        Menu f = new Menu();
+                        ManagerMenu f = new ManagerMenu();
                         f.Owner = this;
                         f.FormClosing += F_FormClosing;
                         f.Show();

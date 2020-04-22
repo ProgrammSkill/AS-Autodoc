@@ -107,6 +107,12 @@ Telephone CHAR(20),
 Date_of_acceptance DATE,
 Date_of_termination DATE)
 
+CREATE TABLE UserSession (
+ID_session INT PRIMARY KEY,
+Login_ CHAR(15) FOREIGN KEY REFERENCES Users(Login_),
+Date_of_entrance DATETIME)
+
+
 
 CREATE PROCEDURE dbo.InsertCountry
 @id INT,
@@ -811,9 +817,23 @@ UPDATE [dbo].[Sale]
 END
 GO
 
-SELECT * FROM Department_store INNER JOIN Availability_auto_parts
-ON Department_store.ID_department=Availability_auto_parts.ID_department
 
+CREATE PROCEDURE dbo.SearchDateSale
+@startDate DATE,
+@endDate DATE
+AS
+BEGIN
+SELECT ID_sale, Sale.ID_department, Sale.ID_autoparts, Autoparts.Title, Manufacturer, Autoparts.Article, Availability_auto_parts.Sale_price, Sale.Amount, Availability_auto_parts.Sale_price*Sale.Amount AS Sum_, Sale.Date_of_sale
+FROM Sale INNER JOIN Autoparts
+ON Sale.ID_autoparts=Autoparts.ID_autoparts
+INNER JOIN Manufacturers
+ON Autoparts.ID_manufacturer=Manufacturers.ID_manufacturer
+INNER JOIN Availability_auto_parts
+ON Availability_auto_parts.ID_autoparts=Sale.ID_autoparts AND Sale.ID_department=Availability_auto_parts.ID_department
+WHERE Date_of_sale BETWEEN @startDate AND @endDate 
+END
+GO
+EXECUTE dbo.SearchDateSale '10.03.2019', '11.04.2019'
 
 --Панель администратора
 

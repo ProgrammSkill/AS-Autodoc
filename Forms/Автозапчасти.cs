@@ -34,7 +34,7 @@ namespace AS_Autodoc
         public string Manufacturer { get; set; }
         public string Comment { get; set; }
 
-        void SelectComboBox()
+        public void SelectComboBox()
         {
             id_brand = new List<int>();
             using (SqlConnection connect = new SqlConnection(con))
