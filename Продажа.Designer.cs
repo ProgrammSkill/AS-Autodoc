@@ -226,7 +226,7 @@
             "Не указано"});
             this.comboBox1.Location = new System.Drawing.Point(12, 39);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(83, 24);
+            this.comboBox1.Size = new System.Drawing.Size(132, 24);
             this.comboBox1.TabIndex = 29;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.ComboBox1_SelectedIndexChanged);
             // 
@@ -242,7 +242,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(195, 39);
+            this.textBox1.Location = new System.Drawing.Point(204, 39);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(217, 22);
@@ -253,7 +253,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(192, 24);
+            this.label4.Location = new System.Drawing.Point(201, 24);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(101, 16);
             this.label4.TabIndex = 31;
@@ -295,7 +295,7 @@
             // button7
             // 
             this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button7.Location = new System.Drawing.Point(195, 67);
+            this.button7.Location = new System.Drawing.Point(204, 67);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(132, 24);
             this.button7.TabIndex = 34;

@@ -147,5 +147,11 @@ namespace AS_Autodoc
             Sale f = new Sale();
             f.LoadAll();
         }
+
+        private void ОПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutTheProgram f = new AboutTheProgram();
+            f.ShowDialog();
+        }
     }
 }
