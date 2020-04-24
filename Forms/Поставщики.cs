@@ -17,6 +17,19 @@ namespace AS_Autodoc
         public Suppliers()
         {
             InitializeComponent();
+
+            using (SqlConnection connect = new SqlConnection(con))
+            {
+                connect.Open();
+                SqlCommand com = new SqlCommand("SELECT * FROM Country", connect);
+                using (SqlDataReader r = com.ExecuteReader())
+                {
+                    while (r.Read())
+                    {
+                        comboBox1.Items.Add(r[1].ToString());
+                    }
+                }
+            }
         }
         public string InsertOrEdit { get; set; }
         public int ID_supplier { get; set; }
@@ -86,6 +99,34 @@ namespace AS_Autodoc
             this.TopMost = true;
         }
 
+        public void SearchForSupplier()
+        {
+            if (textBox1.Text != "")
+            {
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    string str = dataGridView1[1, i].Value.ToString();
+                    int x = str.IndexOf(textBox1.Text);
+                    if (x > -1)
+                    {
+                        dataGridView1.Rows[i].Visible = true;
+                    }
+                    else
+                    {
+                        dataGridView1.Rows[i].Visible = false;
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    dataGridView1.Rows[i].Visible = true;
+                }
+
+            }
+        }
+
         private void Suppliers_Load(object sender, EventArgs e)
         {
             LoadAll();
@@ -139,5 +180,47 @@ namespace AS_Autodoc
             }
         }
 
+        private void Button6_Click(object sender, EventArgs e)
+        {
+            LoadAll();
+        }
+
+        private void Button4_Click(object sender, EventArgs e)
+        {
+            SearchForSupplier();
+        }
+
+        public void SearchForCountry()
+        {
+            if (comboBox1.Text != "" && comboBox1.Text != "Не указано")
+            {
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    string str = dataGridView1[5, i].Value.ToString();
+                    int x = str.IndexOf(comboBox1.Text);
+                    if (x > -1)
+                    {
+                        dataGridView1.Rows[i].Visible = true;
+                    }
+                    else
+                    {
+                        dataGridView1.Rows[i].Visible = false;
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    dataGridView1.Rows[i].Visible = true;
+                }
+
+            }
+        }
+
+        private void Button5_Click(object sender, EventArgs e)
+        {
+            SearchForCountry();
+        }
     }
 }

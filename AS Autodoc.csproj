@@ -54,10 +54,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="О программе.cs">
+    <Compile Include="Forms\О программе.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="О программе.Designer.cs">
+    <Compile Include="Forms\О программе.Designer.cs">
       <DependentUpon>О программе.cs</DependentUpon>
     </Compile>
     <Compile Include="Меню кладовщика.cs">
@@ -250,7 +250,7 @@
     <Compile Include="Forms\Редактирование отдела.Designer.cs">
       <DependentUpon>Редактирование отдела.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="О программе.resx">
+    <EmbeddedResource Include="Forms\О программе.resx">
       <DependentUpon>О программе.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Добавление и редактирование продажи.resx">

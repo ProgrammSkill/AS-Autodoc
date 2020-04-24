@@ -52,11 +52,8 @@ namespace AS_Autodoc
                     {
                         id_city.Add(Convert.ToInt32(r[0]));
                         comboBox2.Items.Add(r[1].ToString());
-
                     }
-
                 }
-
             }
 
             id_street = new List<int>();

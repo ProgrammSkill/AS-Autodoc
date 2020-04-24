@@ -14,10 +14,6 @@ namespace AS_Autodoc
     public partial class Autoparts : Form
     {
         string con = Connect.getConnect();
-        List<int> id_brd_mdl;
-        List<int> id_brand;
-        List<int> id_manufacturer;
-        List<int> id_country;
         string brand;
         public Autoparts()
         {
@@ -36,7 +32,6 @@ namespace AS_Autodoc
 
         public void SelectComboBox()
         {
-            id_brand = new List<int>();
             using (SqlConnection connect = new SqlConnection(con))
             {
                 connect.Open();
@@ -45,13 +40,11 @@ namespace AS_Autodoc
                 {
                     while (r.Read())
                     {
-                        id_brand.Add(Convert.ToInt32(r[0]));
                         comboBox1.Items.Add(r[1].ToString());
                     }
                 }
             }
 
-            id_manufacturer = new List<int>();
             using (SqlConnection connect = new SqlConnection(con))
             {
                 connect.Open();
@@ -60,13 +53,11 @@ namespace AS_Autodoc
                 {
                     while (r.Read())
                     {
-                        id_manufacturer.Add(Convert.ToInt32(r[0]));
                         comboBox3.Items.Add(r[1].ToString());
                     }
                 }
             }
 
-            id_country = new List<int>();
             using (SqlConnection connect = new SqlConnection(con))
             {
                 connect.Open();
@@ -75,7 +66,6 @@ namespace AS_Autodoc
                 {
                     while (r.Read())
                     {
-                        id_manufacturer.Add(Convert.ToInt32(r[0]));
                         comboBox4.Items.Add(r[1].ToString());
                     }
                 }
@@ -212,7 +202,6 @@ namespace AS_Autodoc
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             brand = comboBox1.Text;
-            id_brd_mdl = new List<int>();
             comboBox2.Items.Clear();
             comboBox2.Text = "";
             using (SqlConnection connect = new SqlConnection(con))
@@ -223,7 +212,6 @@ namespace AS_Autodoc
                 {
                     while (r.Read())
                     {
-                        id_brd_mdl.Add(Convert.ToInt32(r[0]));
                         comboBox2.Items.Add(r[3].ToString());
                     }
                 }

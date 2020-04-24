@@ -80,7 +80,7 @@
             this.Column7,
             this.Column8,
             this.Column9});
-            this.dataGridView1.Location = new System.Drawing.Point(24, 361);
+            this.dataGridView1.Location = new System.Drawing.Point(24, 351);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(744, 363);
@@ -145,7 +145,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(179, 740);
+            this.button1.Location = new System.Drawing.Point(179, 725);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(132, 24);
             this.button1.TabIndex = 4;
@@ -156,7 +156,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(342, 740);
+            this.button2.Location = new System.Drawing.Point(342, 725);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(132, 24);
             this.button2.TabIndex = 5;
@@ -167,7 +167,7 @@
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(506, 740);
+            this.button3.Location = new System.Drawing.Point(506, 725);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(132, 24);
             this.button3.TabIndex = 6;
@@ -177,7 +177,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(21, 50);
+            this.textBox1.Location = new System.Drawing.Point(15, 45);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(217, 22);
@@ -188,7 +188,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(18, 31);
+            this.label1.Location = new System.Drawing.Point(12, 26);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(63, 16);
             this.label1.TabIndex = 8;
@@ -197,11 +197,11 @@
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button4.Location = new System.Drawing.Point(21, 76);
+            this.button4.Location = new System.Drawing.Point(15, 71);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(132, 24);
             this.button4.TabIndex = 9;
-            this.button4.Text = "Поиск";
+            this.button4.Text = "Найти";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.Button4_Click);
             // 
@@ -209,7 +209,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(271, 31);
+            this.label2.Location = new System.Drawing.Point(265, 26);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(107, 16);
             this.label2.TabIndex = 11;
@@ -217,7 +217,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(274, 50);
+            this.textBox2.Location = new System.Drawing.Point(268, 45);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(217, 22);
@@ -229,7 +229,7 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "Не указано"});
-            this.comboBox1.Location = new System.Drawing.Point(21, 136);
+            this.comboBox1.Location = new System.Drawing.Point(15, 131);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(217, 24);
             this.comboBox1.TabIndex = 34;
@@ -239,7 +239,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(18, 117);
+            this.label4.Location = new System.Drawing.Point(12, 112);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(50, 16);
             this.label4.TabIndex = 33;
@@ -250,7 +250,7 @@
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Items.AddRange(new object[] {
             "Не указано"});
-            this.comboBox2.Location = new System.Drawing.Point(274, 136);
+            this.comboBox2.Location = new System.Drawing.Point(268, 131);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(217, 24);
             this.comboBox2.TabIndex = 36;
@@ -260,7 +260,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(271, 117);
+            this.label3.Location = new System.Drawing.Point(265, 112);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 16);
             this.label3.TabIndex = 35;
@@ -271,7 +271,7 @@
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Items.AddRange(new object[] {
             "Не указано"});
-            this.comboBox3.Location = new System.Drawing.Point(21, 227);
+            this.comboBox3.Location = new System.Drawing.Point(15, 222);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(217, 24);
             this.comboBox3.TabIndex = 38;
@@ -281,7 +281,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(18, 208);
+            this.label5.Location = new System.Drawing.Point(12, 203);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(112, 16);
             this.label5.TabIndex = 37;
@@ -310,53 +310,53 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox1.Location = new System.Drawing.Point(24, 11);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(509, 296);
+            this.groupBox1.Size = new System.Drawing.Size(502, 286);
             this.groupBox1.TabIndex = 39;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Поиск автозапчастей";
+            this.groupBox1.Text = "Поиск автозапчасти";
             this.groupBox1.Enter += new System.EventHandler(this.GroupBox1_Enter);
             // 
             // button10
             // 
             this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button10.Location = new System.Drawing.Point(274, 254);
+            this.button10.Location = new System.Drawing.Point(268, 249);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(132, 24);
             this.button10.TabIndex = 45;
-            this.button10.Text = "Поиск";
+            this.button10.Text = "Найти";
             this.button10.UseVisualStyleBackColor = true;
             this.button10.Click += new System.EventHandler(this.Button10_Click);
             // 
             // button9
             // 
             this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button9.Location = new System.Drawing.Point(21, 254);
+            this.button9.Location = new System.Drawing.Point(15, 249);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(132, 24);
             this.button9.TabIndex = 44;
-            this.button9.Text = "Поиск";
+            this.button9.Text = "Найти";
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.Button9_Click);
             // 
             // button8
             // 
             this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button8.Location = new System.Drawing.Point(274, 163);
+            this.button8.Location = new System.Drawing.Point(268, 158);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(132, 24);
             this.button8.TabIndex = 43;
-            this.button8.Text = "Поиск";
+            this.button8.Text = "Найти";
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.Button8_Click);
             // 
             // button7
             // 
             this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button7.Location = new System.Drawing.Point(21, 163);
+            this.button7.Location = new System.Drawing.Point(15, 158);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(132, 24);
             this.button7.TabIndex = 42;
-            this.button7.Text = "Поиск";
+            this.button7.Text = "Найти";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.Button7_Click);
             // 
@@ -364,11 +364,11 @@
             // 
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button6.Location = new System.Drawing.Point(274, 75);
+            this.button6.Location = new System.Drawing.Point(268, 70);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(132, 24);
             this.button6.TabIndex = 41;
-            this.button6.Text = "Поиск";
+            this.button6.Text = "Найти";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.Button6_Click);
             // 
@@ -377,7 +377,7 @@
             this.comboBox4.FormattingEnabled = true;
             this.comboBox4.Items.AddRange(new object[] {
             "Не указано"});
-            this.comboBox4.Location = new System.Drawing.Point(274, 227);
+            this.comboBox4.Location = new System.Drawing.Point(268, 222);
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(217, 24);
             this.comboBox4.TabIndex = 40;
@@ -387,7 +387,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(271, 208);
+            this.label6.Location = new System.Drawing.Point(265, 203);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(161, 16);
             this.label6.TabIndex = 39;
@@ -408,7 +408,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(794, 782);
+            this.ClientSize = new System.Drawing.Size(794, 767);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button3);

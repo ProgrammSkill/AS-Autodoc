@@ -443,7 +443,7 @@ ON Brands_and_models.ID_model=Models.ID_model
 INNER JOIN Brands ON Brands_and_models.ID_brand=Brands.ID_brand AND  Brands.Title_brand=@b
 END
 GO
-
+dbo.SelectAnotherModels 'BMW'
 
 CREATE PROCEDURE dbo.InsertAutopart
 @id INT,
