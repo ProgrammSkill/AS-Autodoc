@@ -642,16 +642,17 @@ UPDATE [dbo].[Supply]
 END
 GO
 
+
 CREATE PROCEDURE dbo.SelectAvailability_auto_parts
 AS
 BEGIN
-SELECT ID_availability, ID_department, Autoparts.ID_autoparts, Manufacturers.Manufacturer, Autoparts.Article, Sale_price, Amount, AS 
+SELECT ID_availability, ID_department, Autoparts.Title, Manufacturers.Manufacturer, Autoparts.Article, Sale_price, Amount, Sale_price*Amount AS Sum_
 FROM Availability_auto_parts INNER JOIN Autoparts
 ON Availability_auto_parts.ID_autoparts=Autoparts.ID_autoparts
 INNER JOIN Manufacturers
 ON Autoparts.ID_manufacturer=Manufacturers.ID_manufacturer
-GO
 END
+GO
 
 CREATE PROCEDURE dbo.InsertAvailability_auto_parts
 @id INT,

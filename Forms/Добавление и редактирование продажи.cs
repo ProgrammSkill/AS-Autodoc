@@ -196,7 +196,7 @@ namespace AS_Autodoc
 
         private void ComboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string manufacturer = comboBox2.Text;
+            string autopart = comboBox2.Text;
             comboBox3.Items.Clear();
             comboBox3.Text = "";
             comboBox4.Items.Clear();
@@ -204,7 +204,7 @@ namespace AS_Autodoc
             using (SqlConnection connect = new SqlConnection(con))
             {
                 connect.Open();
-                SqlCommand com = new SqlCommand("EXECUTE dbo.SelectManufacturersAutoparts '" + manufacturer + "'", connect);
+                SqlCommand com = new SqlCommand("EXECUTE dbo.SelectManufacturersAutoparts '" + autopart + "'", connect);
                 using (SqlDataReader r = com.ExecuteReader())
                 {
                     while (r.Read())

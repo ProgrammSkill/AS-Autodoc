@@ -34,22 +34,22 @@ namespace AS_Autodoc
                 if (textBox1.Text != "" && textBox2.Text != "")
                 {
                     connect.Open();
-                    SqlDataAdapter sda = new SqlDataAdapter("SELECT COUNT(*) FROM Role_ join Users ON Role_.ID_role=Users.ID_role AND Login_='" + textBox1.Text +
-                    "'AND Password_= '" + textBox2.Text + "' AND Role_='Менеджер'", connect);
-                    DataTable dt = new DataTable();
-                    sda.Fill(dt);
                     SqlCommand com = new SqlCommand("EXECUTE dbo.SelectUserAuthentication '" + textBox1.Text + "'", connect);
                     using (SqlDataReader r = com.ExecuteReader())
                     {
                         while (r.Read())
                         {
                             Login = r[0].ToString();
-                            Surname= r[1].ToString();
+                            Surname = r[1].ToString();
                             First_name = r[2].ToString();
                             Last_name = r[3].ToString();
                             Role = r[4].ToString();
                         }
                     }
+                    SqlDataAdapter sda = new SqlDataAdapter("SELECT COUNT(*) FROM Role_ join Users ON Role_.ID_role=Users.ID_role AND Login_='" + textBox1.Text +
+                    "'AND Password_= '" + textBox2.Text + "' AND Role_='Менеджер'", connect);
+                    DataTable dt = new DataTable();
+                    sda.Fill(dt);
                     if (dt.Rows[0][0].ToString() == "1")
                     {
                         ManagerMenu f = new ManagerMenu();
@@ -58,7 +58,23 @@ namespace AS_Autodoc
                         f.Show();
                         Hide();
                     }
-                    else
+                    sda = new SqlDataAdapter("SELECT COUNT(*) FROM Role_ join Users ON Role_.ID_role=Users.ID_role AND Login_='" + textBox1.Text +
+                    "'AND Password_= '" + textBox2.Text + "' AND Role_='Кладовшик           '", connect);
+                    dt = new DataTable();
+                    sda.Fill(dt);
+                    if (dt.Rows[0][0].ToString() == "1")
+                    {
+                        StorekeeperMenu f = new StorekeeperMenu();
+                        f.Owner = this;
+                        f.FormClosing += F_FormClosing;
+                        f.Show();
+                        Hide();
+                    }
+
+                    sda = new SqlDataAdapter("SELECT COUNT(*) FROM Users WHERE Login_= '" + textBox1.Text + "' and Password_= '" + textBox2.Text + "'", connect);
+                    dt = new DataTable();
+                    sda.Fill(dt);
+                    if (dt.Rows[0][0].ToString() != "1")
                     {
                         MessageBox.Show("Неверный логин или пароль!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         j++;
@@ -67,7 +83,6 @@ namespace AS_Autodoc
                         {
                             Close();
                         }
-
                     }
                     textBox1.Clear();
                     textBox2.Clear();

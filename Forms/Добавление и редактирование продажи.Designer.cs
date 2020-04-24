@@ -128,7 +128,7 @@
             this.comboBox4.FormattingEnabled = true;
             this.comboBox4.Location = new System.Drawing.Point(28, 219);
             this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(218, 21);
+            this.comboBox4.Size = new System.Drawing.Size(144, 21);
             this.comboBox4.TabIndex = 17;
             this.comboBox4.SelectedIndexChanged += new System.EventHandler(this.ComboBox4_SelectedIndexChanged);
             // 

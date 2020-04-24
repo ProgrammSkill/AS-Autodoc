@@ -41,7 +41,6 @@ namespace AS_Autodoc
                     }
                 }
                 else insertId = n;
-
             }
         }
 

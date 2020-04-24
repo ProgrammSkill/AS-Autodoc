@@ -31,11 +31,11 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.автозапчастиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.автозапчастиВМагазинеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сменитьПользователяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,6 +59,7 @@
             this.автозапчастиToolStripMenuItem.Name = "автозапчастиToolStripMenuItem";
             this.автозапчастиToolStripMenuItem.Size = new System.Drawing.Size(100, 21);
             this.автозапчастиToolStripMenuItem.Text = "Автозапчасти";
+            this.автозапчастиToolStripMenuItem.Click += new System.EventHandler(this.АвтозапчастиToolStripMenuItem_Click);
             // 
             // автозапчастиВМагазинеToolStripMenuItem
             // 
@@ -66,26 +67,7 @@
             this.автозапчастиВМагазинеToolStripMenuItem.Name = "автозапчастиВМагазинеToolStripMenuItem";
             this.автозапчастиВМагазинеToolStripMenuItem.Size = new System.Drawing.Size(170, 21);
             this.автозапчастиВМагазинеToolStripMenuItem.Text = "Автозапчасти в магазине";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(12, 329);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 16);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "Роль:";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(12, 304);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(106, 16);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Пользователь:";
+            this.автозапчастиВМагазинеToolStripMenuItem.Click += new System.EventHandler(this.АвтозапчастиВМагазинеToolStripMenuItem_Click);
             // 
             // оПрограммеToolStripMenuItem
             // 
@@ -109,6 +91,27 @@
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
             this.выходToolStripMenuItem.Size = new System.Drawing.Size(57, 21);
             this.выходToolStripMenuItem.Text = "Выход";
+            this.выходToolStripMenuItem.Click += new System.EventHandler(this.ВыходToolStripMenuItem_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(12, 329);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(43, 16);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Роль:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(12, 304);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(106, 16);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Пользователь:";
             // 
             // StorekeeperMenu
             // 
