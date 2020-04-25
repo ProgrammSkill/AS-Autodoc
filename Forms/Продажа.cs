@@ -173,7 +173,7 @@ namespace AS_Autodoc
             }
         }
 
-        public void SearchForAutoParts()
+        public void SearchByNameAutoParts()
         {
             if (textBox1.Text != "")
             {
@@ -299,7 +299,7 @@ namespace AS_Autodoc
 
         private void Button7_Click(object sender, EventArgs e)
         {
-            SearchForAutoParts();
+            SearchByNameAutoParts();
         }
 
         private void TextBox1_TextChanged(object sender, EventArgs e)

@@ -42,7 +42,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(311, 224);
+            this.button1.Location = new System.Drawing.Point(315, 250);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(132, 24);
             this.button1.TabIndex = 49;
@@ -123,7 +123,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(459, 260);
+            this.ClientSize = new System.Drawing.Size(459, 286);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.maskedTextBox1);

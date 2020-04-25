@@ -836,6 +836,21 @@ END
 GO
 
 
+CREATE PROCEDURE dbo.SearchByPriceRange
+@startPrice NUMERIC(8,2),
+@endPrice NUMERIC(8,2)
+AS
+BEGIN
+SELECT ID_availability, ID_department, Autoparts.Title, Manufacturers.Manufacturer, Autoparts.Article, Sale_price, Amount, Sale_price*Amount AS Sum_
+FROM Availability_auto_parts INNER JOIN Autoparts
+ON Availability_auto_parts.ID_autoparts=Autoparts.ID_autoparts
+INNER JOIN Manufacturers
+ON Autoparts.ID_manufacturer=Manufacturers.ID_manufacturer
+WHERE Sale_price BETWEEN @startPrice AND @endPrice
+END
+GO
+EXECUTE dbo.SearchByPriceRange  434, 999999.00
+
 --Панель администратора
 
 CREATE PROCEDURE dbo.SelectUserAuthentication
