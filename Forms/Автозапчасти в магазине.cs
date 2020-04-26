@@ -95,7 +95,6 @@ namespace AS_Autodoc
             AddingAndEditingAvailabilityOfAutoParts f = new AddingAndEditingAvailabilityOfAutoParts();
             f.Owner = this;
             f.ShowDialog();
-            f.ShowDialog();
         }
 
         private void Button2_Click(object sender, EventArgs e)

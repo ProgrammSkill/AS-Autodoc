@@ -70,6 +70,18 @@ namespace AS_Autodoc
                         f.Show();
                         Hide();
                     }
+                    sda = new SqlDataAdapter("SELECT COUNT(*) FROM Role_ join Users ON Role_.ID_role=Users.ID_role AND Login_='" + textBox1.Text +
+                    "'AND Password_= '" + textBox2.Text + "' AND Role_='Директор           '", connect);
+                    dt = new DataTable();
+                    sda.Fill(dt);
+                    if (dt.Rows[0][0].ToString() == "1")
+                    {
+                        DirectorMenu f = new DirectorMenu();
+                        f.Owner = this;
+                        f.FormClosing += F_FormClosing;
+                        f.Show();
+                        Hide();
+                    }
 
                     sda = new SqlDataAdapter("SELECT COUNT(*) FROM Users WHERE Login_= '" + textBox1.Text + "' and Password_= '" + textBox2.Text + "'", connect);
                     dt = new DataTable();

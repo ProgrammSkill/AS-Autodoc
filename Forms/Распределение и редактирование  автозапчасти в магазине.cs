@@ -151,7 +151,15 @@ namespace AS_Autodoc
                 comboBox3.Text = f.Manufacturer.ToString();
                 comboBox4.Text = f.Article.ToString();
                 textBox1.Text = f.Sale_price.ToString();
-                numericUpDown1.Value = f.Amount;
+                if (f.Amount > 0)
+                {
+                    numericUpDown1.Value = f.Amount;
+                }
+                else
+                {
+                    this.numericUpDown1.Minimum = 0;
+                    numericUpDown1.Value = 0;
+                }
             }            
         }
 
