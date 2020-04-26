@@ -63,5 +63,11 @@ namespace AS_Autodoc
             MaxId();
             InsertUserSession();
         }
+
+        private void ОтчётПоПоставкамToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DeliveryReport f = new DeliveryReport();
+            f.ShowDialog();
+        }
     }
 }

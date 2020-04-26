@@ -203,7 +203,7 @@ namespace AS_Autodoc
 
         public void SearchByDateRange()
         {
-            if (maskedTextBox1.Text != "" & maskedTextBox2.Text != "")
+            if (maskedTextBox1.Text != "  .  ." & maskedTextBox2.Text != "  .  .")
             {
                 using (SqlConnection connect = new SqlConnection(con))
                 {

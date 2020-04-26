@@ -31,8 +31,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.отчётПоПоставкеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.отчётПоПродажеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.отчётПоПоставкамToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.отчётПоПродажамToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сменитьПользователяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,8 +63,8 @@
             // 
             this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.отчётПоПоставкеToolStripMenuItem,
-            this.отчётПоПродажеToolStripMenuItem,
+            this.отчётПоПоставкамToolStripMenuItem,
+            this.отчётПоПродажамToolStripMenuItem,
             this.оПрограммеToolStripMenuItem,
             this.сменитьПользователяToolStripMenuItem,
             this.выходToolStripMenuItem});
@@ -74,17 +74,18 @@
             this.menuStrip1.TabIndex = 14;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // отчётПоПоставкеToolStripMenuItem
+            // отчётПоПоставкамToolStripMenuItem
             // 
-            this.отчётПоПоставкеToolStripMenuItem.Name = "отчётПоПоставкеToolStripMenuItem";
-            this.отчётПоПоставкеToolStripMenuItem.Size = new System.Drawing.Size(130, 21);
-            this.отчётПоПоставкеToolStripMenuItem.Text = "Отчёт по поставке";
+            this.отчётПоПоставкамToolStripMenuItem.Name = "отчётПоПоставкамToolStripMenuItem";
+            this.отчётПоПоставкамToolStripMenuItem.Size = new System.Drawing.Size(139, 21);
+            this.отчётПоПоставкамToolStripMenuItem.Text = "Отчёт по поставкам";
+            this.отчётПоПоставкамToolStripMenuItem.Click += new System.EventHandler(this.ОтчётПоПоставкамToolStripMenuItem_Click);
             // 
-            // отчётПоПродажеToolStripMenuItem
+            // отчётПоПродажамToolStripMenuItem
             // 
-            this.отчётПоПродажеToolStripMenuItem.Name = "отчётПоПродажеToolStripMenuItem";
-            this.отчётПоПродажеToolStripMenuItem.Size = new System.Drawing.Size(130, 21);
-            this.отчётПоПродажеToolStripMenuItem.Text = "Отчёт по продаже";
+            this.отчётПоПродажамToolStripMenuItem.Name = "отчётПоПродажамToolStripMenuItem";
+            this.отчётПоПродажамToolStripMenuItem.Size = new System.Drawing.Size(139, 21);
+            this.отчётПоПродажамToolStripMenuItem.Text = "Отчёт по продажам";
             // 
             // оПрограммеToolStripMenuItem
             // 
@@ -127,8 +128,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem отчётПоПоставкеToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem отчётПоПродажеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem отчётПоПоставкамToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem отчётПоПродажамToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem сменитьПользователяToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;

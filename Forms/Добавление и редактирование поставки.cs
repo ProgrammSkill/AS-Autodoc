@@ -221,7 +221,7 @@ namespace AS_Autodoc
         private void Button1_Click(object sender, EventArgs e)
         {
             Supply f = (Supply)this.Owner;
-            if (comboBox1.Text != "" && comboBox2.Text != "" && comboBox3.Text != "" && comboBox4.Text != "" && textBox1.Text != "" && maskedTextBox1.Text != "")
+            if (comboBox1.Text != "" && comboBox2.Text != "" && comboBox3.Text != "" && comboBox4.Text != "" && textBox1.Text != "" && maskedTextBox1.Text != "  .  .")
             {
                 if (TextIsDate(maskedTextBox1.Text))
                 {
