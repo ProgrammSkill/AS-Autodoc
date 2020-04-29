@@ -152,5 +152,16 @@ namespace AS_Autodoc
             AboutTheProgram f = new AboutTheProgram();
             f.ShowDialog();
         }
+
+        private void СменитьПользователяToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void ВыходToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Authorization_form f = (Authorization_form)this.Owner;
+            f.Close();
+        }
     }
 }

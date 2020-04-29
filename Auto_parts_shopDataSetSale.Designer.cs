@@ -20,17 +20,17 @@ namespace AS_Autodoc {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("Auto_parts_shopDataSet")]
+    [global::System.Xml.Serialization.XmlRootAttribute("Auto_parts_shopDataSetSale")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class Auto_parts_shopDataSet : global::System.Data.DataSet {
+    public partial class Auto_parts_shopDataSetSale : global::System.Data.DataSet {
         
-        private DeliveryReportDataTable tableDeliveryReport;
+        private SalesReportDataTable tableSalesReport;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public Auto_parts_shopDataSet() {
+        public Auto_parts_shopDataSetSale() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace AS_Autodoc {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        protected Auto_parts_shopDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected Auto_parts_shopDataSetSale(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -54,8 +54,8 @@ namespace AS_Autodoc {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["DeliveryReport"] != null)) {
-                    base.Tables.Add(new DeliveryReportDataTable(ds.Tables["DeliveryReport"]));
+                if ((ds.Tables["SalesReport"] != null)) {
+                    base.Tables.Add(new SalesReportDataTable(ds.Tables["SalesReport"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -79,9 +79,9 @@ namespace AS_Autodoc {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public DeliveryReportDataTable DeliveryReport {
+        public SalesReportDataTable SalesReport {
             get {
-                return this.tableDeliveryReport;
+                return this.tableSalesReport;
             }
         }
         
@@ -127,7 +127,7 @@ namespace AS_Autodoc {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            Auto_parts_shopDataSet cln = ((Auto_parts_shopDataSet)(base.Clone()));
+            Auto_parts_shopDataSetSale cln = ((Auto_parts_shopDataSetSale)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -152,8 +152,8 @@ namespace AS_Autodoc {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["DeliveryReport"] != null)) {
-                    base.Tables.Add(new DeliveryReportDataTable(ds.Tables["DeliveryReport"]));
+                if ((ds.Tables["SalesReport"] != null)) {
+                    base.Tables.Add(new SalesReportDataTable(ds.Tables["SalesReport"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -188,10 +188,10 @@ namespace AS_Autodoc {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableDeliveryReport = ((DeliveryReportDataTable)(base.Tables["DeliveryReport"]));
+            this.tableSalesReport = ((SalesReportDataTable)(base.Tables["SalesReport"]));
             if ((initTable == true)) {
-                if ((this.tableDeliveryReport != null)) {
-                    this.tableDeliveryReport.InitVars();
+                if ((this.tableSalesReport != null)) {
+                    this.tableSalesReport.InitVars();
                 }
             }
         }
@@ -199,18 +199,18 @@ namespace AS_Autodoc {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "Auto_parts_shopDataSet";
+            this.DataSetName = "Auto_parts_shopDataSetSale";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/Auto_parts_shopDataSet.xsd";
+            this.Namespace = "http://tempuri.org/Auto_parts_shopDataSetSale.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableDeliveryReport = new DeliveryReportDataTable();
-            base.Tables.Add(this.tableDeliveryReport);
+            this.tableSalesReport = new SalesReportDataTable();
+            base.Tables.Add(this.tableSalesReport);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private bool ShouldSerializeDeliveryReport() {
+        private bool ShouldSerializeSalesReport() {
             return false;
         }
         
@@ -225,7 +225,7 @@ namespace AS_Autodoc {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            Auto_parts_shopDataSet ds = new Auto_parts_shopDataSet();
+            Auto_parts_shopDataSetSale ds = new Auto_parts_shopDataSetSale();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -270,16 +270,16 @@ namespace AS_Autodoc {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public delegate void DeliveryReportRowChangeEventHandler(object sender, DeliveryReportRowChangeEvent e);
+        public delegate void SalesReportRowChangeEventHandler(object sender, SalesReportRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class DeliveryReportDataTable : global::System.Data.TypedTableBase<DeliveryReportRow> {
+        public partial class SalesReportDataTable : global::System.Data.TypedTableBase<SalesReportRow> {
             
-            private global::System.Data.DataColumn columnПоставщик;
+            private global::System.Data.DataColumn columnМагазин;
             
             private global::System.Data.DataColumn columnАвтозапчасть;
             
@@ -297,8 +297,8 @@ namespace AS_Autodoc {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DeliveryReportDataTable() {
-                this.TableName = "DeliveryReport";
+            public SalesReportDataTable() {
+                this.TableName = "SalesReport";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -306,7 +306,7 @@ namespace AS_Autodoc {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal DeliveryReportDataTable(global::System.Data.DataTable table) {
+            internal SalesReportDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -323,16 +323,16 @@ namespace AS_Autodoc {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected DeliveryReportDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected SalesReportDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn ПоставщикColumn {
+            public global::System.Data.DataColumn МагазинColumn {
                 get {
-                    return this.columnПоставщик;
+                    return this.columnМагазин;
                 }
             }
             
@@ -403,36 +403,36 @@ namespace AS_Autodoc {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DeliveryReportRow this[int index] {
+            public SalesReportRow this[int index] {
                 get {
-                    return ((DeliveryReportRow)(this.Rows[index]));
+                    return ((SalesReportRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event DeliveryReportRowChangeEventHandler DeliveryReportRowChanging;
+            public event SalesReportRowChangeEventHandler SalesReportRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event DeliveryReportRowChangeEventHandler DeliveryReportRowChanged;
+            public event SalesReportRowChangeEventHandler SalesReportRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event DeliveryReportRowChangeEventHandler DeliveryReportRowDeleting;
+            public event SalesReportRowChangeEventHandler SalesReportRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event DeliveryReportRowChangeEventHandler DeliveryReportRowDeleted;
+            public event SalesReportRowChangeEventHandler SalesReportRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void AddDeliveryReportRow(DeliveryReportRow row) {
+            public void AddSalesReportRow(SalesReportRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DeliveryReportRow AddDeliveryReportRow(string Поставщик, string Автозапчасть, string Производитель, string Артикул, decimal Цена, int Количество, decimal Сумма, System.DateTime Дата) {
-                DeliveryReportRow rowDeliveryReportRow = ((DeliveryReportRow)(this.NewRow()));
+            public SalesReportRow AddSalesReportRow(int Магазин, string Автозапчасть, string Производитель, string Артикул, decimal Цена, int Количество, decimal Сумма, System.DateTime Дата) {
+                SalesReportRow rowSalesReportRow = ((SalesReportRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        Поставщик,
+                        Магазин,
                         Автозапчасть,
                         Производитель,
                         Артикул,
@@ -440,15 +440,15 @@ namespace AS_Autodoc {
                         Количество,
                         Сумма,
                         Дата};
-                rowDeliveryReportRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowDeliveryReportRow);
-                return rowDeliveryReportRow;
+                rowSalesReportRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowSalesReportRow);
+                return rowSalesReportRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                DeliveryReportDataTable cln = ((DeliveryReportDataTable)(base.Clone()));
+                SalesReportDataTable cln = ((SalesReportDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -456,13 +456,13 @@ namespace AS_Autodoc {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new DeliveryReportDataTable();
+                return new SalesReportDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
-                this.columnПоставщик = base.Columns["Поставщик"];
+                this.columnМагазин = base.Columns["Магазин"];
                 this.columnАвтозапчасть = base.Columns["Автозапчасть"];
                 this.columnПроизводитель = base.Columns["Производитель"];
                 this.columnАртикул = base.Columns["Артикул"];
@@ -475,8 +475,8 @@ namespace AS_Autodoc {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
-                this.columnПоставщик = new global::System.Data.DataColumn("Поставщик", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnПоставщик);
+                this.columnМагазин = new global::System.Data.DataColumn("Магазин", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnМагазин);
                 this.columnАвтозапчасть = new global::System.Data.DataColumn("Автозапчасть", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnАвтозапчасть);
                 this.columnПроизводитель = new global::System.Data.DataColumn("Производитель", typeof(string), null, global::System.Data.MappingType.Element);
@@ -491,7 +491,6 @@ namespace AS_Autodoc {
                 base.Columns.Add(this.columnСумма);
                 this.columnДата = new global::System.Data.DataColumn("Дата", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnДата);
-                this.columnПоставщик.MaxLength = 150;
                 this.columnАвтозапчасть.MaxLength = 50;
                 this.columnПроизводитель.MaxLength = 30;
                 this.columnАртикул.MaxLength = 50;
@@ -500,28 +499,28 @@ namespace AS_Autodoc {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DeliveryReportRow NewDeliveryReportRow() {
-                return ((DeliveryReportRow)(this.NewRow()));
+            public SalesReportRow NewSalesReportRow() {
+                return ((SalesReportRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new DeliveryReportRow(builder);
+                return new SalesReportRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(DeliveryReportRow);
+                return typeof(SalesReportRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.DeliveryReportRowChanged != null)) {
-                    this.DeliveryReportRowChanged(this, new DeliveryReportRowChangeEvent(((DeliveryReportRow)(e.Row)), e.Action));
+                if ((this.SalesReportRowChanged != null)) {
+                    this.SalesReportRowChanged(this, new SalesReportRowChangeEvent(((SalesReportRow)(e.Row)), e.Action));
                 }
             }
             
@@ -529,8 +528,8 @@ namespace AS_Autodoc {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.DeliveryReportRowChanging != null)) {
-                    this.DeliveryReportRowChanging(this, new DeliveryReportRowChangeEvent(((DeliveryReportRow)(e.Row)), e.Action));
+                if ((this.SalesReportRowChanging != null)) {
+                    this.SalesReportRowChanging(this, new SalesReportRowChangeEvent(((SalesReportRow)(e.Row)), e.Action));
                 }
             }
             
@@ -538,8 +537,8 @@ namespace AS_Autodoc {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.DeliveryReportRowDeleted != null)) {
-                    this.DeliveryReportRowDeleted(this, new DeliveryReportRowChangeEvent(((DeliveryReportRow)(e.Row)), e.Action));
+                if ((this.SalesReportRowDeleted != null)) {
+                    this.SalesReportRowDeleted(this, new SalesReportRowChangeEvent(((SalesReportRow)(e.Row)), e.Action));
                 }
             }
             
@@ -547,14 +546,14 @@ namespace AS_Autodoc {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.DeliveryReportRowDeleting != null)) {
-                    this.DeliveryReportRowDeleting(this, new DeliveryReportRowChangeEvent(((DeliveryReportRow)(e.Row)), e.Action));
+                if ((this.SalesReportRowDeleting != null)) {
+                    this.SalesReportRowDeleting(this, new SalesReportRowChangeEvent(((SalesReportRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void RemoveDeliveryReportRow(DeliveryReportRow row) {
+            public void RemoveSalesReportRow(SalesReportRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -563,7 +562,7 @@ namespace AS_Autodoc {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                Auto_parts_shopDataSet ds = new Auto_parts_shopDataSet();
+                Auto_parts_shopDataSetSale ds = new Auto_parts_shopDataSetSale();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -581,7 +580,7 @@ namespace AS_Autodoc {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "DeliveryReportDataTable";
+                attribute2.FixedValue = "SalesReportDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -625,30 +624,30 @@ namespace AS_Autodoc {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class DeliveryReportRow : global::System.Data.DataRow {
+        public partial class SalesReportRow : global::System.Data.DataRow {
             
-            private DeliveryReportDataTable tableDeliveryReport;
+            private SalesReportDataTable tableSalesReport;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal DeliveryReportRow(global::System.Data.DataRowBuilder rb) : 
+            internal SalesReportRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableDeliveryReport = ((DeliveryReportDataTable)(this.Table));
+                this.tableSalesReport = ((SalesReportDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Поставщик {
+            public int Магазин {
                 get {
                     try {
-                        return ((string)(this[this.tableDeliveryReport.ПоставщикColumn]));
+                        return ((int)(this[this.tableSalesReport.МагазинColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Поставщик\' в таблице \'DeliveryReport\' равно DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Магазин\' в таблице \'SalesReport\' равно DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDeliveryReport.ПоставщикColumn] = value;
+                    this[this.tableSalesReport.МагазинColumn] = value;
                 }
             }
             
@@ -657,14 +656,14 @@ namespace AS_Autodoc {
             public string Автозапчасть {
                 get {
                     try {
-                        return ((string)(this[this.tableDeliveryReport.АвтозапчастьColumn]));
+                        return ((string)(this[this.tableSalesReport.АвтозапчастьColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Автозапчасть\' в таблице \'DeliveryReport\' равно DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Автозапчасть\' в таблице \'SalesReport\' равно DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDeliveryReport.АвтозапчастьColumn] = value;
+                    this[this.tableSalesReport.АвтозапчастьColumn] = value;
                 }
             }
             
@@ -673,14 +672,14 @@ namespace AS_Autodoc {
             public string Производитель {
                 get {
                     try {
-                        return ((string)(this[this.tableDeliveryReport.ПроизводительColumn]));
+                        return ((string)(this[this.tableSalesReport.ПроизводительColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Производитель\' в таблице \'DeliveryReport\' равно DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Производитель\' в таблице \'SalesReport\' равно DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDeliveryReport.ПроизводительColumn] = value;
+                    this[this.tableSalesReport.ПроизводительColumn] = value;
                 }
             }
             
@@ -689,14 +688,14 @@ namespace AS_Autodoc {
             public string Артикул {
                 get {
                     try {
-                        return ((string)(this[this.tableDeliveryReport.АртикулColumn]));
+                        return ((string)(this[this.tableSalesReport.АртикулColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Артикул\' в таблице \'DeliveryReport\' равно DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Артикул\' в таблице \'SalesReport\' равно DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDeliveryReport.АртикулColumn] = value;
+                    this[this.tableSalesReport.АртикулColumn] = value;
                 }
             }
             
@@ -705,14 +704,14 @@ namespace AS_Autodoc {
             public decimal Цена {
                 get {
                     try {
-                        return ((decimal)(this[this.tableDeliveryReport.ЦенаColumn]));
+                        return ((decimal)(this[this.tableSalesReport.ЦенаColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Цена\' в таблице \'DeliveryReport\' равно DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Цена\' в таблице \'SalesReport\' равно DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDeliveryReport.ЦенаColumn] = value;
+                    this[this.tableSalesReport.ЦенаColumn] = value;
                 }
             }
             
@@ -721,14 +720,14 @@ namespace AS_Autodoc {
             public int Количество {
                 get {
                     try {
-                        return ((int)(this[this.tableDeliveryReport.КоличествоColumn]));
+                        return ((int)(this[this.tableSalesReport.КоличествоColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Количество\' в таблице \'DeliveryReport\' равно DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Количество\' в таблице \'SalesReport\' равно DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDeliveryReport.КоличествоColumn] = value;
+                    this[this.tableSalesReport.КоличествоColumn] = value;
                 }
             }
             
@@ -737,14 +736,14 @@ namespace AS_Autodoc {
             public decimal Сумма {
                 get {
                     try {
-                        return ((decimal)(this[this.tableDeliveryReport.СуммаColumn]));
+                        return ((decimal)(this[this.tableSalesReport.СуммаColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Сумма\' в таблице \'DeliveryReport\' равно DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Сумма\' в таблице \'SalesReport\' равно DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDeliveryReport.СуммаColumn] = value;
+                    this[this.tableSalesReport.СуммаColumn] = value;
                 }
             }
             
@@ -753,111 +752,111 @@ namespace AS_Autodoc {
             public System.DateTime Дата {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableDeliveryReport.ДатаColumn]));
+                        return ((global::System.DateTime)(this[this.tableSalesReport.ДатаColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Дата\' в таблице \'DeliveryReport\' равно DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Дата\' в таблице \'SalesReport\' равно DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDeliveryReport.ДатаColumn] = value;
+                    this[this.tableSalesReport.ДатаColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsПоставщикNull() {
-                return this.IsNull(this.tableDeliveryReport.ПоставщикColumn);
+            public bool IsМагазинNull() {
+                return this.IsNull(this.tableSalesReport.МагазинColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetПоставщикNull() {
-                this[this.tableDeliveryReport.ПоставщикColumn] = global::System.Convert.DBNull;
+            public void SetМагазинNull() {
+                this[this.tableSalesReport.МагазинColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsАвтозапчастьNull() {
-                return this.IsNull(this.tableDeliveryReport.АвтозапчастьColumn);
+                return this.IsNull(this.tableSalesReport.АвтозапчастьColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetАвтозапчастьNull() {
-                this[this.tableDeliveryReport.АвтозапчастьColumn] = global::System.Convert.DBNull;
+                this[this.tableSalesReport.АвтозапчастьColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsПроизводительNull() {
-                return this.IsNull(this.tableDeliveryReport.ПроизводительColumn);
+                return this.IsNull(this.tableSalesReport.ПроизводительColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetПроизводительNull() {
-                this[this.tableDeliveryReport.ПроизводительColumn] = global::System.Convert.DBNull;
+                this[this.tableSalesReport.ПроизводительColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsАртикулNull() {
-                return this.IsNull(this.tableDeliveryReport.АртикулColumn);
+                return this.IsNull(this.tableSalesReport.АртикулColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetАртикулNull() {
-                this[this.tableDeliveryReport.АртикулColumn] = global::System.Convert.DBNull;
+                this[this.tableSalesReport.АртикулColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsЦенаNull() {
-                return this.IsNull(this.tableDeliveryReport.ЦенаColumn);
+                return this.IsNull(this.tableSalesReport.ЦенаColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetЦенаNull() {
-                this[this.tableDeliveryReport.ЦенаColumn] = global::System.Convert.DBNull;
+                this[this.tableSalesReport.ЦенаColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsКоличествоNull() {
-                return this.IsNull(this.tableDeliveryReport.КоличествоColumn);
+                return this.IsNull(this.tableSalesReport.КоличествоColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetКоличествоNull() {
-                this[this.tableDeliveryReport.КоличествоColumn] = global::System.Convert.DBNull;
+                this[this.tableSalesReport.КоличествоColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsСуммаNull() {
-                return this.IsNull(this.tableDeliveryReport.СуммаColumn);
+                return this.IsNull(this.tableSalesReport.СуммаColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetСуммаNull() {
-                this[this.tableDeliveryReport.СуммаColumn] = global::System.Convert.DBNull;
+                this[this.tableSalesReport.СуммаColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsДатаNull() {
-                return this.IsNull(this.tableDeliveryReport.ДатаColumn);
+                return this.IsNull(this.tableSalesReport.ДатаColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetДатаNull() {
-                this[this.tableDeliveryReport.ДатаColumn] = global::System.Convert.DBNull;
+                this[this.tableSalesReport.ДатаColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -865,22 +864,22 @@ namespace AS_Autodoc {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public class DeliveryReportRowChangeEvent : global::System.EventArgs {
+        public class SalesReportRowChangeEvent : global::System.EventArgs {
             
-            private DeliveryReportRow eventRow;
+            private SalesReportRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DeliveryReportRowChangeEvent(DeliveryReportRow row, global::System.Data.DataRowAction action) {
+            public SalesReportRowChangeEvent(SalesReportRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DeliveryReportRow Row {
+            public SalesReportRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -896,7 +895,7 @@ namespace AS_Autodoc {
         }
     }
 }
-namespace AS_Autodoc.Auto_parts_shopDataSetTableAdapters {
+namespace AS_Autodoc.Auto_parts_shopDataSetSaleTableAdapters {
     
     
     /// <summary>
@@ -908,7 +907,7 @@ namespace AS_Autodoc.Auto_parts_shopDataSetTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class DeliveryReportTableAdapter : global::System.ComponentModel.Component {
+    public partial class SalesReportTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -922,7 +921,7 @@ namespace AS_Autodoc.Auto_parts_shopDataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public DeliveryReportTableAdapter() {
+        public SalesReportTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -1019,8 +1018,8 @@ namespace AS_Autodoc.Auto_parts_shopDataSetTableAdapters {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "DeliveryReport";
-            tableMapping.ColumnMappings.Add("Поставщик", "Поставщик");
+            tableMapping.DataSetTable = "SalesReport";
+            tableMapping.ColumnMappings.Add("Магазин", "Магазин");
             tableMapping.ColumnMappings.Add("Автозапчасть", "Автозапчасть");
             tableMapping.ColumnMappings.Add("Производитель", "Производитель");
             tableMapping.ColumnMappings.Add("Артикул", "Артикул");
@@ -1044,40 +1043,41 @@ namespace AS_Autodoc.Auto_parts_shopDataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "dbo.DeliveryReport";
+            this._commandCollection[0].CommandText = "dbo.SalesReport";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.StoredProcedure;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = @"SELECT Suppliers.Title AS 'Поставщик', Autoparts.Title AS 'Автозапчасть', Manufacturers.Manufacturer AS 'Производитель', Autoparts.Article AS 'Артикул', Supply.Purchase_price AS 'Цена', Supply.Amount AS 'Количество' , Purchase_price*Amount AS 'Сумма', Supply.Delivery_date AS 'Дата'
-FROM Supply INNER JOIN Suppliers
-ON Supply.ID_supplier=Suppliers.ID_supplier
-INNER JOIN Autoparts
-ON Supply.ID_autoparts=Autoparts.ID_autoparts
+            this._commandCollection[1].CommandText = @"SELECT Sale.ID_department AS 'Магазин',  Autoparts.Title AS 'Автозапчасть', Manufacturer AS 'Производитель', Autoparts.Article AS 'Артикул', Availability_auto_parts.Sale_price AS 'Цена', Sale.Amount AS 'Количество', Availability_auto_parts.Sale_price*Sale.Amount AS 'Сумма', Sale.Date_of_sale AS 'Дата'
+FROM Sale INNER JOIN Autoparts
+ON Sale.ID_autoparts=Autoparts.ID_autoparts
 INNER JOIN Manufacturers
 ON Autoparts.ID_manufacturer=Manufacturers.ID_manufacturer
-WHERE Supply.Delivery_date BETWEEN @startDate AND @endDate";
+INNER JOIN Availability_auto_parts
+ON Availability_auto_parts.ID_autoparts=Sale.ID_autoparts AND Sale.ID_department=Availability_auto_parts.ID_department
+WHERE Sale.Date_of_sale BETWEEN @startDate AND @endDate";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@startDate", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "Дата", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@endDate", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "Дата", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = @"SELECT Suppliers.Title AS 'Поставщик', Autoparts.Title AS 'Автозапчасть', Manufacturers.Manufacturer AS 'Производитель', Autoparts.Article AS 'Артикул', Supply.Purchase_price AS 'Цена', Supply.Amount AS 'Количество' , Purchase_price*Amount AS 'Сумма', Supply.Delivery_date AS 'Дата'
-FROM Supply INNER JOIN Suppliers
-ON Supply.ID_supplier=Suppliers.ID_supplier
-INNER JOIN Autoparts
-ON Supply.ID_autoparts=Autoparts.ID_autoparts
+            this._commandCollection[2].CommandText = @"SELECT Sale.ID_department AS 'Магазин',  Autoparts.Title AS 'Автозапчасть', Manufacturer AS 'Производитель', Autoparts.Article AS 'Артикул', Availability_auto_parts.Sale_price AS 'Цена', Sale.Amount AS 'Количество', Availability_auto_parts.Sale_price*Sale.Amount AS 'Сумма', Sale.Date_of_sale AS 'Дата'
+FROM Sale INNER JOIN Autoparts
+ON Sale.ID_autoparts=Autoparts.ID_autoparts
 INNER JOIN Manufacturers
-ON Autoparts.ID_manufacturer=Manufacturers.ID_manufacturer AND Suppliers.Title=@s";
+ON Autoparts.ID_manufacturer=Manufacturers.ID_manufacturer
+INNER JOIN Availability_auto_parts
+ON Availability_auto_parts.ID_autoparts=Sale.ID_autoparts AND Sale.ID_department=Availability_auto_parts.ID_department
+WHERE Sale.ID_department=@store";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@s", global::System.Data.SqlDbType.Char, 150, global::System.Data.ParameterDirection.Input, 0, 0, "Поставщик", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@store", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Магазин", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(Auto_parts_shopDataSet.DeliveryReportDataTable dataTable) {
+        public virtual int Fill(Auto_parts_shopDataSetSale.SalesReportDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -1090,9 +1090,9 @@ ON Autoparts.ID_manufacturer=Manufacturers.ID_manufacturer AND Suppliers.Title=@
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual Auto_parts_shopDataSet.DeliveryReportDataTable GetData() {
+        public virtual Auto_parts_shopDataSetSale.SalesReportDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            Auto_parts_shopDataSet.DeliveryReportDataTable dataTable = new Auto_parts_shopDataSet.DeliveryReportDataTable();
+            Auto_parts_shopDataSetSale.SalesReportDataTable dataTable = new Auto_parts_shopDataSetSale.SalesReportDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -1101,7 +1101,7 @@ ON Autoparts.ID_manufacturer=Manufacturers.ID_manufacturer AND Suppliers.Title=@
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillByDate(Auto_parts_shopDataSet.DeliveryReportDataTable dataTable, string startDate, string endDate) {
+        public virtual int FillByDate(Auto_parts_shopDataSetSale.SalesReportDataTable dataTable, string startDate, string endDate) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
             if ((startDate == null)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
@@ -1126,7 +1126,7 @@ ON Autoparts.ID_manufacturer=Manufacturers.ID_manufacturer AND Suppliers.Title=@
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual Auto_parts_shopDataSet.DeliveryReportDataTable GetDataByDate(string startDate, string endDate) {
+        public virtual Auto_parts_shopDataSetSale.SalesReportDataTable GetDataByDate(string startDate, string endDate) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
             if ((startDate == null)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
@@ -1140,7 +1140,7 @@ ON Autoparts.ID_manufacturer=Manufacturers.ID_manufacturer AND Suppliers.Title=@
             else {
                 this.Adapter.SelectCommand.Parameters[1].Value = ((string)(endDate));
             }
-            Auto_parts_shopDataSet.DeliveryReportDataTable dataTable = new Auto_parts_shopDataSet.DeliveryReportDataTable();
+            Auto_parts_shopDataSetSale.SalesReportDataTable dataTable = new Auto_parts_shopDataSetSale.SalesReportDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -1149,13 +1149,13 @@ ON Autoparts.ID_manufacturer=Manufacturers.ID_manufacturer AND Suppliers.Title=@
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillBySuppliers(Auto_parts_shopDataSet.DeliveryReportDataTable dataTable, string s) {
+        public virtual int FillByStore(Auto_parts_shopDataSetSale.SalesReportDataTable dataTable, global::System.Nullable<int> store) {
             this.Adapter.SelectCommand = this.CommandCollection[2];
-            if ((s == null)) {
-                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            if ((store.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(store.Value));
             }
             else {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(s));
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -1168,15 +1168,15 @@ ON Autoparts.ID_manufacturer=Manufacturers.ID_manufacturer AND Suppliers.Title=@
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual Auto_parts_shopDataSet.DeliveryReportDataTable GetDataBySuppliers(string s) {
+        public virtual Auto_parts_shopDataSetSale.SalesReportDataTable GetDataByStore(global::System.Nullable<int> store) {
             this.Adapter.SelectCommand = this.CommandCollection[2];
-            if ((s == null)) {
-                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            if ((store.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(store.Value));
             }
             else {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(s));
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
-            Auto_parts_shopDataSet.DeliveryReportDataTable dataTable = new Auto_parts_shopDataSet.DeliveryReportDataTable();
+            Auto_parts_shopDataSetSale.SalesReportDataTable dataTable = new Auto_parts_shopDataSetSale.SalesReportDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -1250,7 +1250,7 @@ ON Autoparts.ID_manufacturer=Manufacturers.ID_manufacturer AND Suppliers.Title=@
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateUpdatedRows(Auto_parts_shopDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(Auto_parts_shopDataSetSale dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             return result;
         }
@@ -1260,7 +1260,7 @@ ON Autoparts.ID_manufacturer=Manufacturers.ID_manufacturer AND Suppliers.Title=@
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateInsertedRows(Auto_parts_shopDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(Auto_parts_shopDataSetSale dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             return result;
         }
@@ -1270,7 +1270,7 @@ ON Autoparts.ID_manufacturer=Manufacturers.ID_manufacturer AND Suppliers.Title=@
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateDeletedRows(Auto_parts_shopDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(Auto_parts_shopDataSetSale dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             return result;
         }
@@ -1304,7 +1304,7 @@ ON Autoparts.ID_manufacturer=Manufacturers.ID_manufacturer AND Suppliers.Title=@
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public virtual int UpdateAll(Auto_parts_shopDataSet dataSet) {
+        public virtual int UpdateAll(Auto_parts_shopDataSetSale dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }

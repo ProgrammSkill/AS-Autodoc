@@ -21,6 +21,7 @@ namespace AS_Autodoc
         public AddingAndEditingAutoParts()
         {
             InitializeComponent();
+            SelectComboBox();
         }
         public int insertId;
         public string  id;
@@ -110,7 +111,6 @@ namespace AS_Autodoc
 
         private void AddingAndEditingAutoParts_Load(object sender, EventArgs e)
         {
-            SelectComboBox();
             Maxid();
 
             Autoparts f = (Autoparts)this.Owner;

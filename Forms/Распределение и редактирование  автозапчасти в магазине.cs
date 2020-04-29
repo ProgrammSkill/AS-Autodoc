@@ -33,12 +33,12 @@ namespace AS_Autodoc
                 connection.Open();
                 int id = 0;
                 int n = 1;
-                SqlCommand com = new SqlCommand("SELECT * FROM Sale", connection);
+                SqlCommand com = new SqlCommand("SELECT * FROM Availability_auto_parts", connection);
                 SqlDataReader r = com.ExecuteReader();
                 if (r.HasRows)
                 {
                     r.Close();
-                    com = new SqlCommand("SELECT MAX(ID_sale) FROM Sale", connection);
+                    com = new SqlCommand("SELECT MAX(ID_availability) FROM Availability_auto_parts", connection);
                     r = com.ExecuteReader();
                     while (r.Read())
                     {
@@ -239,6 +239,11 @@ namespace AS_Autodoc
         }
 
         private void ComboBox4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

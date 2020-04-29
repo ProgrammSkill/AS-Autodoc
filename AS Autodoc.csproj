@@ -80,17 +80,31 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Auto_parts_shopDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="SqlServerTypes\Loader.cs" />
-    <Compile Include="Отчёт по поставкам.cs">
+    <Compile Include="Auto_parts_shopDataSetSale.cs">
+      <DependentUpon>Auto_parts_shopDataSetSale.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Auto_parts_shopDataSetSale.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Auto_parts_shopDataSetSale.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Отчёт по продажам.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Отчёт по поставкам.Designer.cs">
+    <Compile Include="Forms\Отчёт по продажам.Designer.cs">
+      <DependentUpon>Отчёт по продажам.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="Forms\Отчёт по поставкам.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Отчёт по поставкам.Designer.cs">
       <DependentUpon>Отчёт по поставкам.cs</DependentUpon>
     </Compile>
-    <Compile Include="Меню директора.cs">
+    <Compile Include="Forms\Меню директора.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Меню директора.Designer.cs">
+    <Compile Include="Forms\Меню директора.Designer.cs">
       <DependentUpon>Меню директора.cs</DependentUpon>
     </Compile>
     <Compile Include="Меню продавца.cs">
@@ -302,10 +316,11 @@
       <DependentUpon>Редактирование отдела.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="DeliveryReport.rdlc" />
-    <EmbeddedResource Include="Отчёт по поставкам.resx">
+    <EmbeddedResource Include="SalesReport.rdlc" />
+    <EmbeddedResource Include="Forms\Отчёт по поставкам.resx">
       <DependentUpon>Отчёт по поставкам.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Меню директора.resx">
+    <EmbeddedResource Include="Forms\Меню директора.resx">
       <DependentUpon>Меню директора.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Меню продавца.resx">
@@ -417,6 +432,9 @@
     <EmbeddedResource Include="Forms\Редактирование отдела.resx">
       <DependentUpon>Редактирование отдела.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Отчёт по продажам.resx">
+      <DependentUpon>Отчёт по продажам.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Auto_parts_shopDataSet.xsc">
       <DependentUpon>Auto_parts_shopDataSet.xsd</DependentUpon>
     </None>
@@ -427,6 +445,17 @@
     </None>
     <None Include="Auto_parts_shopDataSet.xss">
       <DependentUpon>Auto_parts_shopDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Auto_parts_shopDataSetSale.xsc">
+      <DependentUpon>Auto_parts_shopDataSetSale.xsd</DependentUpon>
+    </None>
+    <None Include="Auto_parts_shopDataSetSale.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Auto_parts_shopDataSetSale.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Auto_parts_shopDataSetSale.xss">
+      <DependentUpon>Auto_parts_shopDataSetSale.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

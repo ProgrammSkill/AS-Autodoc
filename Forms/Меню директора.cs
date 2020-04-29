@@ -69,5 +69,28 @@ namespace AS_Autodoc
             DeliveryReport f = new DeliveryReport();
             f.ShowDialog();
         }
+
+        private void СменитьПользователяToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void ВыходToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Authorization_form f = (Authorization_form)this.Owner;
+            f.Close();
+        }
+
+        private void ОтчётПоПродажамToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SalesReport f = new SalesReport();
+            f.ShowDialog();
+        }
+
+        private void ОПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutTheProgram f = new AboutTheProgram();
+            f.ShowDialog();
+        }
     }
 }

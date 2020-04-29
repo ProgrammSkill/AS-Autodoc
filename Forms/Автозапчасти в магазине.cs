@@ -33,7 +33,7 @@ namespace AS_Autodoc
             using (SqlConnection connect = new SqlConnection(con))
             {
                 connect.Open();
-                SqlCommand com = new SqlCommand("SELECT DISTINCT Sale.ID_department FROM Sale INNER JOIN Availability_auto_parts ON Sale.ID_department=Availability_auto_parts.ID_department", connect);
+                SqlCommand com = new SqlCommand("SELECT * FROM Department_store", connect);
                 using (SqlDataReader r = com.ExecuteReader())
                 {
                     while (r.Read())

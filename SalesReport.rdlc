@@ -6,28 +6,28 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>5.03118cm</Width>
+              <Width>1.65332cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>5.18993cm</Width>
+              <Width>5.41562cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>4.20278cm</Width>
+              <Width>5.01355cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.68521cm</Width>
-            </TablixColumn>
-            <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>3.05042cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>2.5cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.93089cm</Width>
+              <Width>2.5cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.87042cm</Width>
+              <Width>2.71167cm</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>2.5cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -36,14 +36,14 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox9">
+                    <Textbox Name="Textbox1">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Поставщик</Value>
+                              <Value>Магазин</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -52,7 +52,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox9</rd:DefaultName>
+                      <rd:DefaultName>Textbox1</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -68,7 +68,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox11">
+                    <Textbox Name="Textbox3">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -84,7 +84,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox11</rd:DefaultName>
+                      <rd:DefaultName>Textbox3</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -100,7 +100,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox13">
+                    <Textbox Name="Textbox5">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -116,7 +116,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox13</rd:DefaultName>
+                      <rd:DefaultName>Textbox5</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -132,7 +132,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox15">
+                    <Textbox Name="Textbox2">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -148,7 +148,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox15</rd:DefaultName>
+                      <rd:DefaultName>Textbox2</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -164,7 +164,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox17">
+                    <Textbox Name="Textbox6">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -180,7 +180,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox17</rd:DefaultName>
+                      <rd:DefaultName>Textbox6</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -196,7 +196,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox19">
+                    <Textbox Name="Textbox8">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -212,7 +212,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox19</rd:DefaultName>
+                      <rd:DefaultName>Textbox8</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -228,7 +228,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox21">
+                    <Textbox Name="Textbox10">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -244,7 +244,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox21</rd:DefaultName>
+                      <rd:DefaultName>Textbox10</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -260,7 +260,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox23">
+                    <Textbox Name="Textbox12">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -276,7 +276,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox23</rd:DefaultName>
+                      <rd:DefaultName>Textbox12</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -297,14 +297,14 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Поставщик">
+                    <Textbox Name="Магазин">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Поставщик.Value</Value>
+                              <Value>=Fields!Магазин.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -313,7 +313,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Поставщик</rd:DefaultName>
+                      <rd:DefaultName>Магазин</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -579,11 +579,11 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <DataSetName>DeliveryReport</DataSetName>
-        <Top>0.17639cm</Top>
-        <Left>0.50835cm</Left>
+        <DataSetName>SalesReport</DataSetName>
+        <Top>0.52861cm</Top>
+        <Left>0.29876cm</Left>
         <Height>1.2cm</Height>
-        <Width>27.91041cm</Width>
+        <Width>25.34458cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -591,17 +591,17 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>0.69792in</Height>
+    <Height>0.83333in</Height>
     <Style />
   </Body>
-  <Width>11.29266in</Width>
+  <Width>10.23122in</Width>
   <Page>
     <PageHeader>
-      <Height>1.45521cm</Height>
+      <Height>1.48167cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
-        <Textbox Name="Textbox1">
+        <Textbox Name="Textbox4">
           <CanGrow>true</CanGrow>
           <KeepTogether>true</KeepTogether>
           <Paragraphs>
@@ -621,8 +621,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Top>0.26141cm</Top>
-          <Left>10.72946cm</Left>
+          <Top>0.38792cm</Top>
+          <Left>9.01583cm</Left>
           <Height>0.75875cm</Height>
           <Width>6.41583cm</Width>
           <Style>
@@ -643,11 +643,11 @@
       </Style>
     </PageHeader>
     <PageFooter>
-      <Height>1.24354cm</Height>
+      <Height>1.27cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
-        <Textbox Name="Textbox2">
+        <Textbox Name="Textbox7">
           <CanGrow>true</CanGrow>
           <KeepTogether>true</KeepTogether>
           <Paragraphs>
@@ -662,8 +662,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
-          <Top>0.17639cm</Top>
-          <Left>10.05037cm</Left>
+          <Top>0.20271cm</Top>
+          <Left>7.94459cm</Left>
           <Height>0.6cm</Height>
           <Width>3.4525cm</Width>
           <Style>
@@ -676,7 +676,7 @@
             <PaddingBottom>2pt</PaddingBottom>
           </Style>
         </Textbox>
-        <Textbox Name="Textbox3">
+        <Textbox Name="Textbox9">
           <CanGrow>true</CanGrow>
           <KeepTogether>true</KeepTogether>
           <Paragraphs>
@@ -691,8 +691,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
-          <Top>0.17639cm</Top>
-          <Left>15.57953cm</Left>
+          <Top>0.20271cm</Top>
+          <Left>13.47375cm</Left>
           <Height>0.6cm</Height>
           <Width>3.4525cm</Width>
           <ZIndex>1</ZIndex>
@@ -724,24 +724,24 @@
   </Page>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="Auto_parts_shopDataSet">
+    <DataSource Name="Auto_parts_shopDataSetSale">
       <ConnectionProperties>
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>d4d5a0e1-f764-4da7-9c0d-26ad0137161e</rd:DataSourceID>
+      <rd:DataSourceID>d6bd2eb3-ca64-4b66-b2fd-ec38a32067e7</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="DeliveryReport">
+    <DataSet Name="SalesReport">
       <Query>
-        <DataSourceName>Auto_parts_shopDataSet</DataSourceName>
+        <DataSourceName>Auto_parts_shopDataSetSale</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="Поставщик">
-          <DataField>Поставщик</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+        <Field Name="Магазин">
+          <DataField>Магазин</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="Автозапчасть">
           <DataField>Автозапчасть</DataField>
@@ -773,15 +773,15 @@
         </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>Auto_parts_shopDataSet</rd:DataSetName>
-        <rd:SchemaPath>D:\Дипломная работа\AS Autodoc\Auto_parts_shopDataSet.xsd</rd:SchemaPath>
-        <rd:TableName>DeliveryReport</rd:TableName>
+        <rd:DataSetName>Auto_parts_shopDataSetSale</rd:DataSetName>
+        <rd:SchemaPath>D:\Дипломная работа\AS Autodoc\Auto_parts_shopDataSetSale.xsd</rd:SchemaPath>
+        <rd:TableName>SalesReport</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>DeliveryReportTableAdapter</rd:TableAdapterName>
+        <rd:TableAdapterName>SalesReportTableAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
-  <rd:ReportID>1776807f-e693-4737-a76a-2a6b21322d1b</rd:ReportID>
+  <rd:ReportID>da9295d9-371b-4a1d-8db6-a15af704d14a</rd:ReportID>
 </Report>

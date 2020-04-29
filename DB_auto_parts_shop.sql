@@ -12,7 +12,7 @@ City CHAR(30))
 
 CREATE TABLE Street (
 ID_street INT PRIMARY KEY,
-Street CHAR(30))
+Street CHAR(50))
 
 CREATE TABLE Suppliers (
 ID_supplier INT PRIMARY KEY,
@@ -170,7 +170,7 @@ GO
 
 CREATE PROCEDURE dbo.InsertStreet
 @id INT,
-@s CHAR(30)
+@s CHAR(50)
 AS
 BEGIN
 INSERT INTO [dbo].[Street]
@@ -183,7 +183,7 @@ GO
 
 CREATE PROCEDURE dbo.EditStreet
 @id INT,
-@s CHAR(30)
+@s CHAR(50)
 AS
 BEGIN
 UPDATE [dbo].[Street]
@@ -444,6 +444,7 @@ INNER JOIN Brands ON Brands_and_models.ID_brand=Brands.ID_brand AND  Brands.Titl
 END
 GO
 dbo.SelectAnotherModels 'BMW'
+
 
 CREATE PROCEDURE dbo.InsertAutopart
 @id INT,
@@ -851,6 +852,80 @@ END
 GO
 EXECUTE dbo.SearchByPriceRange  434, 999999.00
 
+
+--Вывод отчётов
+CREATE PROCEDURE dbo.DeliveryReport
+AS
+BEGIN
+SELECT Suppliers.Title AS 'Поставщик', Autoparts.Title AS 'Автозапчасть', Manufacturers.Manufacturer AS 'Производитель', Autoparts.Article AS 'Артикул', Supply.Purchase_price AS 'Цена', Supply.Amount AS 'Количество' , Purchase_price*Amount AS 'Сумма', Supply.Delivery_date AS 'Дата'
+FROM Supply INNER JOIN Suppliers
+ON Supply.ID_supplier=Suppliers.ID_supplier
+INNER JOIN Autoparts
+ON Supply.ID_autoparts=Autoparts.ID_autoparts
+INNER JOIN Manufacturers
+ON Autoparts.ID_manufacturer=Manufacturers.ID_manufacturer
+END
+
+
+CREATE PROCEDURE dbo.SalesReport
+AS
+BEGIN
+SELECT Sale.ID_department AS 'Магазин',  Autoparts.Title AS 'Автозапчасть', Manufacturer AS 'Производитель', Autoparts.Article AS 'Артикул', Availability_auto_parts.Sale_price AS 'Цена', Sale.Amount AS 'Количество', Availability_auto_parts.Sale_price*Sale.Amount AS 'Сумма', Sale.Date_of_sale AS 'Дата'
+FROM Sale INNER JOIN Autoparts
+ON Sale.ID_autoparts=Autoparts.ID_autoparts
+INNER JOIN Manufacturers
+ON Autoparts.ID_manufacturer=Manufacturers.ID_manufacturer
+INNER JOIN Availability_auto_parts
+ON Availability_auto_parts.ID_autoparts=Sale.ID_autoparts AND Sale.ID_department=Availability_auto_parts.ID_department
+END
+
+
+---------------------фильтрация поставок--------------------------------------
+
+--поиск по поставщику
+SELECT Suppliers.Title AS 'Поставщик', Autoparts.Title AS 'Автозапчасть', Manufacturers.Manufacturer AS 'Производитель', Autoparts.Article AS 'Артикул', Supply.Purchase_price AS 'Цена', Supply.Amount AS 'Количество' , Purchase_price*Amount AS 'Сумма', Supply.Delivery_date AS 'Дата'
+FROM Supply INNER JOIN Suppliers
+ON Supply.ID_supplier=Suppliers.ID_supplier
+INNER JOIN Autoparts
+ON Supply.ID_autoparts=Autoparts.ID_autoparts
+INNER JOIN Manufacturers
+ON Autoparts.ID_manufacturer=Manufacturers.ID_manufacturer AND Suppliers.Title=@s
+
+--поиск по дате
+SELECT Suppliers.Title AS 'Поставщик', Autoparts.Title AS 'Автозапчасть', Manufacturers.Manufacturer AS 'Производитель', Autoparts.Article AS 'Артикул', Supply.Purchase_price AS 'Цена', Supply.Amount AS 'Количество' , Purchase_price*Amount AS 'Сумма', Supply.Delivery_date AS 'Дата'
+FROM Supply INNER JOIN Suppliers
+ON Supply.ID_supplier=Suppliers.ID_supplier
+INNER JOIN Autoparts
+ON Supply.ID_autoparts=Autoparts.ID_autoparts
+INNER JOIN Manufacturers
+ON Autoparts.ID_manufacturer=Manufacturers.ID_manufacturer
+WHERE Supply.Delivery_date BETWEEN @startDate AND @endDate
+
+
+---------------------фильтрация продаж--------------------------------------
+
+--по магазину-----
+SELECT Sale.ID_department AS 'Магазин',  Autoparts.Title AS 'Автозапчасть', Manufacturer AS 'Производитель', Autoparts.Article AS 'Артикул', Availability_auto_parts.Sale_price AS 'Цена', Sale.Amount AS 'Количество', Availability_auto_parts.Sale_price*Sale.Amount AS 'Сумма', Sale.Date_of_sale AS 'Дата'
+FROM Sale INNER JOIN Autoparts
+ON Sale.ID_autoparts=Autoparts.ID_autoparts
+INNER JOIN Manufacturers
+ON Autoparts.ID_manufacturer=Manufacturers.ID_manufacturer
+INNER JOIN Availability_auto_parts
+ON Availability_auto_parts.ID_autoparts=Sale.ID_autoparts AND Sale.ID_department=Availability_auto_parts.ID_department
+WHERE Sale.ID_department=@store
+
+--по дате-------
+SELECT Sale.ID_department AS 'Магазин',  Autoparts.Title AS 'Автозапчасть', Manufacturer AS 'Производитель', Autoparts.Article AS 'Артикул', Availability_auto_parts.Sale_price AS 'Цена', Sale.Amount AS 'Количество', Availability_auto_parts.Sale_price*Sale.Amount AS 'Сумма', Sale.Date_of_sale AS 'Дата'
+FROM Sale INNER JOIN Autoparts
+ON Sale.ID_autoparts=Autoparts.ID_autoparts
+INNER JOIN Manufacturers
+ON Autoparts.ID_manufacturer=Manufacturers.ID_manufacturer
+INNER JOIN Availability_auto_parts
+ON Availability_auto_parts.ID_autoparts=Sale.ID_autoparts AND Sale.ID_department=Availability_auto_parts.ID_department
+WHERE Sale.Date_of_sale BETWEEN @startDate AND @endDate
+
+
+
 --Панель администратора
 
 CREATE PROCEDURE dbo.SelectUserAuthentication
@@ -969,3 +1044,144 @@ INSERT INTO [dbo].[UserSession]
 END
 GO
 
+
+--Заполнение таблиц данными
+
+
+--Города
+EXECUTE dbo.InsertCity 1, 'Москва'
+EXECUTE dbo.InsertCity 2, 'Санкт-Петербург'
+EXECUTE dbo.InsertCity 3, 'Абакан'
+EXECUTE dbo.InsertCity 4, 'Адлер'
+EXECUTE dbo.InsertCity 5, 'Архангельск'
+EXECUTE dbo.InsertCity 6, 'Астрахань'
+EXECUTE dbo.InsertCity 7, 'Барнаул'
+EXECUTE dbo.InsertCity 9, 'Белгород'
+EXECUTE dbo.InsertCity 10, 'Благовещенск'
+EXECUTE dbo.InsertCity 11, 'Брянск'
+EXECUTE dbo.InsertCity 12, 'Великий Новгород'
+EXECUTE dbo.InsertCity 13, 'Верхняя Пышма'
+EXECUTE dbo.InsertCity 14, 'Владимир'
+EXECUTE dbo.InsertCity 15, 'Волгоград'
+EXECUTE dbo.InsertCity 16, 'Воронеж'
+EXECUTE dbo.InsertCity 17, 'Дзержинск'
+EXECUTE dbo.InsertCity 18, 'Екатеринбург'
+EXECUTE dbo.InsertCity 19, 'Елец'
+EXECUTE dbo.InsertCity 20, 'Заполярный'
+EXECUTE dbo.InsertCity 21, 'Иваново'
+EXECUTE dbo.InsertCity 22, 'Ижевск'
+EXECUTE dbo.InsertCity 23, 'Иркутск'
+EXECUTE dbo.InsertCity 24, 'Йошкар-Ола'
+EXECUTE dbo.InsertCity 25, 'Казань'
+EXECUTE dbo.InsertCity 24, 'Йошкар-Ола'
+EXECUTE dbo.InsertCity 25, 'Калининград'
+EXECUTE dbo.InsertCity 26, 'Калуга'
+EXECUTE dbo.InsertCity 27, 'Кемерево'
+EXECUTE dbo.InsertCity 28, 'Киров'
+EXECUTE dbo.InsertCity 29, 'Краснодар'
+EXECUTE dbo.InsertCity 30, 'Курск'
+EXECUTE dbo.InsertCity 31, 'Липецк'
+EXECUTE dbo.InsertCity 32, 'Махачкала'
+EXECUTE dbo.InsertCity 33, 'Мурманск'
+EXECUTE dbo.InsertCity 34, 'Нижний Новгород'
+EXECUTE dbo.InsertCity 35, 'Омск'
+EXECUTE dbo.InsertCity 35, 'Энгельс'
+EXECUTE dbo.InsertCity 36, 'Ярославль'
+
+
+--Улицы
+EXECUTE dbo.InsertStreet 1, 'ул. Советская'
+EXECUTE dbo.InsertStreet 2, 'ул. Энергетиков'
+EXECUTE dbo.InsertStreet 3, 'проспект Обводный канал'
+EXECUTE dbo.InsertStreet 4, 'ул. Галушина'
+EXECUTE dbo.InsertStreet 5, 'ул. Адмиралтейская'
+EXECUTE dbo.InsertStreet 6, 'ул. Валерии Барсовой'
+EXECUTE dbo.InsertStreet 7, 'проспект Богдана Хмельницкого'
+EXECUTE dbo.InsertStreet 8, 'ул. Архиерейская'
+EXECUTE dbo.InsertStreet 9, 'ул. Октябрьская'
+EXECUTE dbo.InsertStreet 10, 'Московский проспект'
+EXECUTE dbo.InsertStreet 11, 'пер. Куйбышева'
+EXECUTE dbo.InsertStreet 12, 'пр-т Станке Димитрова'
+EXECUTE dbo.InsertStreet 13, 'ул. Чернышевского'
+EXECUTE dbo.InsertStreet 14, 'ул. Псковская'
+EXECUTE dbo.InsertStreet 15, 'ул. Калинина'
+EXECUTE dbo.InsertStreet 16, 'ул. Горького'
+EXECUTE dbo.InsertStreet 17, 'ул. Рокоссовского'
+EXECUTE dbo.InsertStreet 18, 'ул. Фадеева'
+EXECUTE dbo.InsertStreet 19, 'жилой массив Олимпийский'
+EXECUTE dbo.InsertStreet 20, 'Ленинский проспект'
+EXECUTE dbo.InsertStreet 21, 'ул. Ворошилова'
+EXECUTE dbo.InsertStreet 22, 'ул. Галкина'
+EXECUTE dbo.InsertStreet 23, 'ул. Краснолесья'
+EXECUTE dbo.InsertStreet 24, 'ул. Первомайская'
+EXECUTE dbo.InsertStreet 25, 'ул. Победы'
+EXECUTE dbo.InsertStreet 26, 'ул. Татищева'
+EXECUTE dbo.InsertStreet 27, 'ул. Щербакова'
+EXECUTE dbo.InsertStreet 28, 'ул. Щорса'
+EXECUTE dbo.InsertStreet 29, 'ул.Коммунаров'
+EXECUTE dbo.InsertStreet 30, 'ул.Бабикова'
+EXECUTE dbo.InsertStreet 31, 'ул. Кузнецова'
+EXECUTE dbo.InsertStreet 32, 'ул. Кирова'
+EXECUTE dbo.InsertStreet 33, 'ул. Байкальская'
+EXECUTE dbo.InsertStreet 34, 'ул. Первомайская'
+EXECUTE dbo.InsertStreet 35, 'проспект Победы'
+EXECUTE dbo.InsertStreet 36, 'ул. Павлюхина'
+EXECUTE dbo.InsertStreet 37, 'ул. Инженерная'
+EXECUTE dbo.InsertStreet 38, 'ул.Нарвская'
+EXECUTE dbo.InsertStreet 39, 'ул. Маршала Жукова'
+EXECUTE dbo.InsertStreet 40, 'ул. Красноармейская'
+EXECUTE dbo.InsertStreet 41, 'ул. Константина Симонова'
+EXECUTE dbo.InsertStreet 42, 'ул. имени Тургенева'
+EXECUTE dbo.InsertStreet 43, 'ул. Ставропольская'
+EXECUTE dbo.InsertStreet 44, 'ул. Ставропольская'
+EXECUTE dbo.InsertStreet 45, 'ул. Радищева'
+EXECUTE dbo.InsertStreet 46, 'проспект Мира'
+EXECUTE dbo.InsertStreet 47, 'ул. Гагарина'
+EXECUTE dbo.InsertStreet 48, 'ул. Катукова'
+EXECUTE dbo.InsertStreet 49, 'проспект Петра I'
+EXECUTE dbo.InsertStreet 50, 'ул. Свердлова'
+EXECUTE dbo.InsertStreet 51, 'Автозаводский район, Южное шоссе'
+EXECUTE dbo.InsertStreet 52, 'ул. Бетанкура'
+EXECUTE dbo.InsertStreet 53, 'ул. Бекетова'
+EXECUTE dbo.InsertStreet 54, 'ул. Бекетова'
+EXECUTE dbo.InsertStreet 55, 'проспект Комарова'
+EXECUTE dbo.InsertStreet 56, 'ул.10 лет октября'
+EXECUTE dbo.InsertStreet 57, 'ул. Петровская'
+EXECUTE dbo.InsertStreet 58, 'ул. Блюхера'
+EXECUTE dbo.InsertStreet 59, 'ул. Калинина'
+EXECUTE dbo.InsertStreet 60, 'ул. Лисицына'
+EXECUTE dbo.InsertStreet 61, 'ул. Малахова'
+
+
+--//Отделы магазина
+EXECUTE dbo.InsertDepartment_store 1, 1, 1, 'д.48', '9613453349'
+EXECUTE dbo.InsertDepartment_store 2, 2, 2, 'д.11', '9613663349'
+EXECUTE dbo.InsertDepartment_store 3, 3, 3, 'д.9, к.1, стр.4', '9653663347'
+EXECUTE dbo.InsertDepartment_store 4, 3, 4, 'д.2', '9653223350'
+EXECUTE dbo.InsertDepartment_store 5, 4, 5, 'д. 4А', '9953227755'
+EXECUTE dbo.InsertDepartment_store 6, 4, 6, 'д.16', '9953227755'
+EXECUTE dbo.InsertDepartment_store 7, 7, 61, 'д.122', '9888223755'
+EXECUTE dbo.InsertDepartment_store 8, 9, 7, 'д.92', '9889223743'
+EXECUTE dbo.InsertDepartment_store 9, 9, 8, 'д.5А', '9789233743'
+EXECUTE dbo.InsertDepartment_store 10, 10, 9, 'д.111', '9789111743'
+EXECUTE dbo.InsertDepartment_store 11, 11, 10, 'д.1', '9739121747'
+EXECUTE dbo.InsertDepartment_store 11, 11, 11, 'д.57А', '9229121749'
+EXECUTE dbo.InsertDepartment_store 12, 11, 12, 'д.42', '9239126647'
+EXECUTE dbo.InsertDepartment_store 13, 11, 13, 'д.64', '9889186655'
+EXECUTE dbo.InsertDepartment_store 14, 12, 14, 'д.25', '9889186655'
+EXECUTE dbo.InsertDepartment_store 15, 13, 15, 'д.35', '9855187659'
+EXECUTE dbo.InsertDepartment_store 16, 14, 16, 'д.27', '9855182649'
+EXECUTE dbo.InsertDepartment_store 17, 15, 17, 'д.141', '9855188649'
+EXECUTE dbo.InsertDepartment_store 18, 15, 18, 'д.29', '9755338649'
+EXECUTE dbo.InsertDepartment_store 19, 16, 19, 'д.4', '9335368649'
+EXECUTE dbo.InsertDepartment_store 20, 16, 20, 'д. 172', '9335567649'
+EXECUTE dbo.InsertDepartment_store 21, 16, 21, 'д. 49', '9335567649'
+EXECUTE dbo.InsertDepartment_store 22, 17, 22, 'д.1, корп.2', '9335567649'
+EXECUTE dbo.InsertDepartment_store 23, 18, 23, 'д.49', '9784567649'
+EXECUTE dbo.InsertDepartment_store 24, 18, 24, 'д.77', '9784555649'
+EXECUTE dbo.InsertDepartment_store 25, 18, 25, 'д.26', '9784555649'
+EXECUTE dbo.InsertDepartment_store 26, 18, 26, 'д.60', '9714552249'
+EXECUTE dbo.InsertDepartment_store 27, 18, 27, 'д.3Б', '9714442849'
+EXECUTE dbo.InsertDepartment_store 28, 18, 28, 'д.58', '9711142849'
+EXECUTE dbo.InsertDepartment_store 29, 19, 29, 'д.111', '9767111849'
+EXECUTE dbo.InsertDepartment_store 30, 20, 30, 'д.10', '9762311849'

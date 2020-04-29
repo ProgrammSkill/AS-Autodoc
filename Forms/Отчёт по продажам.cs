@@ -10,28 +10,29 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Globalization;
 
+
 namespace AS_Autodoc
 {
-    public partial class DeliveryReport : Form
+    public partial class SalesReport : Form
     {
         string con = Connect.getConnect();
-        public DeliveryReport()
+        public SalesReport()
         {
             InitializeComponent();
             SelectComboBox();
         }
 
-        void SelectComboBox()
+        public void SelectComboBox()
         {
             using (SqlConnection connect = new SqlConnection(con))
             {
                 connect.Open();
-                SqlCommand com = new SqlCommand("SELECT * FROM Suppliers", connect);
+                SqlCommand com = new SqlCommand("SELECT * FROM Department_store", connect);
                 using (SqlDataReader r = com.ExecuteReader())
                 {
                     while (r.Read())
                     {
-                        comboBox1.Items.Add(r[1].ToString());
+                        comboBox1.Items.Add(r[0].ToString());
                     }
                 }
             }
@@ -48,35 +49,31 @@ namespace AS_Autodoc
             return false;
         }
 
-        private void DeliveryReport_Load(object sender, EventArgs e)
+        private void SalesReport_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "Auto_parts_shopDataSet.DeliveryReport". При необходимости она может быть перемещена или удалена.
-            this.DeliveryReportTableAdapter.Fill(this.Auto_parts_shopDataSet.DeliveryReport);
-
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "Auto_parts_shopDataSetSale.SalesReport". При необходимости она может быть перемещена или удалена.
+            this.SalesReportTableAdapter.Fill(this.Auto_parts_shopDataSetSale.SalesReport);
             this.reportViewer1.RefreshReport();
         }
 
-        private void GroupBox1_Enter(object sender, EventArgs e)
+        private void Button3_Click(object sender, EventArgs e)
         {
-
+            this.SalesReportTableAdapter.Fill(this.Auto_parts_shopDataSetSale.SalesReport);
+            this.reportViewer1.RefreshReport();
         }
 
-        private void Button2_Click(object sender, EventArgs e)
+        private void Button4_Click(object sender, EventArgs e)
         {
-            if (comboBox1.Text != "")
+            if (comboBox1.Text != "" | comboBox1.Text != "Не указано")
             {
-                this.DeliveryReportTableAdapter.FillBySuppliers(this.Auto_parts_shopDataSet.DeliveryReport, comboBox1.SelectedItem.ToString());
+                this.SalesReportTableAdapter.FillByStore(this.Auto_parts_shopDataSetSale.SalesReport, comboBox1.SelectedIndex);
                 this.reportViewer1.RefreshReport();
             }
             else
             {
+                this.SalesReportTableAdapter.Fill(this.Auto_parts_shopDataSetSale.SalesReport);
                 this.reportViewer1.RefreshReport();
             }
-        }
-
-        private void ReportViewer1_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -87,7 +84,7 @@ namespace AS_Autodoc
                 {
                     if (TextIsDate(maskedTextBox2.Text))
                     {
-                        this.DeliveryReportTableAdapter.FillByDate(this.Auto_parts_shopDataSet.DeliveryReport, maskedTextBox1.Text.ToString(), maskedTextBox2.Text.ToString());
+                        this.SalesReportTableAdapter.FillByDate(this.Auto_parts_shopDataSetSale.SalesReport, maskedTextBox1.Text, maskedTextBox2.Text);
                         this.reportViewer1.RefreshReport();
                     }
                     else
@@ -104,7 +101,6 @@ namespace AS_Autodoc
             }
             else
             {
-                this.reportViewer1.RefreshReport();
 
             }
         }
