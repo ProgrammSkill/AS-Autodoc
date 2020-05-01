@@ -148,5 +148,10 @@ namespace AS_Autodoc
                 MessageBox.Show("Не выбран город для переименования.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

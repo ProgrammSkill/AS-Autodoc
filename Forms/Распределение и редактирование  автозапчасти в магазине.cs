@@ -247,5 +247,19 @@ namespace AS_Autodoc
         {
 
         }
+
+        private void TextBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            int length = textBox1.Text.Length;
+            if (length == 0 && (ch == ',' || ch == '.'))
+            {
+                e.Handled = true;
+            }
+            if (!Char.IsDigit(ch) && ch != 8 && ((ch != ',' || textBox1.Text.Contains(",")) && (ch != '.' || textBox1.Text.Contains("."))))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

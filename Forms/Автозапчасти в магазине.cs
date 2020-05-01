@@ -413,5 +413,33 @@ namespace AS_Autodoc
         {
 
         }
+
+        private void TextBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            int length = textBox2.Text.Length;
+            if (length == 0 && (ch == ',' || ch == '.'))
+            {
+                e.Handled = true;
+            }
+            if (!Char.IsDigit(ch) && ch != 8 && ((ch != ',' || textBox2.Text.Contains(",")) && (ch != '.' || textBox2.Text.Contains("."))))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TextBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            int length = textBox3.Text.Length;
+            if (length == 0 && (ch == ',' || ch == '.'))
+            {
+                e.Handled = true;
+            }
+            if (!Char.IsDigit(ch) && ch != 8 && ((ch != ',' || textBox3.Text.Contains(",")) && (ch != '.' || textBox3.Text.Contains("."))))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

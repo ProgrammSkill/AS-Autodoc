@@ -72,6 +72,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Сотрудник.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Сотрудник.Designer.cs">
+      <DependentUpon>Сотрудник.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Регистрация пользователя.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Регистрация пользователя.Designer.cs">
+      <DependentUpon>Регистрация пользователя.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Меню администратора.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Меню администратора.Designer.cs">
+      <DependentUpon>Меню администратора.cs</DependentUpon>
+    </Compile>
     <Compile Include="Auto_parts_shopDataSet.cs">
       <DependentUpon>Auto_parts_shopDataSet.xsd</DependentUpon>
     </Compile>
@@ -221,17 +239,11 @@
     <Compile Include="Forms\Город.Designer.cs">
       <DependentUpon>Город.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Account_administration.cs">
+    <Compile Include="Forms\Администрирование учётных записей.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Account_administration.Designer.cs">
-      <DependentUpon>Account_administration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Account_administrator.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Account_administrator.Designer.cs">
-      <DependentUpon>Account_administrator.cs</DependentUpon>
+    <Compile Include="Forms\Администрирование учётных записей.Designer.cs">
+      <DependentUpon>Администрирование учётных записей.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Страна.cs">
       <SubType>Form</SubType>
@@ -316,12 +328,21 @@
       <DependentUpon>Редактирование отдела.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="DeliveryReport.rdlc" />
+    <EmbeddedResource Include="Сотрудник.resx">
+      <DependentUpon>Сотрудник.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Регистрация пользователя.resx">
+      <DependentUpon>Регистрация пользователя.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SalesReport.rdlc" />
     <EmbeddedResource Include="Forms\Отчёт по поставкам.resx">
       <DependentUpon>Отчёт по поставкам.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Меню директора.resx">
       <DependentUpon>Меню директора.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Меню администратора.resx">
+      <DependentUpon>Меню администратора.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Меню продавца.resx">
       <DependentUpon>Меню продавца.cs</DependentUpon>
@@ -383,8 +404,8 @@
     <EmbeddedResource Include="Forms\Город.resx">
       <DependentUpon>Город.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Account_administration.resx">
-      <DependentUpon>Account_administration.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Администрирование учётных записей.resx">
+      <DependentUpon>Администрирование учётных записей.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Страна.resx">
       <DependentUpon>Страна.cs</DependentUpon>

@@ -72,7 +72,6 @@ namespace AS_Autodoc
                     }
                 }
             }
-
         }
 
         private void Delete()

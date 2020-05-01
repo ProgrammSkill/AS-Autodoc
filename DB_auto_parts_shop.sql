@@ -981,6 +981,34 @@ EXECUTE dbo.InsertPosition 4, 'Директор'
 EXECUTE dbo.InsertPosition 5, 'Кладовшик'
 
 
+CREATE PROCEDURE dbo.SelectUsers
+AS
+BEGIN
+SELECT Users.Login_, Surname, First_name, Last_name, Position
+FROM Users INNER JOIN InfoUsers
+ON Users.Login_=InfoUsers.Login_
+INNER JOIN Position
+ON InfoUsers.ID_position=Position.ID_position
+END
+GO
+
+
+CREATE PROCEDURE dbo.SelectInfoUsers
+@l CHAR(15)
+AS
+BEGIN
+SELECT Users.Login_, Users.Password_, Role_.Role_, Surname, First_name, Last_name, Position, Address_, Telephone, Date_of_acceptance, Date_of_termination
+FROM Users INNER JOIN InfoUsers
+ON Users.Login_=InfoUsers.Login_
+INNER JOIN Role_
+ON Role_.ID_role=Users.ID_role
+INNER JOIN Position
+ON InfoUsers.ID_position=Position.ID_position
+WHERE InfoUsers.Login_=@l
+END
+GO
+
+
 CREATE PROCEDURE dbo.InsertUsers
 @login CHAR(15),
 @pass CHAR(15),
@@ -991,8 +1019,7 @@ CREATE PROCEDURE dbo.InsertUsers
 @pos INT,
 @adress CHAR(50),
 @tel CHAR(20),
-@da DATE,
-@dt DATE
+@da DATE
 AS
 BEGIN
 INSERT INTO [dbo].[Users]
@@ -1011,8 +1038,7 @@ INSERT INTO [dbo].[InfoUsers]
            ,[ID_position]
            ,[Address_]
            ,[Telephone]
-           ,[Date_of_acceptance]
-           ,[Date_of_termination])
+           ,[Date_of_acceptance])
      VALUES
            (@login,
             @surname,
@@ -1021,11 +1047,45 @@ INSERT INTO [dbo].[InfoUsers]
             @pos,
             @adress,
             @tel,
-            @da,
-            @dt)
+            @da)
 END
 GO
 EXECUTE dbo.InsertUsers '111', '111', 2, 'xccsd', 'dss', 'dsss', 1, 'dsdsds', '343433', '31.12.1999', '01.04.2020'
+
+
+CREATE PROCEDURE dbo.EditInfoUsers
+@login CHAR(15),
+@pass CHAR(15),
+@role INT,
+@surname CHAR(20),
+@f_name CHAR(20),
+@l_name CHAR(20),
+@pos INT,
+@adress CHAR(50),
+@tel CHAR(20),
+@da DATE,
+@dt DATE
+AS
+BEGIN
+UPDATE [dbo].[Users]
+   SET [Login_] = @login,
+       [Password_] = @pass,
+       [ID_role] = @role
+ WHERE Login_=@login
+UPDATE [dbo].[InfoUsers]
+   SET [Login_] = @login,
+       [Surname] =@surname,
+       [First_name] = @f_name,
+       [Last_name] = @l_name,
+       [ID_position] = @pos,
+       [Address_] = @adress,
+       [Telephone] = @tel,
+       [Date_of_acceptance] = @da,
+       [Date_of_termination] = @dt
+ WHERE Login_=@login
+END
+GO
+
 
 
 

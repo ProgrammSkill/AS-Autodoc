@@ -91,7 +91,7 @@ namespace AS_Autodoc
             {
                 connect.Open();
                 SqlCommand com = new SqlCommand("EXECUTE dbo.InsertSupply '" + insertId + "','" + id_supplier[comboBox1.SelectedIndex]+"','" + 
-                id_autoparts[comboBox4.SelectedIndex] + "','"+textBox1.Text+"','"+numericUpDown1.Value+"','"+
+                id_autoparts[comboBox4.SelectedIndex] + "','"+textBox1.Text.ToString().Replace(",", ".") + "','"+numericUpDown1.Value+"','"+
                 maskedTextBox1.Text+"','Новая'", connect);
                 com.ExecuteNonQuery();
             }
@@ -221,23 +221,32 @@ namespace AS_Autodoc
         private void Button1_Click(object sender, EventArgs e)
         {
             Supply f = (Supply)this.Owner;
+            decimal x = 0.00m;
+            bool result= decimal.TryParse(textBox1.Text, out x);
             if (comboBox1.Text != "" && comboBox2.Text != "" && comboBox3.Text != "" && comboBox4.Text != "" && textBox1.Text != "" && maskedTextBox1.Text != "  .  .")
-            {
-                if (TextIsDate(maskedTextBox1.Text))
+            {   if (result == true)
                 {
-                    if (f.InsertOrEdit.ToString() == "Добавить")
+                    if (TextIsDate(maskedTextBox1.Text))
                     {
-                        NewSupply();
-                        MaxId();
+                        if (f.InsertOrEdit.ToString() == "Добавить")
+                        {
+                            NewSupply();
+                            MaxId();
+                        }
+                        else
+                        {
+                            Edit();
+                        }
                     }
                     else
                     {
-                        Edit();
+                        MessageBox.Show("Введён неправельный формат даты!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Введён неправельный формат даты", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Введён неправельный формат цены закупки!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBox1.Clear();
                 }
             }
             else
@@ -250,6 +259,20 @@ namespace AS_Autodoc
         private void ComboBox4_SelectedIndexChanged_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void TextBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            int length = textBox1.Text.Length;
+            if (length == 0 && (ch == ',' || ch=='.'))
+            {
+                e.Handled = true;
+            }
+            if (!Char.IsDigit(ch) && ch != 8 && ((ch != ',' || textBox1.Text.Contains(",")) && (ch != '.' || textBox1.Text.Contains("."))))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

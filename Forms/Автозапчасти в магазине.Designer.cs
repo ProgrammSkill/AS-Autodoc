@@ -139,7 +139,7 @@
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(517, 743);
+            this.button3.Location = new System.Drawing.Point(517, 748);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(139, 26);
             this.button3.TabIndex = 23;
@@ -150,7 +150,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(328, 743);
+            this.button2.Location = new System.Drawing.Point(328, 748);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(139, 26);
             this.button2.TabIndex = 22;
@@ -161,7 +161,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(146, 743);
+            this.button1.Location = new System.Drawing.Point(146, 748);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(139, 26);
             this.button1.TabIndex = 21;
@@ -289,6 +289,7 @@
             this.textBox3.Size = new System.Drawing.Size(93, 22);
             this.textBox3.TabIndex = 43;
             this.textBox3.TextChanged += new System.EventHandler(this.TextBox3_TextChanged);
+            this.textBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox3_KeyPress);
             // 
             // label2
             // 
@@ -318,6 +319,7 @@
             this.textBox2.Size = new System.Drawing.Size(93, 22);
             this.textBox2.TabIndex = 40;
             this.textBox2.TextChanged += new System.EventHandler(this.TextBox2_TextChanged);
+            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox2_KeyPress);
             // 
             // button7
             // 
@@ -383,7 +385,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(808, 786);
+            this.ClientSize = new System.Drawing.Size(808, 793);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button3);
