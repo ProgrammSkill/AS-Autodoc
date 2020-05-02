@@ -1085,7 +1085,7 @@ UPDATE [dbo].[InfoUsers]
  WHERE Login_=@login
 END
 GO
-
+EXECUTE dbo.EditInfoUsers '111', '111', 2, 'xccsd', 'dss', 'dsss', 1, 'dsdsds', '343433', '31.12.1999', NULL
 
 
 

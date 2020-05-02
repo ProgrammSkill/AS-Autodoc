@@ -174,7 +174,7 @@
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button5.Location = new System.Drawing.Point(24, 242);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(188, 24);
+            this.button5.Size = new System.Drawing.Size(158, 24);
             this.button5.TabIndex = 41;
             this.button5.Text = "Обновить таблицу";
             this.button5.UseVisualStyleBackColor = true;

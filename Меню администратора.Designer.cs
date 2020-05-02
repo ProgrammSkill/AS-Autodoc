@@ -38,7 +38,6 @@
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.enter = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -85,6 +84,7 @@
             this.администрированиеУчётныхЗаписейToolStripMenuItem.Name = "администрированиеУчётныхЗаписейToolStripMenuItem";
             this.администрированиеУчётныхЗаписейToolStripMenuItem.Size = new System.Drawing.Size(244, 21);
             this.администрированиеУчётныхЗаписейToolStripMenuItem.Text = "Администрирование учётных записей";
+            this.администрированиеУчётныхЗаписейToolStripMenuItem.Click += new System.EventHandler(this.АдминистрированиеУчётныхЗаписейToolStripMenuItem_Click);
             // 
             // пользовательскиеСессииToolStripMenuItem
             // 
@@ -97,23 +97,26 @@
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
             this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(102, 21);
             this.оПрограммеToolStripMenuItem.Text = "О программе";
+            this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.ОПрограммеToolStripMenuItem_Click);
             // 
             // сменитьПользователяToolStripMenuItem
             // 
             this.сменитьПользователяToolStripMenuItem.Name = "сменитьПользователяToolStripMenuItem";
             this.сменитьПользователяToolStripMenuItem.Size = new System.Drawing.Size(157, 21);
             this.сменитьПользователяToolStripMenuItem.Text = "Сменить пользователя";
+            this.сменитьПользователяToolStripMenuItem.Click += new System.EventHandler(this.СменитьПользователяToolStripMenuItem_Click);
             // 
             // выходToolStripMenuItem
             // 
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
             this.выходToolStripMenuItem.Size = new System.Drawing.Size(57, 21);
             this.выходToolStripMenuItem.Text = "Выход";
+            this.выходToolStripMenuItem.Click += new System.EventHandler(this.ВыходToolStripMenuItem_Click);
             // 
             // enter
             // 
             this.enter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.enter.Location = new System.Drawing.Point(12, 112);
+            this.enter.Location = new System.Drawing.Point(12, 51);
             this.enter.Name = "enter";
             this.enter.Size = new System.Drawing.Size(277, 29);
             this.enter.TabIndex = 15;
@@ -124,28 +127,17 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(15, 170);
+            this.button1.Location = new System.Drawing.Point(15, 109);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(277, 29);
             this.button1.TabIndex = 16;
             this.button1.Text = "Пользовательские сессии";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(12, 52);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(277, 29);
-            this.button2.TabIndex = 17;
-            this.button2.Text = "Регистрация пользователей";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.Button2_Click);
-            // 
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(15, 226);
+            this.button3.Location = new System.Drawing.Point(15, 165);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(277, 29);
             this.button3.TabIndex = 18;
@@ -158,7 +150,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(753, 450);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.enter);
             this.Controls.Add(this.label2);
@@ -187,7 +178,6 @@
         private System.Windows.Forms.ToolStripMenuItem пользовательскиеСессииToolStripMenuItem;
         private System.Windows.Forms.Button enter;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
     }
 }

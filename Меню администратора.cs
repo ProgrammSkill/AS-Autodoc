@@ -40,7 +40,31 @@ namespace AS_Autodoc
 
         private void Button2_Click(object sender, EventArgs e)
         {
+            RegistrationOfUsers f = new RegistrationOfUsers();
+            f.ShowDialog();
+        }
 
+        private void АдминистрированиеУчётныхЗаписейToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AccountAdministration f = new AccountAdministration();
+            f.ShowDialog();
+        }
+
+        private void ОПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutTheProgram f = new AboutTheProgram();
+            f.ShowDialog();
+        }
+
+        private void СменитьПользователяToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void ВыходToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Authorization_form f = (Authorization_form)this.Owner;
+            f.Close();
         }
     }
 }

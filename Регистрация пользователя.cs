@@ -120,7 +120,16 @@ namespace AS_Autodoc
             if(textBox1.Text!="" & textBox2.Text!="" & comboBox1.Text!="" & textBox3.Text!="" & textBox4.Text!="" &
             textBox5.Text!="" & comboBox2.Text!="" & textBox6.Text!="" & maskedTextBox1.Text!= "(   )    -" & maskedTextBox2.Text!= "  .  .")
             {
-                Insertion();
+                if (TextIsDate(maskedTextBox2.Text))
+                {
+                    Insertion();
+                    AccountAdministration f = (AccountAdministration)this.Owner;
+                    f.LoadAll();
+                }
+                else
+                {
+                    MessageBox.Show("Введён неправельный формат даты", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

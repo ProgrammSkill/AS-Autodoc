@@ -101,11 +101,22 @@ namespace AS_Autodoc
                     SqlCommand com = new SqlCommand("EXECUTE dbo.EditInfoUsers '" + textBox1.Text + "','" + textBox2.Text + "','" +
                     id_role[comboBox1.SelectedIndex] + "','" + textBox3.Text + "','" + textBox4.Text + "','" + textBox5.Text + "','" +
                     id_position[comboBox2.SelectedIndex] + "','" + textBox6.Text + "','" + maskedTextBox1.Text + "','" +
-                    maskedTextBox2.Text + "'," + null, connect);
+                    maskedTextBox2.Text + "', NULL", connect);
                     com.ExecuteNonQuery();
                 }
 
             }
+        }
+
+        static bool TextIsDate(string text)
+        {
+            var dateFormat = "dd.MM.yyyy";
+            DateTime scheduleDate;
+            if (DateTime.TryParseExact(text, dateFormat, DateTimeFormatInfo.InvariantInfo, DateTimeStyles.None, out scheduleDate))
+            {
+                return true;
+            }
+            return false;
         }
 
         private void Employee_Load(object sender, EventArgs e)
@@ -125,9 +136,50 @@ namespace AS_Autodoc
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            AccountAdministration f = (AccountAdministration)this.Owner;
-            Edit();
-            f.LoadAll();
+            if (textBox1.Text != "" & textBox2.Text != "" & comboBox1.Text != "" & textBox3.Text != "" & textBox4.Text != "" &
+            textBox5.Text != "" & comboBox2.Text != "" & textBox6.Text != "" & maskedTextBox1.Text != "(   )    -" & maskedTextBox2.Text != "  .  .")
+            {
+                if (TextIsDate(maskedTextBox2.Text))
+                {
+                    if (maskedTextBox3.Text == "  .  .")
+                    {
+                        AccountAdministration f = (AccountAdministration)this.Owner;
+                        Edit();
+                        f.LoadAll();
+                        groupBox1.Enabled = false;
+                        button1.Visible = false;
+                        button3.Visible = false;
+                        MessageBox.Show("Данные пользователя отредактированы.");
+                    }
+                    else
+                    {
+                        if (TextIsDate(maskedTextBox3.Text))
+                        {
+                            AccountAdministration f = (AccountAdministration)this.Owner;
+                            Edit();
+                            f.LoadAll();
+                            groupBox1.Enabled = false;
+                            button1.Visible = false;
+                            button3.Visible = false;
+                            MessageBox.Show("Данные пользователя отредактированы.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Введён неправельный формат даты", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            maskedTextBox3.Clear();
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Введён неправельный формат даты", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    maskedTextBox2.Clear();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Заполните все поля!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void MaskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
@@ -141,6 +193,25 @@ namespace AS_Autodoc
         }
 
         private void Button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button2_Click_1(object sender, EventArgs e)
+        {
+            groupBox1.Enabled = true;
+            button1.Visible = true;
+            button3.Visible = true;
+        }
+
+        private void Button3_Click(object sender, EventArgs e)
+        {
+            groupBox1.Enabled = false;
+            button1.Visible = false;
+            button3.Visible = false;
+        }
+
+        private void GroupBox1_Enter(object sender, EventArgs e)
         {
 
         }

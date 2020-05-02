@@ -44,6 +44,34 @@ namespace AS_Autodoc
             }
         }
 
+        private void Delete()
+        {
+            string title_country = dataGridView1[1, dataGridView1.CurrentRow.Index].Value.ToString();
+            DialogResult result = MessageBox.Show(
+            "Вы точно хотите удалить учётную запись пользователя?",
+            "Предупреждение",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question,
+            MessageBoxDefaultButton.Button2);
+
+            if (result == DialogResult.Yes)
+            {
+                using (SqlConnection connect = new SqlConnection(con))
+                {
+                    connect.Open();
+                    string user = dataGridView1[0, dataGridView1.CurrentRow.Index].Value.ToString();
+                    SqlCommand com = new SqlCommand("DELETE FROM InfoUsers WHERE Login_='" + user + "'", connect);
+                    com.ExecuteNonQuery();
+                    com = new SqlCommand("DELETE FROM UserSession WHERE Login_='" + user + "'", connect);
+                    com.ExecuteNonQuery();
+                    com = new SqlCommand("DELETE FROM Users WHERE Login_='" + user + "'", connect);
+                    com.ExecuteNonQuery();
+
+                }
+            }
+            this.TopMost = true;
+        }
+
         private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -57,6 +85,7 @@ namespace AS_Autodoc
         private void Button1_Click(object sender, EventArgs e)
         {
             RegistrationOfUsers f = new RegistrationOfUsers();
+            f.Owner = this;
             f.ShowDialog();
         }
 
@@ -71,6 +100,52 @@ namespace AS_Autodoc
             login = dataGridView1[0, dataGridView1.CurrentRow.Index].Value.ToString();
             f.Owner = this;
             f.ShowDialog();
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow != null)
+            {
+                Delete();
+                LoadAll();
+            }
+        }
+
+        private void TextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button3_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text != "")
+            {
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    string str = dataGridView1[0, i].Value.ToString();
+                    int x = str.IndexOf(textBox1.Text);
+                    if (x > -1)
+                    {
+                        dataGridView1.Rows[i].Visible = true;
+                    }
+                    else
+                    {
+                        dataGridView1.Rows[i].Visible = false;
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    dataGridView1.Rows[i].Visible = true;
+                }
+            }
+        }
+
+        private void Button5_Click(object sender, EventArgs e)
+        {
+            LoadAll();
         }
     }
 }

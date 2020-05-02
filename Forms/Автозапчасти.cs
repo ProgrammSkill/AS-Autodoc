@@ -195,7 +195,6 @@ namespace AS_Autodoc
                 {
                     dataGridView1.Rows[i].Visible = true;
                 }
-
             }
         }
 

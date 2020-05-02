@@ -72,6 +72,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Пользовательские сесссии.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Пользовательские сесссии.Designer.cs">
+      <DependentUpon>Пользовательские сесссии.cs</DependentUpon>
+    </Compile>
     <Compile Include="Сотрудник.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -328,6 +334,9 @@
       <DependentUpon>Редактирование отдела.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="DeliveryReport.rdlc" />
+    <EmbeddedResource Include="Пользовательские сесссии.resx">
+      <DependentUpon>Пользовательские сесссии.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Сотрудник.resx">
       <DependentUpon>Сотрудник.cs</DependentUpon>
     </EmbeddedResource>
