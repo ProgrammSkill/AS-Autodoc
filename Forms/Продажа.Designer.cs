@@ -189,6 +189,7 @@
             this.maskedTextBox1.Size = new System.Drawing.Size(88, 22);
             this.maskedTextBox1.TabIndex = 24;
             this.maskedTextBox1.ValidatingType = typeof(System.DateTime);
+            this.maskedTextBox1.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.MaskedTextBox1_MaskInputRejected);
             // 
             // label1
             // 
@@ -199,6 +200,7 @@
             this.label1.Size = new System.Drawing.Size(58, 16);
             this.label1.TabIndex = 25;
             this.label1.Text = "Период";
+            this.label1.Click += new System.EventHandler(this.Label1_Click);
             // 
             // label2
             // 
@@ -209,6 +211,7 @@
             this.label2.Size = new System.Drawing.Size(24, 16);
             this.label2.TabIndex = 26;
             this.label2.Text = "по";
+            this.label2.Click += new System.EventHandler(this.Label2_Click);
             // 
             // maskedTextBox2
             // 
@@ -218,6 +221,7 @@
             this.maskedTextBox2.Size = new System.Drawing.Size(88, 22);
             this.maskedTextBox2.TabIndex = 27;
             this.maskedTextBox2.ValidatingType = typeof(System.DateTime);
+            this.maskedTextBox2.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.MaskedTextBox2_MaskInputRejected);
             // 
             // comboBox1
             // 
@@ -320,7 +324,7 @@
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button5.Location = new System.Drawing.Point(37, 155);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(188, 24);
+            this.button5.Size = new System.Drawing.Size(158, 24);
             this.button5.TabIndex = 41;
             this.button5.Text = "Обновить таблицу";
             this.button5.UseVisualStyleBackColor = true;

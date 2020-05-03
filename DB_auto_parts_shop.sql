@@ -1088,6 +1088,36 @@ GO
 EXECUTE dbo.EditInfoUsers '111', '111', 2, 'xccsd', 'dss', 'dsss', 1, 'dsdsds', '343433', '31.12.1999', NULL
 
 
+CREATE PROCEDURE dbo.SelectUserSession
+AS
+BEGIN
+SELECT ID_session, Users.Login_, Surname, First_name, Last_name, Role_.Role_, UserSession.Date_of_entrance
+FROM UserSession INNER JOIN Users
+ON UserSession.Login_=Users.Login_
+INNER JOIN Role_
+ON Users.ID_role=Role_.ID_role
+INNER JOIN InfoUsers
+ON Users.Login_=InfoUsers.Login_
+END
+GO
+
+
+CREATE PROCEDURE dbo.SelectUserSessionDate
+@startDate DATE,
+@endDate DATE
+AS
+BEGIN
+SELECT ID_session, Users.Login_, Surname, First_name, Last_name, Role_.Role_, UserSession.Date_of_entrance
+FROM UserSession INNER JOIN Users
+ON UserSession.Login_=Users.Login_
+INNER JOIN Role_
+ON Users.ID_role=Role_.ID_role
+INNER JOIN InfoUsers
+ON Users.Login_=InfoUsers.Login_
+WHERE Date_of_entrance BETWEEN @startDate AND @endDate
+END
+GO
+
 
 CREATE PROCEDURE dbo.InsertUserSession
 @id INT,

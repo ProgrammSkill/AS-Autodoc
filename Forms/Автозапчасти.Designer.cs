@@ -310,7 +310,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox1.Location = new System.Drawing.Point(24, 11);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(502, 286);
+            this.groupBox1.Size = new System.Drawing.Size(502, 288);
             this.groupBox1.TabIndex = 39;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Поиск автозапчасти";
@@ -398,7 +398,7 @@
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button5.Location = new System.Drawing.Point(24, 321);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(188, 24);
+            this.button5.Size = new System.Drawing.Size(158, 24);
             this.button5.TabIndex = 40;
             this.button5.Text = "Обновить таблицу";
             this.button5.UseVisualStyleBackColor = true;

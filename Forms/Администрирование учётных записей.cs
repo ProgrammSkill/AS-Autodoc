@@ -66,7 +66,6 @@ namespace AS_Autodoc
                     com.ExecuteNonQuery();
                     com = new SqlCommand("DELETE FROM Users WHERE Login_='" + user + "'", connect);
                     com.ExecuteNonQuery();
-
                 }
             }
             this.TopMost = true;
