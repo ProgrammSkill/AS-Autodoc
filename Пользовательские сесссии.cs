@@ -39,7 +39,8 @@ namespace AS_Autodoc
                         dataGridView1[3, i].Value = r[3].ToString();
                         dataGridView1[4, i].Value = r[4].ToString();
                         dataGridView1[5, i].Value = r[5].ToString();
-                        dataGridView1[6, i].Value = r[6].ToString();
+                        dataGridView1[6, i].Value = r[6].ToString().Remove(10);
+                        dataGridView1[7, i].Value = r[7].ToString();
                         i++;
                     }
                 }
@@ -48,7 +49,7 @@ namespace AS_Autodoc
 
         static bool TextIsDate(string text)
         {
-            var dateFormat = "dd.MM.yyyy";
+            var dateFormat = "dd.MM.yyyy H:mm:ss";
             DateTime scheduleDate;
             if (DateTime.TryParseExact(text, dateFormat, DateTimeFormatInfo.InvariantInfo, DateTimeStyles.None, out scheduleDate))
             {
@@ -59,7 +60,7 @@ namespace AS_Autodoc
 
         public void SearchByDateRange()
         {
-            if (maskedTextBox1.Text != "  .  ." & maskedTextBox2.Text != "  .  .")
+            if (maskedTextBox1.Text != "  .  .       :  :" && maskedTextBox2.Text != "  .  .       :  :")
             {
                 using (SqlConnection connect = new SqlConnection(con))
                 {
@@ -86,6 +87,7 @@ namespace AS_Autodoc
                                     dataGridView1[4, i].Value = r[4].ToString();
                                     dataGridView1[5, i].Value = r[5].ToString();
                                     dataGridView1[6, i].Value = r[6].ToString();
+                                    dataGridView1[7, i].Value = r[7].ToString();
                                     i++;
                                 }
                             }
@@ -121,7 +123,7 @@ namespace AS_Autodoc
             {
                 for (int i = 0; i < dataGridView1.Rows.Count; i++)
                 {
-                    string str = dataGridView1[0, i].Value.ToString();
+                    string str = dataGridView1[1, i].Value.ToString();
                     int x = str.IndexOf(textBox1.Text);
                     if (x > -1)
                     {

@@ -215,5 +215,37 @@ namespace AS_Autodoc
         {
 
         }
+
+        private void TextBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TextBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char l = e.KeyChar;
+            if ((l < 'А' || l > 'я') && l != '\b' && l != '.')
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TextBox4_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char l = e.KeyChar;
+            if ((l < 'А' || l > 'я') && l != '\b' && l != '.')
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TextBox5_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char l = e.KeyChar;
+            if ((l < 'А' || l > 'я') && l != '\b' && l != '.')
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

@@ -62,7 +62,7 @@ namespace AS_Autodoc
             this.reportViewer1.RefreshReport();
         }
 
-        private void Button4_Click(object sender, EventArgs e)
+        private void FilteringByStore()
         {
             if (comboBox1.Text != "" | comboBox1.Text != "Не указано")
             {
@@ -76,7 +76,28 @@ namespace AS_Autodoc
             }
         }
 
-        private void Button1_Click(object sender, EventArgs e)
+        private void Button4_Click(object sender, EventArgs e)
+        {
+            if (comboBox1.Text != "" && comboBox1.Text != "Не указано" && maskedTextBox1.Text == "  .  ." & maskedTextBox2.Text == "  .  .")
+            {
+                FilteringByStore();
+            }
+            else if (comboBox1.Text == "" && comboBox1.Text == "Не указано" && maskedTextBox1.Text != "  .  ." & maskedTextBox2.Text != "  .  .")
+            {
+                FilteringByDate();
+            }
+            else if (comboBox1.Text != "" && comboBox1.Text != "Не указано" && maskedTextBox1.Text != "  .  ." & maskedTextBox2.Text != "  .  .")
+            {
+                FilteringByStoreAndDate();
+            }
+            else
+            {
+                this.SalesReportTableAdapter.Fill(this.Auto_parts_shopDataSetSale.SalesReport);
+                this.reportViewer1.RefreshReport();
+            }
+        }
+
+        private void FilteringByDate()
         {
             if (maskedTextBox1.Text != "  .  ." & maskedTextBox2.Text != "  .  .")
             {
@@ -101,8 +122,23 @@ namespace AS_Autodoc
             }
             else
             {
-
+                this.SalesReportTableAdapter.Fill(this.Auto_parts_shopDataSetSale.SalesReport);
+                this.reportViewer1.RefreshReport();
             }
+        }
+
+        private void FilteringByStoreAndDate()
+        {
+            if(comboBox1.Text!="" && comboBox1.Text!="Не указано" && maskedTextBox1.Text!= "  .  ." && maskedTextBox2.Text != "  .  .")
+            {
+                this.SalesReportTableAdapter.FillByStoreAndDate(this.Auto_parts_shopDataSetSale.SalesReport, comboBox1.SelectedIndex, maskedTextBox1.Text, maskedTextBox2.Text);
+                this.reportViewer1.RefreshReport();
+            }
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

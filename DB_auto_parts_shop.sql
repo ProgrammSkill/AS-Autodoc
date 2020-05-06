@@ -110,7 +110,8 @@ Date_of_termination DATE)
 CREATE TABLE UserSession (
 ID_session INT PRIMARY KEY,
 Login_ CHAR(15) FOREIGN KEY REFERENCES Users(Login_),
-Date_of_entrance DATETIME)
+Date_of_entrance DATE, 
+Time_ TIME(7))
 
 
 
@@ -836,6 +837,15 @@ WHERE Date_of_sale BETWEEN @startDate AND @endDate
 END
 GO
 
+SELECT ID_sale, Sale.ID_department, Sale.ID_autoparts, Autoparts.Title, Manufacturer, Autoparts.Article, Availability_auto_parts.Sale_price, Sale.Amount, Availability_auto_parts.Sale_price*Sale.Amount AS Sum_, Sale.Date_of_sale
+FROM Sale INNER JOIN Autoparts
+ON Sale.ID_autoparts=Autoparts.ID_autoparts
+INNER JOIN Manufacturers
+ON Autoparts.ID_manufacturer=Manufacturers.ID_manufacturer
+INNER JOIN Availability_auto_parts
+ON Availability_auto_parts.ID_autoparts=Sale.ID_autoparts AND Sale.ID_department=Availability_auto_parts.ID_department
+WHERE Date_of_sale BETWEEN '21.04.2020' AND 
+
 
 CREATE PROCEDURE dbo.SearchByPriceRange
 @startPrice NUMERIC(8,2),
@@ -880,7 +890,7 @@ ON Availability_auto_parts.ID_autoparts=Sale.ID_autoparts AND Sale.ID_department
 END
 
 
----------------------фильтрация поставок--------------------------------------
+---------------------фильтрация отчёта поставок--------------------------------------
 
 --поиск по поставщику
 SELECT Suppliers.Title AS 'Поставщик', Autoparts.Title AS 'Автозапчасть', Manufacturers.Manufacturer AS 'Производитель', Autoparts.Article AS 'Артикул', Supply.Purchase_price AS 'Цена', Supply.Amount AS 'Количество' , Purchase_price*Amount AS 'Сумма', Supply.Delivery_date AS 'Дата'
@@ -901,8 +911,19 @@ INNER JOIN Manufacturers
 ON Autoparts.ID_manufacturer=Manufacturers.ID_manufacturer
 WHERE Supply.Delivery_date BETWEEN @startDate AND @endDate
 
+--поиск по дате и поставщику
+SELECT Suppliers.Title AS 'Поставщик', Autoparts.Title AS 'Автозапчасть', Manufacturers.Manufacturer AS 'Производитель', Autoparts.Article AS 'Артикул', Supply.Purchase_price AS 'Цена', Supply.Amount AS 'Количество' , Purchase_price*Amount AS 'Сумма', Supply.Delivery_date AS 'Дата'
+FROM Supply INNER JOIN Suppliers
+ON Supply.ID_supplier=Suppliers.ID_supplier
+INNER JOIN Autoparts
+ON Supply.ID_autoparts=Autoparts.ID_autoparts
+INNER JOIN Manufacturers
+ON Autoparts.ID_manufacturer=Manufacturers.ID_manufacturer
+WHERE Suppliers.Title=@s AND Supply.Delivery_date BETWEEN @startDate AND @endDate
 
----------------------фильтрация продаж--------------------------------------
+
+
+---------------------фильтрация отчёта продаж--------------------------------------
 
 --по магазину-----
 SELECT Sale.ID_department AS 'Магазин',  Autoparts.Title AS 'Автозапчасть', Manufacturer AS 'Производитель', Autoparts.Article AS 'Артикул', Availability_auto_parts.Sale_price AS 'Цена', Sale.Amount AS 'Количество', Availability_auto_parts.Sale_price*Sale.Amount AS 'Сумма', Sale.Date_of_sale AS 'Дата'
@@ -923,6 +944,17 @@ ON Autoparts.ID_manufacturer=Manufacturers.ID_manufacturer
 INNER JOIN Availability_auto_parts
 ON Availability_auto_parts.ID_autoparts=Sale.ID_autoparts AND Sale.ID_department=Availability_auto_parts.ID_department
 WHERE Sale.Date_of_sale BETWEEN @startDate AND @endDate
+
+
+--по дате и магазина-------
+SELECT Sale.ID_department AS 'Магазин',  Autoparts.Title AS 'Автозапчасть', Manufacturer AS 'Производитель', Autoparts.Article AS 'Артикул', Availability_auto_parts.Sale_price AS 'Цена', Sale.Amount AS 'Количество', Availability_auto_parts.Sale_price*Sale.Amount AS 'Сумма', Sale.Date_of_sale AS 'Дата'
+FROM Sale INNER JOIN Autoparts
+ON Sale.ID_autoparts=Autoparts.ID_autoparts 
+INNER JOIN Manufacturers
+ON Autoparts.ID_manufacturer=Manufacturers.ID_manufacturer
+INNER JOIN Availability_auto_parts
+ON Availability_auto_parts.ID_autoparts=Sale.ID_autoparts AND Sale.ID_department=Availability_auto_parts.ID_department
+WHERE Sale.ID_department=@store AND Sale.Date_of_sale BETWEEN @startDate AND @endDate 
 
 
 
@@ -956,7 +988,7 @@ GO
 
 EXECUTE dbo.InsertRole 1, 'Администратор'
 EXECUTE dbo.InsertRole 2, 'Менеджер'
-EXECUTE dbo.InsertRole 3, 'Продовец'
+EXECUTE dbo.InsertRole 3, 'Продавец'
 EXECUTE dbo.InsertRole 4, 'Директор'
 EXECUTE dbo.InsertRole 5, 'Кладовшик'
 
@@ -976,7 +1008,7 @@ GO
 
 EXECUTE dbo.InsertPosition 1, 'Администратор'
 EXECUTE dbo.InsertPosition 2, 'Менеджер'
-EXECUTE dbo.InsertPosition 3, 'Продовец'
+EXECUTE dbo.InsertPosition 3, 'Продавец'
 EXECUTE dbo.InsertPosition 4, 'Директор'
 EXECUTE dbo.InsertPosition 5, 'Кладовшик'
 
@@ -1091,7 +1123,7 @@ EXECUTE dbo.EditInfoUsers '111', '111', 2, 'xccsd', 'dss', 'dsss', 1, 'dsdsds', 
 CREATE PROCEDURE dbo.SelectUserSession
 AS
 BEGIN
-SELECT ID_session, Users.Login_, Surname, First_name, Last_name, Role_.Role_, UserSession.Date_of_entrance
+SELECT ID_session, Users.Login_, Surname, First_name, Last_name, Role_.Role_, UserSession.Date_of_entrance, UserSession.Time_
 FROM UserSession INNER JOIN Users
 ON UserSession.Login_=Users.Login_
 INNER JOIN Role_
@@ -1103,11 +1135,11 @@ GO
 
 
 CREATE PROCEDURE dbo.SelectUserSessionDate
-@startDate DATE,
-@endDate DATE
+@startDate DATETIME,
+@endDate DATETIME
 AS
 BEGIN
-SELECT ID_session, Users.Login_, Surname, First_name, Last_name, Role_.Role_, UserSession.Date_of_entrance
+SELECT ID_session, Users.Login_, Surname, First_name, Last_name, Role_.Role_, UserSession.Date_of_entrance, UserSession.Time_
 FROM UserSession INNER JOIN Users
 ON UserSession.Login_=Users.Login_
 INNER JOIN Role_
@@ -1122,15 +1154,17 @@ GO
 CREATE PROCEDURE dbo.InsertUserSession
 @id INT,
 @id_user CHAR(15),
-@dt DATETIME
+@dt DATE,
+@t TIME
 AS
 BEGIN
 INSERT INTO [dbo].[UserSession]
            ([ID_session]
            ,[Login_]
-           ,[Date_of_entrance])
+           ,[Date_of_entrance]
+		   ,[Time_])
      VALUES
-           (@id, @id_user,@dt)
+           (@id, @id_user, @dt, @t)
 END
 GO
 

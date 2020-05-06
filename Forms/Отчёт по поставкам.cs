@@ -61,9 +61,9 @@ namespace AS_Autodoc
 
         }
 
-        private void Button2_Click(object sender, EventArgs e)
+        private void FilteringBySuppliers()
         {
-            if (comboBox1.Text != ""|comboBox1.Text!="Не указано")
+            if (comboBox1.Text != "" | comboBox1.Text != "Не указано")
             {
                 this.DeliveryReportTableAdapter.FillBySuppliers(this.Auto_parts_shopDataSet.DeliveryReport, comboBox1.SelectedItem.ToString());
                 this.reportViewer1.RefreshReport();
@@ -75,12 +75,53 @@ namespace AS_Autodoc
             }
         }
 
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            if (comboBox1.Text != "" && comboBox1.Text != "Не указано" && maskedTextBox1.Text == "  .  ." & maskedTextBox2.Text == "  .  .")
+            {
+                FilteringBySuppliers();
+            }
+            else if (comboBox1.Text == "" && comboBox1.Text == "Не указано" && maskedTextBox1.Text != "  .  ." & maskedTextBox2.Text != "  .  .")
+            {
+                FilteringByDate();
+            }
+            else if (comboBox1.Text != "" && comboBox1.Text != "Не указано" && maskedTextBox1.Text != "  .  ." & maskedTextBox2.Text != "  .  .")
+            {
+                FilteringBySupplierAndDate();
+            }
+        }
+
+        private void FilteringBySupplierAndDate()
+        {
+            if (comboBox1.Text != "" && comboBox1.Text != "Не указано" && maskedTextBox1.Text != "  .  ." & maskedTextBox2.Text != "  .  .")
+            {
+                if (TextIsDate(maskedTextBox1.Text))
+                {
+                    if (TextIsDate(maskedTextBox2.Text))
+                    {
+                        this.DeliveryReportTableAdapter.FillBySuppliersAndDate(this.Auto_parts_shopDataSet.DeliveryReport, comboBox1.Text, maskedTextBox1.Text, maskedTextBox2.Text);
+                        this.reportViewer1.RefreshReport();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Введён неправельный формат даты", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        maskedTextBox2.Clear();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Введён неправельный формат даты", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    maskedTextBox1.Clear();
+                }
+            }
+        }
+
         private void ReportViewer1_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void Button1_Click(object sender, EventArgs e)
+        private void FilteringByDate()
         {
             if (maskedTextBox1.Text != "  .  ." & maskedTextBox2.Text != "  .  .")
             {
@@ -108,6 +149,11 @@ namespace AS_Autodoc
                 this.DeliveryReportTableAdapter.Fill(this.Auto_parts_shopDataSet.DeliveryReport);
                 this.reportViewer1.RefreshReport();
             }
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void Button3_Click(object sender, EventArgs e)

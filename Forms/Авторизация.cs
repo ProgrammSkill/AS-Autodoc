@@ -55,6 +55,7 @@ namespace AS_Autodoc
                         ManagerMenu f = new ManagerMenu();
                         f.Owner = this;
                         f.FormClosing += F_FormClosing;
+                        i = 0;
                         f.Show();
                         Hide();
                     }
@@ -67,6 +68,7 @@ namespace AS_Autodoc
                         StorekeeperMenu f = new StorekeeperMenu();
                         f.Owner = this;
                         f.FormClosing += F_FormClosing;
+                        i = 0;
                         f.Show();
                         Hide();
                     }
@@ -79,6 +81,7 @@ namespace AS_Autodoc
                         DirectorMenu f = new DirectorMenu();
                         f.Owner = this;
                         f.FormClosing += F_FormClosing;
+                        i = 0;
                         f.Show();
                         Hide();
                     }
@@ -91,6 +94,20 @@ namespace AS_Autodoc
                         AdminMenu f = new AdminMenu();
                         f.Owner = this;
                         f.FormClosing += F_FormClosing;
+                        i = 0;
+                        f.Show();
+                        Hide();
+                    }
+                    sda = new SqlDataAdapter("SELECT COUNT(*) FROM Role_ join Users ON Role_.ID_role=Users.ID_role AND Login_='" + textBox1.Text +
+                    "'AND Password_= '" + textBox2.Text + "' AND Role_='Продавец           '", connect);
+                    dt = new DataTable();
+                    sda.Fill(dt);
+                    if (dt.Rows[0][0].ToString() == "1")
+                    {
+                        SellerMenu f = new SellerMenu();
+                        f.Owner = this;
+                        f.FormClosing += F_FormClosing;
+                        i = 0;
                         f.Show();
                         Hide();
                     }

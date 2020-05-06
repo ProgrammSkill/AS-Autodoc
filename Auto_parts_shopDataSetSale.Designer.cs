@@ -1040,7 +1040,7 @@ namespace AS_Autodoc.Auto_parts_shopDataSetSaleTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[4];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "dbo.SalesReport";
@@ -1071,6 +1071,20 @@ ON Availability_auto_parts.ID_autoparts=Sale.ID_autoparts AND Sale.ID_department
 WHERE Sale.ID_department=@store";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@store", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Магазин", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = @"SELECT Sale.ID_department AS 'Магазин',  Autoparts.Title AS 'Автозапчасть', Manufacturer AS 'Производитель', Autoparts.Article AS 'Артикул', Availability_auto_parts.Sale_price AS 'Цена', Sale.Amount AS 'Количество', Availability_auto_parts.Sale_price*Sale.Amount AS 'Сумма', Sale.Date_of_sale AS 'Дата'
+FROM Sale INNER JOIN Autoparts
+ON Sale.ID_autoparts=Autoparts.ID_autoparts 
+INNER JOIN Manufacturers
+ON Autoparts.ID_manufacturer=Manufacturers.ID_manufacturer
+INNER JOIN Availability_auto_parts
+ON Availability_auto_parts.ID_autoparts=Sale.ID_autoparts AND Sale.ID_department=Availability_auto_parts.ID_department
+WHERE Sale.ID_department=@store AND Sale.Date_of_sale BETWEEN @startDate AND @endDate ";
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@store", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Магазин", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@startDate", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "Дата", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@endDate", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "Дата", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1175,6 +1189,66 @@ WHERE Sale.ID_department=@store";
             }
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            Auto_parts_shopDataSetSale.SalesReportDataTable dataTable = new Auto_parts_shopDataSetSale.SalesReportDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByStoreAndDate(Auto_parts_shopDataSetSale.SalesReportDataTable dataTable, global::System.Nullable<int> store, string startDate, string endDate) {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
+            if ((store.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(store.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((startDate == null)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(startDate));
+            }
+            if ((endDate == null)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(endDate));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual Auto_parts_shopDataSetSale.SalesReportDataTable GetDataByStoreAndDate(global::System.Nullable<int> store, string startDate, string endDate) {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
+            if ((store.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(store.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((startDate == null)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(startDate));
+            }
+            if ((endDate == null)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(endDate));
             }
             Auto_parts_shopDataSetSale.SalesReportDataTable dataTable = new Auto_parts_shopDataSetSale.SalesReportDataTable();
             this.Adapter.Fill(dataTable);

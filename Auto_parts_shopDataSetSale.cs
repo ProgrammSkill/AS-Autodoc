@@ -11,7 +11,7 @@ namespace AS_Autodoc
 
 namespace AS_Autodoc.Auto_parts_shopDataSetSaleTableAdapters
 {
-    public partial class SalesReportTableAdapter
+    partial class SalesReportTableAdapter
     {
     }
 }

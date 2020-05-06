@@ -30,6 +30,13 @@
         {
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.автозапчастиВМагазинеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.продажаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сменитьПользователяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label2
@@ -52,6 +59,55 @@
             this.label1.TabIndex = 10;
             this.label1.Text = "Пользователь:";
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.автозапчастиВМагазинеToolStripMenuItem,
+            this.продажаToolStripMenuItem,
+            this.оПрограммеToolStripMenuItem,
+            this.сменитьПользователяToolStripMenuItem,
+            this.выходToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(800, 25);
+            this.menuStrip1.TabIndex = 12;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // автозапчастиВМагазинеToolStripMenuItem
+            // 
+            this.автозапчастиВМагазинеToolStripMenuItem.Name = "автозапчастиВМагазинеToolStripMenuItem";
+            this.автозапчастиВМагазинеToolStripMenuItem.Size = new System.Drawing.Size(170, 21);
+            this.автозапчастиВМагазинеToolStripMenuItem.Text = "Автозапчасти в магазине";
+            // 
+            // продажаToolStripMenuItem
+            // 
+            this.продажаToolStripMenuItem.Name = "продажаToolStripMenuItem";
+            this.продажаToolStripMenuItem.Size = new System.Drawing.Size(75, 21);
+            this.продажаToolStripMenuItem.Text = "Продажа";
+            this.продажаToolStripMenuItem.Click += new System.EventHandler(this.ПродажаToolStripMenuItem_Click);
+            // 
+            // оПрограммеToolStripMenuItem
+            // 
+            this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(102, 21);
+            this.оПрограммеToolStripMenuItem.Text = "О программе";
+            this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.ОПрограммеToolStripMenuItem_Click);
+            // 
+            // сменитьПользователяToolStripMenuItem
+            // 
+            this.сменитьПользователяToolStripMenuItem.Name = "сменитьПользователяToolStripMenuItem";
+            this.сменитьПользователяToolStripMenuItem.Size = new System.Drawing.Size(157, 21);
+            this.сменитьПользователяToolStripMenuItem.Text = "Сменить пользователя";
+            this.сменитьПользователяToolStripMenuItem.Click += new System.EventHandler(this.СменитьПользователяToolStripMenuItem_Click);
+            // 
+            // выходToolStripMenuItem
+            // 
+            this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(57, 21);
+            this.выходToolStripMenuItem.Text = "Выход";
+            this.выходToolStripMenuItem.Click += new System.EventHandler(this.ВыходToolStripMenuItem_Click);
+            // 
             // SellerMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -59,9 +115,13 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "SellerMenu";
             this.Text = "Меню";
             this.Load += new System.EventHandler(this.SellerMenu_Load);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -71,5 +131,11 @@
 
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem автозапчастиВМагазинеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem продажаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem сменитьПользователяToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
     }
 }

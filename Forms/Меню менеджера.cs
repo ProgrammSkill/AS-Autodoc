@@ -50,7 +50,8 @@ namespace AS_Autodoc
             {
                 connect.Open();
                 Authorization_form f = (Authorization_form)this.Owner;
-                SqlCommand com = new SqlCommand("EXECUTE dbo.InsertUserSession '" + insertId + "','" + f.Login.ToString()+ "','" +DateTime.Now+"'", connect);
+                SqlCommand com = new SqlCommand("EXECUTE dbo.InsertUserSession '" + insertId + "','" + f.Login.ToString()+ 
+                "','" +DateTime.Now.ToString("dd.MM.yyyy") +"','"+DateTime.Now.ToString("hh:mm:ss") +"'", connect);
                 com.ExecuteNonQuery();
             }
         }

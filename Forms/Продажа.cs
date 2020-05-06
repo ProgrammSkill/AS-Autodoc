@@ -203,18 +203,17 @@ namespace AS_Autodoc
 
         public void SearchByDateRange()
         {
-            if (maskedTextBox1.Text != "  .  ." & maskedTextBox2.Text != "  .  .")
+            string StartDate = maskedTextBox1.Text;
+            string EndDate = maskedTextBox2.Text;
+            if (maskedTextBox1.Text != "  .  ." && maskedTextBox2.Text != "  .  .")
             {
                 using (SqlConnection connect = new SqlConnection(con))
                 {
                     connect.Open();
-                    string StartDate = maskedTextBox1.Text;
-                    string EndDate = maskedTextBox2.Text;
                     if (TextIsDate(maskedTextBox1.Text))
                     {
                         if (TextIsDate(maskedTextBox2.Text))
                         {
-
                             SqlCommand com = new SqlCommand("EXECUTE dbo.SearchDateSale '" + StartDate + "','" + EndDate + "'", connect);
                             int i = 0;
                             dataGridView1.Rows.Clear();
@@ -242,6 +241,7 @@ namespace AS_Autodoc
                             MessageBox.Show("Введён неправельный формат даты", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             maskedTextBox2.Clear();
                         }
+
                     }
                     else
                     {
