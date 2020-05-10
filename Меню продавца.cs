@@ -86,5 +86,11 @@ namespace AS_Autodoc
             AboutTheProgram f = new AboutTheProgram();
             f.ShowDialog();
         }
+
+        private void АвтозапчастиВМагазинеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AutoPartsInStoreForSeller f = new AutoPartsInStoreForSeller();
+            f.ShowDialog();
+        }
     }
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Globalization;
 
 namespace AS_Autodoc
 {
@@ -17,6 +18,7 @@ namespace AS_Autodoc
         public Supply()
         {
             InitializeComponent();
+            SelectComboBox();
         }
         public string InsertOrEdit { get; set; }
 
@@ -31,6 +33,22 @@ namespace AS_Autodoc
         public string sum;
         public string delivery_date;
         public string status;
+
+        void SelectComboBox()
+        {
+            using (SqlConnection connect = new SqlConnection(con))
+            {
+                connect.Open();
+                SqlCommand com = new SqlCommand("SELECT * FROM Suppliers", connect);
+                using (SqlDataReader r = com.ExecuteReader())
+                {
+                    while (r.Read())
+                    {
+                        comboBox1.Items.Add(r[1].ToString());
+                    }
+                }
+            }
+        }
 
         public void LoadAll()
         {
@@ -60,6 +78,17 @@ namespace AS_Autodoc
                     }
                 }
             }
+        }
+
+        static bool TextIsDate(string text)
+        {
+            var dateFormat = "dd.MM.yyyy";
+            DateTime scheduleDate;
+            if (DateTime.TryParseExact(text, dateFormat, DateTimeFormatInfo.InvariantInfo, DateTimeStyles.None, out scheduleDate))
+            {
+                return true;
+            }
+            return false;
         }
 
         private void Supply_Load(object sender, EventArgs e)
@@ -179,6 +208,162 @@ namespace AS_Autodoc
             else
             {
                 MessageBox.Show("Не выбрана поставка для распределения.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void GroupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button6_Click(object sender, EventArgs e)
+        {
+            LoadAll();
+        }
+
+        private void SearchBySupplier()
+        {
+            if (comboBox1.Text != "" && comboBox1.Text != "Не указано")
+            {
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    string str = dataGridView1[1, i].Value.ToString();
+                    int x = str.IndexOf(comboBox1.Text);
+                    if (x > -1)
+                    {
+                        dataGridView1.Rows[i].Visible = true;
+                    }
+                    else
+                    {
+                        dataGridView1.Rows[i].Visible = false;
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    dataGridView1.Rows[i].Visible = true;
+                }
+            }
+        }
+
+        private void SearchByDate()
+        {
+            using (SqlConnection connect = new SqlConnection(con))
+            {
+                connect.Open();
+                string StartDate = maskedTextBox1.Text;
+                string EndDate = maskedTextBox2.Text;
+                if (TextIsDate(StartDate))
+                {
+                    if (TextIsDate(EndDate))
+                    {
+                        SqlCommand com = new SqlCommand("EXECUTE dbo.SearchForDeliveriesByDate '" + StartDate + "','" + EndDate + "'", connect);
+                        int i = 0;
+                        dataGridView1.Rows.Clear();
+                        using (SqlDataReader r = com.ExecuteReader())
+                        {
+                            while (r.Read())
+                            {
+                                dataGridView1.Rows.Add();
+                                dataGridView1[0, i].Value = r[0].ToString();
+                                dataGridView1[1, i].Value = r[1].ToString();
+                                dataGridView1[2, i].Value = r[2].ToString();
+                                dataGridView1[3, i].Value = r[3].ToString();
+                                dataGridView1[4, i].Value = r[4].ToString();
+                                dataGridView1[5, i].Value = r[5].ToString();
+                                dataGridView1[6, i].Value = r[6].ToString();
+                                dataGridView1[7, i].Value = r[7].ToString();
+                                dataGridView1[8, i].Value = r[8].ToString();
+                                dataGridView1[9, i].Value = r[9].ToString().Remove(10);
+                                dataGridView1[10, i].Value = r[10].ToString().TrimEnd();
+                                i++;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Введён неправельный формат даты", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        maskedTextBox2.Clear();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Введён неправельный формат даты", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    maskedTextBox1.Clear();
+                }
+            }
+        }
+
+        private void SearchForDeliveriesBySupplierAndDate()
+        {
+            using (SqlConnection connect = new SqlConnection(con))
+            {
+                connect.Open();
+                string StartDate = maskedTextBox1.Text;
+                string EndDate = maskedTextBox2.Text;
+                if (TextIsDate(StartDate))
+                {
+                    if (TextIsDate(EndDate))
+                    {
+                        SqlCommand com = new SqlCommand("EXECUTE dbo.SearchForDeliveriesBySupplierAndDate '" + comboBox1.Text + "','" + StartDate + "','" + EndDate + "'", connect);
+                        int i = 0;
+                        dataGridView1.Rows.Clear();
+                        using (SqlDataReader r = com.ExecuteReader())
+                        {
+                            while (r.Read())
+                            {
+                                dataGridView1.Rows.Add();
+                                dataGridView1[0, i].Value = r[0].ToString();
+                                dataGridView1[1, i].Value = r[1].ToString();
+                                dataGridView1[2, i].Value = r[2].ToString();
+                                dataGridView1[3, i].Value = r[3].ToString();
+                                dataGridView1[4, i].Value = r[4].ToString();
+                                dataGridView1[5, i].Value = r[5].ToString();
+                                dataGridView1[6, i].Value = r[6].ToString();
+                                dataGridView1[7, i].Value = r[7].ToString();
+                                dataGridView1[8, i].Value = r[8].ToString();
+                                dataGridView1[9, i].Value = r[9].ToString().Remove(10);
+                                dataGridView1[10, i].Value = r[10].ToString().TrimEnd();
+                                i++;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Введён неправельный формат даты", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        maskedTextBox2.Clear();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Введён неправельный формат даты", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    maskedTextBox1.Clear();
+                }
+            }
+        }
+
+        private void Button5_Click(object sender, EventArgs e)
+        {
+            if (comboBox1.Text != "" && comboBox1.Text != "Не указано" && maskedTextBox1.Text == "  .  ." & maskedTextBox2.Text == "  .  .")
+            {
+                SearchBySupplier();
+            }
+            else if (comboBox1.Text == "" && comboBox1.Text == "Не указано" && maskedTextBox1.Text != "  .  ." & maskedTextBox2.Text != "  .  .")
+            {
+                SearchByDate();
+            }
+            else if (comboBox1.Text != "" && comboBox1.Text != "Не указано" && maskedTextBox1.Text != "  .  ." & maskedTextBox2.Text != "  .  .")
+            {
+                SearchForDeliveriesBySupplierAndDate();
+            }
+            else
+            {
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    dataGridView1.Rows[i].Visible = true;
+                }
             }
         }
     }

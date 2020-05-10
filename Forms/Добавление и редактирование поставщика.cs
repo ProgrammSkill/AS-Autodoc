@@ -35,11 +35,8 @@ namespace AS_Autodoc
                         comboBox1.Items.Add(r[1].ToString());
 
                     }
-
                 }
-
             }
-
 
             id_city = new List<int>();
             using (SqlConnection connect = new SqlConnection(con))
@@ -77,7 +74,7 @@ namespace AS_Autodoc
         string id;
 
 
-        void Maxid()
+        void MaxId()
         {
             using (SqlConnection connection = new SqlConnection(con))
             {
@@ -135,45 +132,7 @@ namespace AS_Autodoc
             if (f.InsertOrEdit.ToString()=="Добавить")
             {
                this.Text = "Добавление нового поставщика";
-
-                using (SqlConnection connect = new SqlConnection(con))
-                {
-                    connect.Open();
-                    SqlCommand com = new SqlCommand("SELECT Country FROM Country", connect);
-                    using (SqlDataReader r = com.ExecuteReader())
-                    {
-                        while (r.Read())
-                        {
-                            comboBox1.Text = r[0].ToString();
-                        }
-                    }
-                }
-
-                using (SqlConnection connect = new SqlConnection(con))
-                {
-                    connect.Open();
-                    SqlCommand com = new SqlCommand("SELECT City FROM City", connect);
-                    using (SqlDataReader r = com.ExecuteReader())
-                    {
-                        while (r.Read())
-                        {
-                            comboBox2.Text = r[0].ToString();
-                        }
-                    }
-                }
-
-                using (SqlConnection connect = new SqlConnection(con))
-                {
-                    connect.Open();
-                    SqlCommand com = new SqlCommand("SELECT Street FROM Street", connect);
-                    using (SqlDataReader r = com.ExecuteReader())
-                    {
-                        while (r.Read())
-                        {
-                            comboBox3.Text = r[0].ToString();
-                        }
-                    }
-                }
+                MaxId();        
             }
             else
             {
@@ -203,7 +162,7 @@ namespace AS_Autodoc
             if (f.InsertOrEdit.ToString() == "Добавить")
             {
                 Insertion();
-                Maxid();
+                MaxId();
             }
             else
             {

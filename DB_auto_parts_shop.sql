@@ -2,6 +2,7 @@ CREATE DATABASE Auto_parts_shop
 
 use Auto_parts_shop
 
+
 CREATE TABLE Country (
 ID_country INT PRIMARY KEY,
 Country CHAR(30))
@@ -346,7 +347,21 @@ INNER JOIN City ON Suppliers.ID_city=City.ID_city
 INNER JOIN Street ON Suppliers.ID_street=Street.ID_street
 END
 GO
-EXECUTE dbo.SelectSuppliers
+
+
+CREATE PROCEDURE dbo.SearchBySupplierAndCountry
+@s CHAR(150),
+@c CHAR(30)
+AS
+BEGIN
+SELECT Suppliers.ID_supplier, Suppliers.Title, Suppliers.TIN, Suppliers.CIO, Suppliers.FIO_director, Country.Country, City.City, Street.Street , Suppliers.House, Suppliers.Telephone, Suppliers.Email
+FROM Suppliers INNER JOIN Country 
+ON Suppliers.ID_country=Country.ID_country
+INNER JOIN City ON Suppliers.ID_city=City.ID_city
+INNER JOIN Street ON Suppliers.ID_street=Street.ID_street
+WHERE Suppliers.Title=@s AND Country.Country=@c
+END
+GO
 
 
 CREATE PROCEDURE dbo.InsertSupplier
@@ -506,7 +521,42 @@ INNER JOIN Manufacturers
 ON Autoparts.ID_manufacturer=Manufacturers.ID_manufacturer
 END
 GO
-EXECUTE dbo.SelectSuppply
+
+
+CREATE PROCEDURE dbo.SearchForDeliveriesByDate
+@startDate DATE,
+@endDate DATE
+AS
+BEGIN
+SELECT Supply.ID_supply, Suppliers.Title, Autoparts.ID_autoparts, Autoparts.Title, Manufacturers.Manufacturer, Autoparts.Article, Supply.Purchase_price, Supply.Amount , Purchase_price*Amount AS Sum_, Supply.Delivery_date, Supply.Status_
+FROM Supply INNER JOIN Suppliers
+ON Supply.ID_supplier=Suppliers.ID_supplier
+INNER JOIN Autoparts
+ON Supply.ID_autoparts=Autoparts.ID_autoparts
+INNER JOIN Manufacturers
+ON Autoparts.ID_manufacturer=Manufacturers.ID_manufacturer
+WHERE Supply.Delivery_date BETWEEN @startDate AND @endDate
+END
+GO
+
+
+CREATE PROCEDURE dbo.SearchForDeliveriesBySupplierAndDate
+@s CHAR(150),
+@startDate DATE,
+@endDate DATE
+AS
+BEGIN
+SELECT Supply.ID_supply, Suppliers.Title, Autoparts.ID_autoparts, Autoparts.Title, Manufacturers.Manufacturer, Autoparts.Article, Supply.Purchase_price, Supply.Amount , Purchase_price*Amount AS Sum_, Supply.Delivery_date, Supply.Status_
+FROM Supply INNER JOIN Suppliers
+ON Supply.ID_supplier=Suppliers.ID_supplier
+INNER JOIN Autoparts
+ON Supply.ID_autoparts=Autoparts.ID_autoparts
+INNER JOIN Manufacturers
+ON Autoparts.ID_manufacturer=Manufacturers.ID_manufacturer
+WHERE Suppliers.Title=@s AND Supply.Delivery_date BETWEEN @startDate AND @endDate
+END
+GO
+
 
 CREATE PROCEDURE dbo.SelectManufacturersAutoparts
 @a CHAR(50)
@@ -766,6 +816,23 @@ ON Availability_auto_parts.ID_autoparts=Sale.ID_autoparts AND Sale.ID_department
 END
 GO
 
+CREATE PROCEDURE dbo.SearchByStoreAndDateSale
+@store INT,
+@startDate DATE,
+@endDate DATE
+AS
+BEGIN
+SELECT ID_sale, Sale.ID_department, Sale.ID_autoparts, Autoparts.Title, Manufacturer, Autoparts.Article, Availability_auto_parts.Sale_price, Sale.Amount, Availability_auto_parts.Sale_price*Sale.Amount AS Sum_, Sale.Date_of_sale
+FROM Sale INNER JOIN Autoparts
+ON Sale.ID_autoparts=Autoparts.ID_autoparts
+INNER JOIN Manufacturers
+ON Autoparts.ID_manufacturer=Manufacturers.ID_manufacturer
+INNER JOIN Availability_auto_parts
+ON Availability_auto_parts.ID_autoparts=Sale.ID_autoparts AND Sale.ID_department=Availability_auto_parts.ID_department
+WHERE Sale.ID_department=@store AND Sale.Date_of_sale BETWEEN @startDate AND @endDate
+END
+GO
+
 
 CREATE PROCEDURE dbo.SelectComboBoxAutoparts
 @id_d INT
@@ -837,14 +904,6 @@ WHERE Date_of_sale BETWEEN @startDate AND @endDate
 END
 GO
 
-SELECT ID_sale, Sale.ID_department, Sale.ID_autoparts, Autoparts.Title, Manufacturer, Autoparts.Article, Availability_auto_parts.Sale_price, Sale.Amount, Availability_auto_parts.Sale_price*Sale.Amount AS Sum_, Sale.Date_of_sale
-FROM Sale INNER JOIN Autoparts
-ON Sale.ID_autoparts=Autoparts.ID_autoparts
-INNER JOIN Manufacturers
-ON Autoparts.ID_manufacturer=Manufacturers.ID_manufacturer
-INNER JOIN Availability_auto_parts
-ON Availability_auto_parts.ID_autoparts=Sale.ID_autoparts AND Sale.ID_department=Availability_auto_parts.ID_department
-WHERE Date_of_sale BETWEEN '21.04.2020' AND 
 
 
 CREATE PROCEDURE dbo.SearchByPriceRange
@@ -1135,8 +1194,8 @@ GO
 
 
 CREATE PROCEDURE dbo.SelectUserSessionDate
-@startDate DATETIME,
-@endDate DATETIME
+@startDate DATE,
+@endDate DATE
 AS
 BEGIN
 SELECT ID_session, Users.Login_, Surname, First_name, Last_name, Role_.Role_, UserSession.Date_of_entrance, UserSession.Time_
@@ -1165,6 +1224,24 @@ INSERT INTO [dbo].[UserSession]
 		   ,[Time_])
      VALUES
            (@id, @id_user, @dt, @t)
+END
+GO
+
+
+CREATE PROCEDURE dbo.SearchByUsernameAndDate
+@l CHAR(15),
+@startDate DATE,
+@endDate DATE
+AS
+BEGIN
+SELECT ID_session, Users.Login_, Surname, First_name, Last_name, Role_.Role_, UserSession.Date_of_entrance, UserSession.Time_
+FROM UserSession INNER JOIN Users
+ON UserSession.Login_=Users.Login_
+INNER JOIN Role_
+ON Users.ID_role=Role_.ID_role
+INNER JOIN InfoUsers
+ON Users.Login_=InfoUsers.Login_
+WHERE Users.Login_=@l AND Date_of_entrance BETWEEN @startDate AND @endDate
 END
 GO
 

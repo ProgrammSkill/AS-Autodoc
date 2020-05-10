@@ -18,7 +18,7 @@ namespace AS_Autodoc
             this.labelProductName.Text = AssemblyProduct;
             this.labelVersion.Text = String.Format("Версия {0}", AssemblyVersion);
             this.labelCopyright.Text = AssemblyCopyright;
-            this.labelCompanyName.Text = "ООО \"AUTODOC.RU\"";
+            this.labelCompanyName.Text = "ООО \"АВТОДОК.РУ\"";
             this.textBoxDescription.Text = "    1. Введение\r\n" +
             "   Данная программа была разработана для сети магазинов" +
             " \"AUTODOC.RU\". В автоматизируемой системе рассматриваются процессы, происходящие внутри сети магазинов автозапчастей." +
@@ -134,6 +134,11 @@ namespace AS_Autodoc
         }
 
         private void OkButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TableLayoutPanel_Paint(object sender, PaintEventArgs e)
         {
 
         }

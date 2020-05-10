@@ -98,7 +98,7 @@ namespace AS_Autodoc
             this.TopMost = true;
         }
 
-        public void SearchForSupplier()
+        public void SearchBySupplier()
         {
             if (textBox1.Text != "")
             {
@@ -122,7 +122,40 @@ namespace AS_Autodoc
                 {
                     dataGridView1.Rows[i].Visible = true;
                 }
+            }
+        }
 
+        private void SearchBySupplierAndCountry()
+        {
+            if (textBox1.Text != "" && comboBox1.Text != "" && comboBox1.Text != "Не указано")
+            {
+                using (SqlConnection connect = new SqlConnection(con))
+                {
+                    connect.Open();
+                    SqlCommand com = new SqlCommand("EXECUTE dbo.SearchBySupplierAndCountry '"+textBox1.Text+
+                    "','"+comboBox1.Text+"'", connect);
+                    int i = 0;
+                    dataGridView1.Rows.Clear();
+                    using (SqlDataReader r = com.ExecuteReader())
+                    {
+                        while (r.Read())
+                        {
+                            dataGridView1.Rows.Add();
+                            dataGridView1[0, i].Value = r[0].ToString();
+                            dataGridView1[1, i].Value = r[1].ToString();
+                            dataGridView1[2, i].Value = r[2].ToString();
+                            dataGridView1[3, i].Value = r[3].ToString();
+                            dataGridView1[4, i].Value = r[4].ToString();
+                            dataGridView1[5, i].Value = r[5].ToString();
+                            dataGridView1[6, i].Value = r[6].ToString();
+                            dataGridView1[7, i].Value = r[7].ToString();
+                            dataGridView1[8, i].Value = r[8].ToString();
+                            dataGridView1[9, i].Value = r[9].ToString();
+                            dataGridView1[10, i].Value = r[10].ToString();
+                            i++;
+                        }
+                    }
+                }
             }
         }
 
@@ -186,10 +219,28 @@ namespace AS_Autodoc
 
         private void Button4_Click(object sender, EventArgs e)
         {
-            SearchForSupplier();
+            if (textBox1.Text != "" && (comboBox1.Text == "" || comboBox1.Text == "Не указано"))
+            {
+                SearchBySupplier();
+            }
+            else if (textBox1.Text == "" && (comboBox1.Text != "" || comboBox1.Text != "Не указано"))
+            {
+                SearchByCountry();
+            }
+            else if(textBox1.Text != "" && (comboBox1.Text != "" || comboBox1.Text != "Не указано"))
+            {
+                SearchBySupplierAndCountry();
+            }
+            else
+            {
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    dataGridView1.Rows[i].Visible = true;
+                }
+            }
         }
 
-        public void SearchForCountry()
+        public void SearchByCountry()
         {
             if (comboBox1.Text != "" && comboBox1.Text != "Не указано")
             {
@@ -219,7 +270,7 @@ namespace AS_Autodoc
 
         private void Button5_Click(object sender, EventArgs e)
         {
-            SearchForCountry();
+            SearchByCountry();
         }
     }
 }

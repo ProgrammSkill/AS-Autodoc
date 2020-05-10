@@ -99,7 +99,7 @@ namespace AS_Autodoc
                         Hide();
                     }
                     sda = new SqlDataAdapter("SELECT COUNT(*) FROM Role_ join Users ON Role_.ID_role=Users.ID_role AND Login_='" + textBox1.Text +
-                    "'AND Password_= '" + textBox2.Text + "' AND Role_='Продавец           '", connect);
+                    "'AND Password_= '" + textBox2.Text + "' AND Role_='Продавец'", connect);
                     dt = new DataTable();
                     sda.Fill(dt);
                     if (dt.Rows[0][0].ToString() == "1")
@@ -154,6 +154,16 @@ namespace AS_Autodoc
         private void Button1_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void Label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

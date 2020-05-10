@@ -136,7 +136,7 @@
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label7);
             this.Name = "EditingDepartment";
-            this.Text = "Редактирование отдела магазина";
+            this.Text = "Редактирование данных магазина";
             this.Load += new System.EventHandler(this.EditingDepartment_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

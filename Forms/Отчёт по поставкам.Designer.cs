@@ -64,10 +64,10 @@
             reportDataSource1.Value = this.DeliveryReportBindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "AS_Autodoc.DeliveryReport.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(18, 207);
+            this.reportViewer1.Location = new System.Drawing.Point(18, 195);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(1092, 612);
+            this.reportViewer1.Size = new System.Drawing.Size(1092, 624);
             this.reportViewer1.TabIndex = 0;
             this.reportViewer1.Load += new System.EventHandler(this.ReportViewer1_Load);
             // 
@@ -99,9 +99,9 @@
             this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox1.Location = new System.Drawing.Point(18, 22);
+            this.groupBox1.Location = new System.Drawing.Point(18, 19);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(508, 115);
+            this.groupBox1.Size = new System.Drawing.Size(508, 118);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Фильтрация ";
@@ -163,7 +163,7 @@
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(18, 178);
+            this.button3.Location = new System.Drawing.Point(18, 166);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(132, 23);
             this.button3.TabIndex = 10;

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.SalesReportBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Auto_parts_shopDataSetSale = new AS_Autodoc.Auto_parts_shopDataSetSale();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
@@ -60,20 +60,20 @@
             // 
             // reportViewer1
             // 
-            reportDataSource2.Name = "SalesReport";
-            reportDataSource2.Value = this.SalesReportBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+            reportDataSource1.Name = "SalesReport";
+            reportDataSource1.Value = this.SalesReportBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "AS_Autodoc.SalesReport.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(16, 202);
+            this.reportViewer1.Location = new System.Drawing.Point(16, 193);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(991, 690);
+            this.reportViewer1.Size = new System.Drawing.Size(991, 699);
             this.reportViewer1.TabIndex = 0;
             // 
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(16, 173);
+            this.button3.Location = new System.Drawing.Point(16, 164);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(132, 23);
             this.button3.TabIndex = 11;
@@ -93,7 +93,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox1.Location = new System.Drawing.Point(16, 15);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(408, 115);
+            this.groupBox1.Size = new System.Drawing.Size(408, 118);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Фильтрация";

@@ -79,6 +79,7 @@
             this.автозапчастиВМагазинеToolStripMenuItem.Name = "автозапчастиВМагазинеToolStripMenuItem";
             this.автозапчастиВМагазинеToolStripMenuItem.Size = new System.Drawing.Size(170, 21);
             this.автозапчастиВМагазинеToolStripMenuItem.Text = "Автозапчасти в магазине";
+            this.автозапчастиВМагазинеToolStripMenuItem.Click += new System.EventHandler(this.АвтозапчастиВМагазинеToolStripMenuItem_Click);
             // 
             // продажаToolStripMenuItem
             // 

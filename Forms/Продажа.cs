@@ -173,34 +173,6 @@ namespace AS_Autodoc
             }
         }
 
-        public void SearchByNameAutoParts()
-        {
-            if (textBox1.Text != "")
-            {
-                for (int i = 0; i < dataGridView1.Rows.Count; i++)
-                {
-                    string str = dataGridView1[3, i].Value.ToString();
-                    int x = str.IndexOf(textBox1.Text);
-                    if (x > -1)
-                    {
-                        dataGridView1.Rows[i].Visible = true;
-                    }
-                    else
-                    {
-                        dataGridView1.Rows[i].Visible = false;
-                    }
-                }
-            }
-            else
-            {
-                for (int i = 0; i < dataGridView1.Rows.Count; i++)
-                {
-                    dataGridView1.Rows[i].Visible = true;
-
-                }
-            }
-        }
-
         public void SearchByDateRange()
         {
             string StartDate = maskedTextBox1.Text;
@@ -259,6 +231,63 @@ namespace AS_Autodoc
             }
         }
 
+        public void SearchByStoreAndDateSale()
+        {
+            string StartDate = maskedTextBox1.Text;
+            string EndDate = maskedTextBox2.Text;
+            if (maskedTextBox1.Text != "  .  ." && maskedTextBox2.Text != "  .  .")
+            {
+                using (SqlConnection connect = new SqlConnection(con))
+                {
+                    connect.Open();
+                    if (TextIsDate(maskedTextBox1.Text))
+                    {
+                        if (TextIsDate(maskedTextBox2.Text))
+                        {
+                            SqlCommand com = new SqlCommand("EXECUTE dbo.SearchByStoreAndDateSale '" +comboBox1.Text+"','"+ StartDate + "','" + EndDate + "'", connect);
+                            int i = 0;
+                            dataGridView1.Rows.Clear();
+                            using (SqlDataReader r = com.ExecuteReader())
+                            {
+                                while (r.Read())
+                                {
+                                    dataGridView1.Rows.Add();
+                                    dataGridView1[0, i].Value = r[0].ToString();
+                                    dataGridView1[1, i].Value = r[1].ToString();
+                                    dataGridView1[2, i].Value = r[2].ToString();
+                                    dataGridView1[3, i].Value = r[3].ToString();
+                                    dataGridView1[4, i].Value = r[4].ToString();
+                                    dataGridView1[5, i].Value = r[5].ToString();
+                                    dataGridView1[6, i].Value = r[6].ToString();
+                                    dataGridView1[7, i].Value = r[7].ToString();
+                                    dataGridView1[8, i].Value = r[8].ToString();
+                                    dataGridView1[9, i].Value = r[9].ToString().Remove(10);
+                                    i++;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Введён неправельный формат даты", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            maskedTextBox2.Clear();
+                        }
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Введён неправельный формат даты", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        maskedTextBox1.Clear();
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    dataGridView1.Rows[i].Visible = true;
+                }
+            }
+        }
 
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -284,7 +313,25 @@ namespace AS_Autodoc
 
         private void Button4_Click(object sender, EventArgs e)
         {
-            SearchByStoreNumber();
+            if (comboBox1.Text != "" && comboBox1.Text != "Не указано" && maskedTextBox1.Text == "  .  ." & maskedTextBox2.Text == "  .  .")
+            {
+                SearchByStoreNumber();
+            }
+            else if (comboBox1.Text == "" && comboBox1.Text == "Не указано" && maskedTextBox1.Text != "  .  ." & maskedTextBox2.Text != "  .  .")
+            {
+                SearchByDateRange();
+            }
+            else if (comboBox1.Text != "" && comboBox1.Text != "Не указано" && maskedTextBox1.Text != "  .  ." & maskedTextBox2.Text != "  .  .")
+            {
+                SearchByStoreAndDateSale();
+            }
+            else
+            {
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    dataGridView1.Rows[i].Visible = true;
+                }
+            }
         }
 
         private void Button5_Click(object sender, EventArgs e)
@@ -299,7 +346,7 @@ namespace AS_Autodoc
 
         private void Button7_Click(object sender, EventArgs e)
         {
-            SearchByNameAutoParts();
+            
         }
 
         private void TextBox1_TextChanged(object sender, EventArgs e)
