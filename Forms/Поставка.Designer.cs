@@ -304,6 +304,7 @@
             this.button7.TabIndex = 43;
             this.button7.Text = "Экспорт в Excel";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.Button7_Click);
             // 
             // Supply
             // 

@@ -66,13 +66,13 @@ namespace AS_Autodoc
                 connection.Open();
                 int id = 0;
                 int n = 1;
-                SqlCommand cm = new SqlCommand("SELECT * FROM Autoparts", connection);
-                SqlDataReader r = cm.ExecuteReader();
+                SqlCommand com = new SqlCommand("SELECT * FROM Autoparts", connection);
+                SqlDataReader r = com.ExecuteReader();
                 if (r.HasRows)
                 {
                     r.Close();
-                    cm = new SqlCommand("SELECT MAX(ID_autoparts) FROM Autoparts", connection);
-                    r = cm.ExecuteReader();
+                    com = new SqlCommand("SELECT MAX(ID_autoparts) FROM Autoparts", connection);
+                    r = com.ExecuteReader();
                     while (r.Read())
                     {
                         id = Convert.ToInt32(r[0]) + 1;
@@ -111,51 +111,12 @@ namespace AS_Autodoc
 
         private void AddingAndEditingAutoParts_Load(object sender, EventArgs e)
         {
-            Maxid();
 
             Autoparts f = (Autoparts)this.Owner;
             if (f.InsertOrEdit.ToString() == "Добавить")
             {
                 this.Text = "Добавление новой автозапчасти";
-
-                using (SqlConnection connect = new SqlConnection(con))
-                {
-                    connect.Open();
-                    SqlCommand com = new SqlCommand("SELECT Title_brand FROM Brands", connect);
-                    using (SqlDataReader r = com.ExecuteReader())
-                    {
-                        while (r.Read())
-                        {
-                            comboBox1.Text = r[0].ToString();
-                        }
-                    }
-                }
-
-                using (SqlConnection connect = new SqlConnection(con))
-                {
-                    connect.Open();
-                    SqlCommand com = new SqlCommand("SELECT Title_model FROM Models", connect);
-                    using (SqlDataReader r = com.ExecuteReader())
-                    {
-                        while (r.Read())
-                        {
-                            comboBox2.Text = r[0].ToString();
-                        }
-                    }
-                }
-
-                using (SqlConnection connect = new SqlConnection(con))
-                {
-                    connect.Open();
-                    SqlCommand com = new SqlCommand("SELECT Manufacturer FROM Manufacturers", connect);
-                    using (SqlDataReader r = com.ExecuteReader())
-                    {
-                        while (r.Read())
-                        {
-                            comboBox3.Text = r[0].ToString();
-                        }
-                    }
-                }
+                Maxid();
             }
             else
             {

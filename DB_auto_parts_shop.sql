@@ -30,7 +30,7 @@ Email char(25))
 
 CREATE TABLE Models (
 ID_model INT PRIMARY KEY,
-Title_model CHAR(50))
+Title_model CHAR(100))
 
 CREATE TABLE Brands (
 ID_brand INT PRIMARY KEY,
@@ -226,7 +226,7 @@ GO
 
 CREATE PROCEDURE dbo.InsertModel
 @id INT,
-@m CHAR(30)
+@m CHAR(100)
 AS
 BEGIN
 INSERT INTO [dbo].[Models]
@@ -239,7 +239,7 @@ GO
 
 CREATE PROCEDURE dbo.EditModel
 @id INT,
-@m CHAR(30)
+@m CHAR(100)
 AS
 BEGIN
 UPDATE [dbo].[Models]
@@ -562,7 +562,7 @@ CREATE PROCEDURE dbo.SelectManufacturersAutoparts
 @a CHAR(50)
 AS
 BEGIN
-SELECT Autoparts.ID_autoparts, Manufacturers.Manufacturer
+SELECT DISTINCT Manufacturers.Manufacturer
 FROM Autoparts INNER JOIN Manufacturers
 ON Autoparts.ID_manufacturer=Manufacturers.ID_manufacturer
 AND Autoparts.Title=@a
@@ -1247,6 +1247,95 @@ GO
 
 
 --Заполнение таблиц данными
+
+--Страны
+EXECUTE dbo.InsertCountry 1, 'США'
+EXECUTE dbo.InsertCountry 2, 'Великобритания'
+EXECUTE dbo.InsertCountry 3, 'Германия'
+EXECUTE dbo.InsertCountry 4, 'Япония'
+
+--Производители
+EXECUTE dbo.InsertManufacturer 1, 'Caterpillar Inc', 1
+EXECUTE dbo.InsertManufacturer 2, 'Ferodo', 2
+EXECUTE dbo.InsertManufacturer 3, 'Robert Bosch GmbH', 3
+EXECUTE dbo.InsertManufacturer 4, 'Autowelt', 3
+EXECUTE dbo.InsertManufacturer 5, 'FAG (Fischer Aktien - Gesellschaft)', 3
+EXECUTE dbo.InsertManufacturer 6, 'NTN Corporation', 4
+EXECUTE dbo.InsertManufacturer 7, 'Delphi', 1
+
+
+--марки
+EXECUTE dbo.InsertBrand 1, 'Abarth'
+EXECUTE dbo.InsertBrand 2, 'Acura'
+EXECUTE dbo.InsertBrand 3, 'Audi'
+EXECUTE dbo.InsertBrand 4, 'Bentley'
+EXECUTE dbo.InsertBrand 5, 'BMW' 
+EXECUTE dbo.InsertBrand 6, 'Ferrari' 
+EXECUTE dbo.InsertBrand 7, 'Honda'
+
+--модели
+EXECUTE dbo.InsertModel 1, '124 Spider (348_) н.д. - 2020'
+EXECUTE dbo.InsertModel 2, '500 II хэтчбек (312) 2008 - 2020'
+EXECUTE dbo.InsertModel 3, 'GRANDE PUNTO III хэтчбек (199) 2007 - 201'
+-------------------------------------------------------------------
+EXECUTE dbo.InsertModel 4, 'CL купе 1996 - 2003'
+EXECUTE dbo.InsertModel 5, 'EL седан (US) 1996 - 2000'
+EXECUTE dbo.InsertModel 6, 'ILX седан 2012 - 2020'
+EXECUTE dbo.InsertModel 7, 'LEGEND II купе 1991 - 1996'
+EXECUTE dbo.InsertModel 8, 'LEGEND II седан 1991 - 1996'
+EXECUTE dbo.InsertModel 9, 'MDX I (YD1) 2000 - 2006'
+EXECUTE dbo.InsertModel 10, 'MDX II (YD2) 2006 - 2013'
+---------------------------------------------------------------------
+EXECUTE dbo.InsertModel 11, '100 III AVANT универсал (44, 44Q, C3) 1'
+EXECUTE dbo.InsertModel 12, '100 III седан (44, 44Q, C3) 1982 - 1991'
+EXECUTE dbo.InsertModel 13, '100 IV AVANT универсал (4A, C4) 1990 - 1994'
+EXECUTE dbo.InsertModel 14, '100 IV седан (4A, C4) 1990 - 1994'
+-------------------------------------------------------------------------------
+EXECUTE dbo.InsertModel 15, 'ARNAGE седан 1998 - 2009'
+EXECUTE dbo.InsertModel 16, 'AZURE I кабрио 1995 - 2006'
+EXECUTE dbo.InsertModel 17, 'FLYING SPUR 2013 - 2020'
+--------------------------------------------------------------------------
+EXECUTE dbo.InsertModel 18, '02 седан (E10) 1966 - 1977'
+EXECUTE dbo.InsertModel 19, '2 ACTIVE TOURER (F45) 2014 - 2020'
+EXECUTE dbo.InsertModel 20, '2 ACTIVE TOURER (F45) 2014 - 2020'
+-----------------------------------------------------------------------
+EXECUTE dbo.InsertModel 21, '458 2009 - 2020'
+EXECUTE dbo.InsertModel 22, '488 GTB 2015 - 2020'
+-------------------------------------------------------------------
+EXECUTE dbo.InsertModel 23, 'INSPIRE 1991 - 1998'
+
+
+
+--марки и модели
+EXECUTE dbo.InsertBrand_and_model 1, 1, 1
+EXECUTE dbo.InsertBrand_and_model 2, 1, 2
+EXECUTE dbo.InsertBrand_and_model 3, 1, 3
+------------------------------------------
+EXECUTE dbo.InsertBrand_and_model 4, 2, 4
+EXECUTE dbo.InsertBrand_and_model 5, 2, 5
+EXECUTE dbo.InsertBrand_and_model 6, 2, 6
+EXECUTE dbo.InsertBrand_and_model 7, 2, 7
+EXECUTE dbo.InsertBrand_and_model 8, 2, 8
+EXECUTE dbo.InsertBrand_and_model 9, 2, 9
+EXECUTE dbo.InsertBrand_and_model 10, 2, 10
+-----------------------------------------------
+EXECUTE dbo.InsertBrand_and_model 11, 3, 11
+EXECUTE dbo.InsertBrand_and_model 12, 3, 12
+EXECUTE dbo.InsertBrand_and_model 13, 3, 13
+EXECUTE dbo.InsertBrand_and_model 14, 3, 14
+--------------------------------------------------
+EXECUTE dbo.InsertBrand_and_model 15, 4, 15
+EXECUTE dbo.InsertBrand_and_model 16, 4, 16
+EXECUTE dbo.InsertBrand_and_model 17, 4, 17
+------------------------------------------------
+EXECUTE dbo.InsertBrand_and_model 18, 5, 18
+EXECUTE dbo.InsertBrand_and_model 19, 5, 19
+EXECUTE dbo.InsertBrand_and_model 20, 5, 20
+-------------------------------------------------
+EXECUTE dbo.InsertBrand_and_model 21, 6, 21
+EXECUTE dbo.InsertBrand_and_model 22, 6, 22
+-----------------------------------------------------
+EXECUTE dbo.InsertBrand_and_model 23, 7, 23
 
 
 --Города

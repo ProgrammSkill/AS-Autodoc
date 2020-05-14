@@ -209,7 +209,7 @@ namespace AS_Autodoc
                 {
                     while (r.Read())
                     {
-                        comboBox3.Items.Add(r[1].ToString());
+                        comboBox3.Items.Add(r[0].ToString());
                     }
                 }
             }

@@ -290,6 +290,7 @@
             this.button6.TabIndex = 42;
             this.button6.Text = "Экспорт в Excel";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.Button6_Click);
             // 
             // Sale
             // 

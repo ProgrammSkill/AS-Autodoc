@@ -178,7 +178,7 @@ namespace AS_Autodoc
                 {
                     while (r.Read())
                     {
-                        comboBox3.Items.Add(r[1].ToString());
+                        comboBox3.Items.Add(r[0].ToString());
                     }
                 }
             }
@@ -219,16 +219,26 @@ namespace AS_Autodoc
         private void Button1_Click(object sender, EventArgs e)
         {
             AutoPartsInStore f = (AutoPartsInStore)this.Owner;
+            decimal x = 0.00m;
+            bool result = decimal.TryParse(textBox1.Text.ToString().Replace('.', ','), out x);
             if (comboBox1.Text != "" && comboBox2.Text != "" && comboBox3.Text != "" && comboBox4.Text != "" && textBox1.Text != "")
             {
-                if (f.InsertOrEdit.ToString() == "Добавить")
+                if (result == true)
                 {
-                    Insertion();
-                    MaxId();
+                    if (f.InsertOrEdit.ToString() == "Добавить")
+                    {
+                        Insertion();
+                        MaxId();
+                    }
+                    else
+                    {
+                        Edit();
+                    }
                 }
                 else
                 {
-                    Edit();
+                    MessageBox.Show("Введён неправельный формат цены продажи!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBox1.Clear();
                 }
             }
             else
@@ -260,6 +270,11 @@ namespace AS_Autodoc
             {
                 e.Handled = true;
             }
+        }
+
+        private void TextBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

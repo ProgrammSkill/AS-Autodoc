@@ -222,7 +222,7 @@ namespace AS_Autodoc
         {
             Supply f = (Supply)this.Owner;
             decimal x = 0.00m;
-            bool result= decimal.TryParse(textBox1.Text, out x);
+            bool result= decimal.TryParse(textBox1.Text.ToString().Replace('.',','), out x);
             if (comboBox1.Text != "" && comboBox2.Text != "" && comboBox3.Text != "" && comboBox4.Text != "" && textBox1.Text != "" && maskedTextBox1.Text != "  .  .")
             {   if (result == true)
                 {

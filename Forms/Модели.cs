@@ -35,8 +35,8 @@ namespace AS_Autodoc
                     while (r.Read())
                     {
                         dataGridView1.Rows.Add();
-                        dataGridView1[0, i].Value = r[0].ToString();
-                        dataGridView1[1, i].Value = r[1].ToString();
+                        dataGridView1[0, i].Value = r[0].ToString().TrimEnd();
+                        dataGridView1[1, i].Value = r[1].ToString().TrimEnd();
                         i++;
                     }
                 }
@@ -147,6 +147,11 @@ namespace AS_Autodoc
             {
                 MessageBox.Show("Не выбрана модель для переименования.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

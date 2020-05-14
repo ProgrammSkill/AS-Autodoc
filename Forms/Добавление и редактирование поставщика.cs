@@ -126,7 +126,7 @@ namespace AS_Autodoc
             }
         }
 
-    private void AddingSupplier_Load(object sender, EventArgs e)
+        private void AddingSupplier_Load(object sender, EventArgs e)
         {
             Suppliers f = (Suppliers)this.Owner;
             if (f.InsertOrEdit.ToString()=="Добавить")
