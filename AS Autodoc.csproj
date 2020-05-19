@@ -76,34 +76,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Автозапчасти в магазине для продавца.cs">
+    <Compile Include="Forms\Автозапчасти в магазине для продавца.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Автозапчасти в магазине для продавца.Designer.cs">
+    <Compile Include="Forms\Автозапчасти в магазине для продавца.Designer.cs">
       <DependentUpon>Автозапчасти в магазине для продавца.cs</DependentUpon>
     </Compile>
-    <Compile Include="Пользовательские сесссии.cs">
+    <Compile Include="Forms\Пользовательские сесссии.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Пользовательские сесссии.Designer.cs">
+    <Compile Include="Forms\Пользовательские сесссии.Designer.cs">
       <DependentUpon>Пользовательские сесссии.cs</DependentUpon>
     </Compile>
-    <Compile Include="Сотрудник.cs">
+    <Compile Include="Forms\Сотрудник.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Сотрудник.Designer.cs">
+    <Compile Include="Forms\Сотрудник.Designer.cs">
       <DependentUpon>Сотрудник.cs</DependentUpon>
     </Compile>
-    <Compile Include="Регистрация пользователя.cs">
+    <Compile Include="Forms\Регистрация пользователя.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Регистрация пользователя.Designer.cs">
+    <Compile Include="Forms\Регистрация пользователя.Designer.cs">
       <DependentUpon>Регистрация пользователя.cs</DependentUpon>
     </Compile>
-    <Compile Include="Меню администратора.cs">
+    <Compile Include="Forms\Меню администратора.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Меню администратора.Designer.cs">
+    <Compile Include="Forms\Меню администратора.Designer.cs">
       <DependentUpon>Меню администратора.cs</DependentUpon>
     </Compile>
     <Compile Include="Auto_parts_shopDataSet.cs">
@@ -141,10 +141,10 @@
     <Compile Include="Forms\Меню директора.Designer.cs">
       <DependentUpon>Меню директора.cs</DependentUpon>
     </Compile>
-    <Compile Include="Меню продавца.cs">
+    <Compile Include="Forms\Меню продавца.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Меню продавца.Designer.cs">
+    <Compile Include="Forms\Меню продавца.Designer.cs">
       <DependentUpon>Меню продавца.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Распределение и редактирование  автозапчасти в магазине.cs">
@@ -343,17 +343,17 @@
     <Compile Include="Forms\Редактирование отдела.Designer.cs">
       <DependentUpon>Редактирование отдела.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Автозапчасти в магазине для продавца.resx">
+    <EmbeddedResource Include="Forms\Автозапчасти в магазине для продавца.resx">
       <DependentUpon>Автозапчасти в магазине для продавца.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DeliveryReport.rdlc" />
-    <EmbeddedResource Include="Пользовательские сесссии.resx">
+    <EmbeddedResource Include="Forms\Пользовательские сесссии.resx">
       <DependentUpon>Пользовательские сесссии.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Сотрудник.resx">
+    <EmbeddedResource Include="Forms\Сотрудник.resx">
       <DependentUpon>Сотрудник.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Регистрация пользователя.resx">
+    <EmbeddedResource Include="Forms\Регистрация пользователя.resx">
       <DependentUpon>Регистрация пользователя.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SalesReport.rdlc" />
@@ -363,10 +363,10 @@
     <EmbeddedResource Include="Forms\Меню директора.resx">
       <DependentUpon>Меню директора.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Меню администратора.resx">
+    <EmbeddedResource Include="Forms\Меню администратора.resx">
       <DependentUpon>Меню администратора.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Меню продавца.resx">
+    <EmbeddedResource Include="Forms\Меню продавца.resx">
       <DependentUpon>Меню продавца.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Распределение и редактирование  автозапчасти в магазине.resx">

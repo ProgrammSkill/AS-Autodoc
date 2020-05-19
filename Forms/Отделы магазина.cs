@@ -16,7 +16,6 @@ namespace AS_Autodoc
         string con = Connect.getConnect();
         int insertId;
         List<int> id_city;
-        List<int> id_city_find;
         List<int> id_street;
         public DepartmentStore()
         {
@@ -37,18 +36,16 @@ namespace AS_Autodoc
                 }
             }
 
-            id_city_find = new List<int>();
             using (SqlConnection connect = new SqlConnection(con))
             {
                 connect.Open();
-                SqlCommand com = new SqlCommand("SELECT * FROM City INNER JOIN Department_store" +
+                SqlCommand com = new SqlCommand("SELECT DISTINCT City FROM City INNER JOIN Department_store" +
                 " ON Department_store.ID_city=City.ID_city", connect);
                 using (SqlDataReader r = com.ExecuteReader())
                 {
                     while (r.Read())
                     {
-                        id_city_find.Add(Convert.ToInt32(r[0]));
-                        comboBox3.Items.Add(r[1].ToString());
+                        comboBox3.Items.Add(r[0].ToString());
                     }
                 }
             }

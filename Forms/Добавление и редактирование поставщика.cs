@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 
 namespace AS_Autodoc
 {
@@ -156,19 +157,33 @@ namespace AS_Autodoc
 
         }
 
+        bool isValid(string email)
+        {
+            string pattern = "[.\\-_a-z0-9]+@([a-z0-9][\\-a-z0-9]+\\.)+[a-z]{2,6}";
+            Match isMatch = Regex.Match(email, pattern, RegexOptions.IgnoreCase);
+            return isMatch.Success;
+        }
+
         private void Button1_Click(object sender, EventArgs e)
         {
-            Suppliers f = (Suppliers)this.Owner;
-            if (f.InsertOrEdit.ToString() == "Добавить")
+            if (isValid(textBox6.Text) == true)
             {
-                Insertion();
-                MaxId();
+                Suppliers f = (Suppliers)this.Owner;
+                if (f.InsertOrEdit.ToString() == "Добавить")
+                {
+                    Insertion();
+                    MaxId();
+                }
+                else
+                {
+                    Edit();
+                }
+                f.LoadAll();
             }
             else
             {
-                Edit();
+                MessageBox.Show("Введён неправельный формат адреса электронной почты (email)", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            f.LoadAll();
         }
 
         private void TextBox7_TextChanged(object sender, EventArgs e)

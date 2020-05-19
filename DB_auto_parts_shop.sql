@@ -103,7 +103,7 @@ Surname char(20),
 First_name char(20),
 Last_name char(20),
 ID_position INT FOREIGN KEY REFERENCES Position (ID_position),
-Address_ char(50),
+Address_ char(60),
 Telephone CHAR(20),
 Date_of_acceptance DATE,
 Date_of_termination DATE)

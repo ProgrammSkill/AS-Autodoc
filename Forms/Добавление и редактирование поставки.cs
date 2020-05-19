@@ -152,8 +152,8 @@ namespace AS_Autodoc
                 {
                     while (r.Read())
                     {
-                        id__manufacturer.Add(Convert.ToInt32(r[0]));
-                        comboBox3.Items.Add(r[1].ToString());
+                        //id__manufacturer.Add(Convert.ToInt32(r[0]));
+                        comboBox3.Items.Add(r[0].ToString());
                     }
                 }
             }
@@ -245,7 +245,7 @@ namespace AS_Autodoc
                 }
                 else
                 {
-                    MessageBox.Show("Введён неправельный формат цены закупки!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Введён неправельный формат цены!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBox1.Clear();
                 }
             }

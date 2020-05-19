@@ -237,7 +237,7 @@ namespace AS_Autodoc
                 }
                 else
                 {
-                    MessageBox.Show("Введён неправельный формат цены продажи!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Введён неправельный формат цены!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBox1.Clear();
                 }
             }
