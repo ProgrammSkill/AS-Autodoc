@@ -221,7 +221,7 @@ namespace AS_Autodoc
         {
             DialogResult result = MessageBox.Show(
             "Вы точно хотите удалить сессию пользователя?",
-            "Предупреждение",
+            "Подтверждение",
             MessageBoxButtons.YesNo,
             MessageBoxIcon.Question,
             MessageBoxDefaultButton.Button1);
@@ -244,7 +244,7 @@ namespace AS_Autodoc
         {
             DialogResult result = MessageBox.Show(
             "Вы точно хотите удалить все сессии пользователей?",
-            "Предупреждение",
+            "Подтверждение",
             MessageBoxButtons.YesNo,
             MessageBoxIcon.Question,
             MessageBoxDefaultButton.Button2);

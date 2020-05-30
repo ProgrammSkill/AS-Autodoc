@@ -19,6 +19,12 @@ namespace AS_Autodoc
         public AddingAndEditingAvailabilityOfAutoParts()
         {
             InitializeComponent();
+
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.MinimumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.StartPosition = FormStartPosition.CenterScreen;
+
             this.numericUpDown1.Minimum = 1;
             this.numericUpDown1.Maximum = 1000;
             SelectComboBox();
@@ -97,7 +103,7 @@ namespace AS_Autodoc
                 }
                 else
                 {
-                    MessageBox.Show("Данная автозапчасть уже имеется в магазине с номером "+id_department[comboBox1.SelectedIndex].ToString().TrimEnd(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Данная автозапчасть уже имеется в этом магазине.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -122,7 +128,7 @@ namespace AS_Autodoc
                     }
                     else
                     {
-                        MessageBox.Show("Данная автозапчасть уже имеется в магазине с номером " + id_department[comboBox1.SelectedIndex].ToString().TrimEnd(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Данная автозапчасть уже имеется в этом магазине.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else

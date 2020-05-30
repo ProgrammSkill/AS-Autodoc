@@ -19,6 +19,12 @@ namespace AS_Autodoc
         public SalesReport()
         {
             InitializeComponent();
+
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.MinimumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.StartPosition = FormStartPosition.CenterScreen;
+
             SelectComboBox();
         }
 

@@ -17,6 +17,11 @@ namespace AS_Autodoc
         public AutoPartsInStoreForSeller()
         {
             InitializeComponent();
+
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.MinimumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         public void LoadAll()
@@ -54,6 +59,31 @@ namespace AS_Autodoc
         private void Button5_Click(object sender, EventArgs e)
         {
             LoadAll();
+        }
+
+        private void Button6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button9_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

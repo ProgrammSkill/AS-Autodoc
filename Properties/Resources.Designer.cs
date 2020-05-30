@@ -69,5 +69,15 @@ namespace AS_Autodoc.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Выбор_автозапчастей_для_автомобилей_разных_производителей {
+            get {
+                object obj = ResourceManager.GetObject("Выбор-автозапчастей-для-автомобилей-разных-производителей", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

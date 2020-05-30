@@ -449,6 +449,52 @@ INNER JOIN Country ON Manufacturers.ID_country=Country.ID_country
 END
 GO
 
+---------------------------поиск/фильтрация--------------------------------------------------
+CREATE PROCEDURE dbo.SearchArticleAndAutopart
+@article CHAR(50),
+@title_a CHAR(50)
+AS
+BEGIN
+SELECT Autoparts.ID_autoparts, Autoparts.Article, Autoparts.Title, Autoparts.ID_brd_mdl, Brands.Title_brand, Models.Title_model, Manufacturers.Manufacturer, Country.Country, Autoparts.Comment
+FROM Autoparts INNER JOIN  Brands_and_models 
+ON Autoparts.ID_brd_mdl=Brands_and_models.ID_brd_mdl
+INNER JOIN Brands ON Brands.ID_brand=Brands_and_models.ID_brand
+INNER JOIN Models ON Models.ID_model=Brands_and_models.ID_model
+INNER JOIN Manufacturers ON Manufacturers.ID_manufacturer=Autoparts.ID_manufacturer
+INNER JOIN Country ON Manufacturers.ID_country=Country.ID_country
+WHERE Article=@article AND Autoparts.Title=@title_a
+END
+GO
+
+CREATE PROCEDURE dbo.SearchAutoPart
+@article CHAR(50),
+@title_a CHAR(50),
+@brand CHAR(30),
+@model CHAR(50),
+@manufacturer CHAR(30)
+AS
+BEGIN
+SELECT Autoparts.ID_autoparts, Autoparts.Article, Autoparts.Title, Autoparts.ID_brd_mdl, Brands.Title_brand, Models.Title_model, Manufacturers.Manufacturer, Country.Country, Autoparts.Comment
+FROM Autoparts INNER JOIN  Brands_and_models 
+ON Autoparts.ID_brd_mdl=Brands_and_models.ID_brd_mdl
+INNER JOIN Brands ON Brands.ID_brand=Brands_and_models.ID_brand
+INNER JOIN Models ON Models.ID_model=Brands_and_models.ID_model
+INNER JOIN Manufacturers ON Manufacturers.ID_manufacturer=Autoparts.ID_manufacturer
+INNER JOIN Country ON Manufacturers.ID_country=Country.ID_country
+WHERE Article=@article OR Autoparts.Title=@title_a OR Brands.Title_brand=@brand OR Models.Title_model=@model OR Manufacturers.Manufacturer=@manufacturer
+END
+GO
+
+SELECT Autoparts.ID_autoparts, Autoparts.Article, Autoparts.Title, Autoparts.ID_brd_mdl, Brands.Title_brand, Models.Title_model, Manufacturers.Manufacturer, Country.Country, Autoparts.Comment
+FROM Autoparts INNER JOIN  Brands_and_models 
+ON Autoparts.ID_brd_mdl=Brands_and_models.ID_brd_mdl
+INNER JOIN Brands ON Brands.ID_brand=Brands_and_models.ID_brand
+INNER JOIN Models ON Models.ID_model=Brands_and_models.ID_model
+INNER JOIN Manufacturers ON Manufacturers.ID_manufacturer=Autoparts.ID_manufacturer
+INNER JOIN Country ON Manufacturers.ID_country=Country.ID_country
+ON Autoparts.Title=''
+-----------------------------------------------------------------------------------------------------------------------
+
 CREATE PROCEDURE dbo.SelectAnotherModels
 @b CHAR(30)
 AS
@@ -922,7 +968,7 @@ GO
 EXECUTE dbo.SearchByPriceRange  434, 999999.00
 
 
---Вывод отчётов
+---------------------------------Вывод отчётов------------------------------------
 CREATE PROCEDURE dbo.DeliveryReport
 AS
 BEGIN
@@ -934,6 +980,7 @@ ON Supply.ID_autoparts=Autoparts.ID_autoparts
 INNER JOIN Manufacturers
 ON Autoparts.ID_manufacturer=Manufacturers.ID_manufacturer
 END
+GO
 
 
 CREATE PROCEDURE dbo.SalesReport
@@ -947,7 +994,21 @@ ON Autoparts.ID_manufacturer=Manufacturers.ID_manufacturer
 INNER JOIN Availability_auto_parts
 ON Availability_auto_parts.ID_autoparts=Sale.ID_autoparts AND Sale.ID_department=Availability_auto_parts.ID_department
 END
+GO
 
+
+CREATE PROCEDURE dbo.ReportUserSessions
+AS
+BEGIN
+SELECT UserSession.Login_ AS 'Логин', Surname AS 'Фамилия', First_name AS'Имя', Last_name AS 'Отчество', Role_.Role_ 'Роль', UserSession.Date_of_entrance AS 'Дата', UserSession.Time_ AS 'Время'
+FROM UserSession INNER JOIN Users
+ON UserSession.Login_=Users.Login_
+INNER JOIN Role_
+ON Users.ID_role=Role_.ID_role
+INNER JOIN InfoUsers
+ON UserSession.Login_=InfoUsers.Login_
+END
+GO
 
 ---------------------фильтрация отчёта поставок--------------------------------------
 
@@ -1253,6 +1314,8 @@ EXECUTE dbo.InsertCountry 1, 'США'
 EXECUTE dbo.InsertCountry 2, 'Великобритания'
 EXECUTE dbo.InsertCountry 3, 'Германия'
 EXECUTE dbo.InsertCountry 4, 'Япония'
+EXECUTE dbo.InsertCountry 5, 'Россия'
+
 
 --Производители
 EXECUTE dbo.InsertManufacturer 1, 'Caterpillar Inc', 1
@@ -1377,6 +1440,9 @@ EXECUTE dbo.InsertCity 34, 'Нижний Новгород'
 EXECUTE dbo.InsertCity 35, 'Омск'
 EXECUTE dbo.InsertCity 35, 'Энгельс'
 EXECUTE dbo.InsertCity 36, 'Ярославль'
+EXECUTE dbo.InsertCity 37, 'Токио'
+EXECUTE dbo.InsertCity 38, 'Марафон'
+EXECUTE dbo.InsertCity 39, 'Стоктон'
 
 
 --Улицы
@@ -1441,6 +1507,12 @@ EXECUTE dbo.InsertStreet 58, 'ул. Блюхера'
 EXECUTE dbo.InsertStreet 59, 'ул. Калинина'
 EXECUTE dbo.InsertStreet 60, 'ул. Лисицына'
 EXECUTE dbo.InsertStreet 61, 'ул. Малахова'
+EXECUTE dbo.InsertStreet 62, 'ул. Академика Капицы'
+EXECUTE dbo.InsertStreet 63, 'набережная Лейтенанта Шмидта'
+EXECUTE dbo.InsertStreet 64, 'Хараюки'
+EXECUTE dbo.InsertStreet 65, 'Пайн Стрит'
+EXECUTE dbo.InsertStreet 66, 'Портер Вей'
+
 
 
 --//Отделы магазина
@@ -1475,3 +1547,11 @@ EXECUTE dbo.InsertDepartment_store 27, 18, 27, 'д.3Б', '9714442849'
 EXECUTE dbo.InsertDepartment_store 28, 18, 28, 'д.58', '9711142849'
 EXECUTE dbo.InsertDepartment_store 29, 19, 29, 'д.111', '9767111849'
 EXECUTE dbo.InsertDepartment_store 30, 20, 30, 'д.10', '9762311849'
+
+
+-------------------------добавление поставщиков--------------------------------------
+EXECUTE dbo.InsertSupplier 1, 'АВТОРУСЬ', 7728712038, 772801001, 'Мельниченко Михаил Юрьевич', 5, 1, 62, '20', '(495) 135-9999', 'autorus@mail.com'
+EXECUTE dbo.InsertSupplier 2, 'Автополка', 7801557928, 780101001, 'Борисов Александр Владимирович', 5, 2, 63, '21 лит', '(965) 090-0005', 'autopolka@mail.com'
+EXECUTE dbo.InsertSupplier 3, 'Japan Best Parts', 9006257123, 900131301, 'Ивао Андо', 4, 37, 64, '32', '(133) 583-4445', 'japan@mail.com'
+EXECUTE dbo.InsertSupplier 4, 'City Parts', 8606847124, 860121344, 'Райт Кевин', 1, 38, 65, '755', '(715) 443-0003', 'partscityauto@gmail.com'
+EXECUTE dbo.InsertSupplier 5, 'Keystone Automotive', 8607557173, 860284389, 'Смит Лукас', 1, 39, 66, '87', '(209) 948-1101', 'lkqcorp@gmail.com'

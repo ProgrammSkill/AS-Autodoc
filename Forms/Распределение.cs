@@ -20,6 +20,11 @@ namespace AS_Autodoc
         {
             InitializeComponent();
 
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.MinimumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.StartPosition = FormStartPosition.CenterScreen;
+
             id_department = new List<int>();
             using (SqlConnection connect = new SqlConnection(con))
             {

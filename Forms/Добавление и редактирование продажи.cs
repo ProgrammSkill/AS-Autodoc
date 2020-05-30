@@ -20,6 +20,12 @@ namespace AS_Autodoc
         public AddingAndEditingSales()
         {
             InitializeComponent();
+
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.MinimumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.StartPosition = FormStartPosition.CenterScreen;
+
             this.numericUpDown1.Minimum = 1;
             this.numericUpDown1.Maximum = 1000;
             SelectComboBox();
@@ -111,8 +117,8 @@ namespace AS_Autodoc
                 }
                 else
                 {
-                    MessageBox.Show("В отделе магазина недостаточно количество  данной автозапчасти для продажи." +
-                    " Укажите количество для продажи автозапчасти, которое не превышает количество в отделе магазина", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("В магазине недостаточно автозапчастей для продажи." +
+                    " Укажите количество автозапчастей, которое не превышает количества в магазине.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -155,8 +161,8 @@ namespace AS_Autodoc
                     }
                     else
                     {
-                        MessageBox.Show("В отделе магазина недостаточно количество  данной автозапчасти для продажи." +
-                        " Укажите количество для продажи автозапчасти, которое не превышает количество в отделе магазина", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("В магазине недостаточно автозапчастей для продажи." +
+                        " Укажите количество автозапчастей, которое не превышает количества в магазине.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
@@ -267,7 +273,7 @@ namespace AS_Autodoc
                 }
                 else
                 {
-                    MessageBox.Show("Введён неправельный формат даты", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Введён неправильный формат даты", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else

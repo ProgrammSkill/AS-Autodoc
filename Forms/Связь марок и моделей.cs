@@ -11,14 +11,19 @@ using System.Data.SqlClient;
 
 namespace AS_Autodoc
 {
-    public partial class Brands_and_models : Form
+    public partial class BrandsAndModels : Form
     {
         string con = Connect.getConnect();
         List<int> id_brand;
         List<int> id_model;
-        public Brands_and_models()
+        public BrandsAndModels()
         {
             InitializeComponent();
+
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.MinimumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.StartPosition = FormStartPosition.CenterScreen;
 
             id_brand = new List<int>();
             using (SqlConnection connect = new SqlConnection(con))
@@ -83,7 +88,7 @@ namespace AS_Autodoc
             string title_country = dataGridView1[1, dataGridView1.CurrentRow.Index].Value.ToString();
             DialogResult result = MessageBox.Show(
             "Вы точно хотите удалить проиизводителя из списка?",
-            "Предупреждение",
+            "Подтверждение",
             MessageBoxButtons.YesNo,
             MessageBoxIcon.Question,
             MessageBoxDefaultButton.Button3);

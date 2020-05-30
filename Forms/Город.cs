@@ -17,6 +17,11 @@ namespace AS_Autodoc
         public City()
         {
             InitializeComponent();
+
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.MinimumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
         public int insertId;
         public int ID_city;
@@ -49,7 +54,7 @@ namespace AS_Autodoc
             string title_country = dataGridView1[1, dataGridView1.CurrentRow.Index].Value.ToString();
             DialogResult result = MessageBox.Show(
             "Вы точно хотите удалить город из списка?",
-            "Предупреждение",
+            "Подтверждение",
             MessageBoxButtons.YesNo,
             MessageBoxIcon.Question,
             MessageBoxDefaultButton.Button3);
@@ -139,7 +144,7 @@ namespace AS_Autodoc
             {
                 ID_city = Convert.ToInt32(dataGridView1[0, dataGridView1.CurrentRow.Index].Value);
                 city = dataGridView1[1, dataGridView1.CurrentRow.Index].Value.ToString();
-                Renaming_city f = new Renaming_city();
+                RenamingСity f = new RenamingСity();
                 f.Owner = this;
                 f.Show();
             }

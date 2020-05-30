@@ -12,16 +12,26 @@ using System.Text.RegularExpressions;
 
 namespace AS_Autodoc
 {
-    public partial class AddingSupplier : Form
+    public partial class AddingAndEditingSupplier : Form
     {
         string con = Connect.getConnect();
         int insertId;
         List<int> id_country;
         List<int> id_city;
         List<int> id_street;
-        public AddingSupplier()
+        public AddingAndEditingSupplier()
         {
             InitializeComponent();
+
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.MinimumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.StartPosition = FormStartPosition.CenterScreen;
+
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.MinimumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.StartPosition = FormStartPosition.CenterScreen;
 
             id_country = new List<int>();
             using (SqlConnection connect = new SqlConnection(con))
@@ -119,7 +129,7 @@ namespace AS_Autodoc
             using (SqlConnection connect = new SqlConnection(con))
             {
                 connect.Open();
-                SqlCommand com = new SqlCommand("EXECUTE dbo.EditSupplier '" + insertId + "','" + textBox1.Text + "','" + textBox2.Text +
+                SqlCommand com = new SqlCommand("EXECUTE dbo.EditSupplier '" + id + "','" + textBox1.Text + "','" + textBox2.Text +
                 "','" + textBox3.Text + "','" + textBox4.Text + "','" + id_country[comboBox1.SelectedIndex] +
                 "','" + id_city[comboBox2.SelectedIndex] + "','" + id_street[comboBox3.SelectedIndex] + "','" + textBox5.Text + "','" +
                 maskedTextBox1.Text + "','" + textBox6.Text + "'", connect);
@@ -166,23 +176,34 @@ namespace AS_Autodoc
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            if (isValid(textBox6.Text) == true)
+            if (textBox1.Text != "" && textBox2.Text != "" && textBox3.Text != "" && textBox4.Text != "" &&
+               comboBox1.Text != "" && comboBox2.Text != "" && comboBox3.Text != "" && textBox5.Text != "" &&
+               maskedTextBox1.Text != "" && textBox6.Text != "")
             {
-                Suppliers f = (Suppliers)this.Owner;
-                if (f.InsertOrEdit.ToString() == "Добавить")
+                if (isValid(textBox6.Text) == true)
                 {
-                    Insertion();
-                    MaxId();
+                    Suppliers f = (Suppliers)this.Owner;
+                    if (f.InsertOrEdit.ToString() == "Добавить")
+                    {
+                        Insertion();
+                        MaxId();
+                        f.LoadAll();
+                    }
+                    else
+                    {
+                        Edit();
+                        f.LoadAll();
+                    }
                 }
                 else
                 {
-                    Edit();
+                    MessageBox.Show("Введён неправильный формат адреса электронной почты (email)", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                f.LoadAll();
             }
             else
             {
-                MessageBox.Show("Введён неправельный формат адреса электронной почты (email)", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Заполните все поля!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
 

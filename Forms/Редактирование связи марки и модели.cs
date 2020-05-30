@@ -20,6 +20,11 @@ namespace AS_Autodoc
         {
             InitializeComponent();
 
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.MinimumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.StartPosition = FormStartPosition.CenterScreen;
+
             id_brand = new List<int>();
             using (SqlConnection connect = new SqlConnection(con))
             {
@@ -65,7 +70,7 @@ namespace AS_Autodoc
 
         private void EditingBrandAndModel_Load(object sender, EventArgs e)
         {
-            Brands_and_models f = (Brands_and_models)this.Owner;
+            BrandsAndModels f = (BrandsAndModels)this.Owner;
             id = f.ID_brd_mdl.ToString();
             comboBox1.SelectedItem = f.Title_brand.ToString();
             comboBox2.SelectedItem = f.Title_model.ToString();
@@ -76,7 +81,7 @@ namespace AS_Autodoc
             if(comboBox1.Text != "" && comboBox2.Text != "")
             {
                 Edit();
-                Brands_and_models f = (Brands_and_models)this.Owner;
+                BrandsAndModels f = (BrandsAndModels)this.Owner;
                 f.LoadAll();
             }
             else

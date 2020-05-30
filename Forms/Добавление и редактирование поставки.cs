@@ -21,6 +21,12 @@ namespace AS_Autodoc
         public AddingAndEditingDelivery()
         {
             InitializeComponent();
+
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.MinimumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.StartPosition = FormStartPosition.CenterScreen;
+
             this.numericUpDown1.Minimum = 1;
             this.numericUpDown1.Maximum = 1000;
             SelectComboBox();
@@ -240,12 +246,12 @@ namespace AS_Autodoc
                     }
                     else
                     {
-                        MessageBox.Show("Введён неправельный формат даты!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Введён неправильный формат даты!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Введён неправельный формат цены!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Введён неправильный формат цены!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     textBox1.Clear();
                 }
             }

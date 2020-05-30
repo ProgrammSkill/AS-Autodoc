@@ -18,6 +18,11 @@ namespace AS_Autodoc
         {
             InitializeComponent();
 
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.MinimumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.StartPosition = FormStartPosition.CenterScreen;
+
             using (SqlConnection connect = new SqlConnection(con))
             {
                 connect.Open();
@@ -78,7 +83,7 @@ namespace AS_Autodoc
         {
             DialogResult result = MessageBox.Show(
             "Вы точно хотите удалить поставщика?",
-            "Предупреждение",
+            "Подтверждение",
             MessageBoxButtons.YesNo,
             MessageBoxIcon.Information,
             MessageBoxDefaultButton.Button3);
@@ -141,17 +146,17 @@ namespace AS_Autodoc
                         while (r.Read())
                         {
                             dataGridView1.Rows.Add();
-                            dataGridView1[0, i].Value = r[0].ToString().TrimEnd();
-                            dataGridView1[1, i].Value = r[1].ToString().TrimEnd();
-                            dataGridView1[2, i].Value = r[2].ToString().TrimEnd();
-                            dataGridView1[3, i].Value = r[3].ToString().TrimEnd();
-                            dataGridView1[4, i].Value = r[4].ToString().TrimEnd();
-                            dataGridView1[5, i].Value = r[5].ToString().TrimEnd();
-                            dataGridView1[6, i].Value = r[6].ToString().TrimEnd();
-                            dataGridView1[7, i].Value = r[7].ToString().TrimEnd();
-                            dataGridView1[8, i].Value = r[8].ToString().TrimEnd();
-                            dataGridView1[9, i].Value = r[9].ToString().TrimEnd();
-                            dataGridView1[10, i].Value = r[10].ToString().TrimEnd();
+                            dataGridView1[0, i].Value = r[0].ToString();
+                            dataGridView1[1, i].Value = r[1].ToString();
+                            dataGridView1[2, i].Value = r[2].ToString();
+                            dataGridView1[3, i].Value = r[3].ToString();
+                            dataGridView1[4, i].Value = r[4].ToString();
+                            dataGridView1[5, i].Value = r[5].ToString();
+                            dataGridView1[6, i].Value = r[6].ToString();
+                            dataGridView1[7, i].Value = r[7].ToString();
+                            dataGridView1[8, i].Value = r[8].ToString();
+                            dataGridView1[9, i].Value = r[9].ToString();
+                            dataGridView1[10, i].Value = r[10].ToString();
                             i++;
                         }
                     }
@@ -172,7 +177,7 @@ namespace AS_Autodoc
         private void Button1_Click(object sender, EventArgs e)
         {
             InsertOrEdit = "Добавить";
-            AddingSupplier f = new AddingSupplier();
+            AddingAndEditingSupplier f = new AddingAndEditingSupplier();
             f.Owner = this;
             f.Show();
         }
@@ -202,7 +207,7 @@ namespace AS_Autodoc
                 Telephone= dataGridView1[9, dataGridView1.CurrentRow.Index].Value.ToString();
                 Email = dataGridView1[10, dataGridView1.CurrentRow.Index].Value.ToString();
                 InsertOrEdit = "Редактировать";
-                AddingSupplier f = new AddingSupplier();
+                AddingAndEditingSupplier f = new AddingAndEditingSupplier();
                 f.Owner = this;
                 f.Show();
             }

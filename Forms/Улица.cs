@@ -17,6 +17,11 @@ namespace AS_Autodoc
         public Street()
         {
             InitializeComponent();
+
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.MinimumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
         public int insertId;
         public int ID_street;
@@ -49,7 +54,7 @@ namespace AS_Autodoc
             string title_country = dataGridView1[1, dataGridView1.CurrentRow.Index].Value.ToString();
             DialogResult result = MessageBox.Show(
             "Вы точно хотите удалить улицу из списка?",
-            "Предупреждение",
+            "Подтверждение",
             MessageBoxButtons.YesNo,
             MessageBoxIcon.Question,
             MessageBoxDefaultButton.Button3);
@@ -139,7 +144,7 @@ namespace AS_Autodoc
             {
                 ID_street = Convert.ToInt32(dataGridView1[0, dataGridView1.CurrentRow.Index].Value);
                 street = dataGridView1[1, dataGridView1.CurrentRow.Index].Value.ToString();
-                Renaming__street f = new Renaming__street();
+                RenamingStreet f = new RenamingStreet();
                 f.Owner = this;
                 f.Show();
             }

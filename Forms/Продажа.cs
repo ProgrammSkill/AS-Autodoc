@@ -18,6 +18,12 @@ namespace AS_Autodoc
         public Sale()
         {
             InitializeComponent();
+
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.MinimumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.StartPosition = FormStartPosition.CenterScreen;
+
             SelectComboBox();
         }
         public string InsertOrEdit { get; set; }
@@ -81,7 +87,7 @@ namespace AS_Autodoc
             string title_country = dataGridView1[1, dataGridView1.CurrentRow.Index].Value.ToString();
             DialogResult result = MessageBox.Show(
             "Вы точно хотите удалить продажу из списка?",
-            "Предупреждение",
+            "Подтверждение",
             MessageBoxButtons.YesNo,
             MessageBoxIcon.Question,
             MessageBoxDefaultButton.Button3);
@@ -210,14 +216,14 @@ namespace AS_Autodoc
                         }
                         else
                         {
-                            MessageBox.Show("Введён неправельный формат даты", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Введён неправильный формат даты", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             maskedTextBox2.Clear();
                         }
 
                     }
                     else
                     {
-                        MessageBox.Show("Введён неправельный формат даты", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Введён неправильный формат даты", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         maskedTextBox1.Clear();
                     }
                 }
@@ -268,14 +274,14 @@ namespace AS_Autodoc
                         }
                         else
                         {
-                            MessageBox.Show("Введён неправельный формат даты", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Введён неправильный формат даты", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             maskedTextBox2.Clear();
                         }
 
                     }
                     else
                     {
-                        MessageBox.Show("Введён неправельный формат даты", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Введён неправильный формат даты", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         maskedTextBox1.Clear();
                     }
                 }

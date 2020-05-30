@@ -17,8 +17,29 @@ namespace AS_Autodoc
         public ManagerMenu()
         {
             InitializeComponent();
+
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.MinimumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.StartPosition = FormStartPosition.CenterScreen;
+
+            foreach (ToolStripMenuItem m in menuStrip1.Items)
+            {
+                SetWhiteColor(m);
+            }
+            menuStrip1.Renderer = new ToolStripProfessionalRenderer(new Cols());
+
         }
         public int insertId;
+
+        private void SetWhiteColor(ToolStripMenuItem item)
+        {
+            item.ForeColor = Color.White;
+            foreach (ToolStripMenuItem it in item.DropDownItems)
+            {
+                SetWhiteColor(it);
+            }
+        }
 
         void MaxId()
         {
@@ -114,7 +135,7 @@ namespace AS_Autodoc
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            Brands_and_models f = new Brands_and_models();
+            BrandsAndModels f = new BrandsAndModels();
             f.ShowDialog();
         }
 
@@ -163,6 +184,105 @@ namespace AS_Autodoc
         {
             Authorization_form f = (Authorization_form)this.Owner;
             f.Close();
+        }
+
+        private void МаркиИМоделиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BrandsAndModels f = new BrandsAndModels();
+            f.ShowDialog();
+        }
+
+        private void ПоставкаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Supply f = new Supply();
+            f.ShowDialog();
+        }
+
+
+        public class Cols : ProfessionalColorTable
+        {
+            Color MyGreen = Color.FromArgb(80, 174, 168);
+
+            public override Color MenuItemSelected
+            {
+                get { return Color.FromArgb(96, 208, 201); }
+            }
+
+            public override Color ToolStripDropDownBackground
+            {
+                get { return MyGreen; }
+            }
+
+            public override Color ImageMarginGradientBegin
+            {
+                get { return MyGreen; }
+            }
+
+            public override Color ImageMarginGradientEnd
+            {
+                get { return MyGreen; }
+            }
+
+            public override Color ImageMarginGradientMiddle
+            {
+                get { return MyGreen; }
+            }
+
+            public override Color MenuItemSelectedGradientBegin
+            {
+                get { return Color.FromArgb(96, 208, 201); }
+            }
+            public override Color MenuItemSelectedGradientEnd
+            {
+                get { return Color.FromArgb(96, 208, 201); }
+            }
+
+            public override Color MenuItemPressedGradientBegin
+            {
+                get { return Color.FromArgb(96, 208, 201); }
+            }
+
+            public override Color MenuItemPressedGradientMiddle
+            {
+                get { return Color.FromArgb(96, 208, 201); }
+            }
+
+            public override Color MenuItemPressedGradientEnd
+            {
+                get { return Color.FromArgb(96, 208, 201); }
+            }
+
+            public override Color MenuItemBorder
+            {
+                get { return Color.FromArgb(96, 208, 201); }
+            }
+        }
+
+        private void PictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void МагазиныToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DepartmentStore f = new DepartmentStore();
+            f.ShowDialog();
+        }
+
+        private void PictureBox1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void ПоставщикиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Suppliers f = new Suppliers();
+            f.ShowDialog();
         }
     }
 }

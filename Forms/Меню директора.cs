@@ -17,6 +17,17 @@ namespace AS_Autodoc
         public DirectorMenu()
         {
             InitializeComponent();
+
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.MinimumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.StartPosition = FormStartPosition.CenterScreen;
+
+            foreach (ToolStripMenuItem m in menuStrip1.Items)
+            {
+                SetWhiteColor(m);
+            }
+            menuStrip1.Renderer = new ToolStripProfessionalRenderer(new Cols());
         }
         public int insertId;
 
@@ -95,6 +106,89 @@ namespace AS_Autodoc
         }
 
         private void Button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Enter_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        public class Cols : ProfessionalColorTable
+        {
+            Color MyGreen = Color.FromArgb(80, 174, 168);
+
+            public override Color MenuItemSelected
+            {
+                get { return Color.FromArgb(96, 208, 201); }
+            }
+
+            public override Color ToolStripDropDownBackground
+            {
+                get { return MyGreen; }
+            }
+
+            public override Color ImageMarginGradientBegin
+            {
+                get { return MyGreen; }
+            }
+
+            public override Color ImageMarginGradientEnd
+            {
+                get { return MyGreen; }
+            }
+
+            public override Color ImageMarginGradientMiddle
+            {
+                get { return MyGreen; }
+            }
+
+            public override Color MenuItemSelectedGradientBegin
+            {
+                get { return Color.FromArgb(96, 208, 201); }
+            }
+            public override Color MenuItemSelectedGradientEnd
+            {
+                get { return Color.FromArgb(96, 208, 201); }
+            }
+
+            public override Color MenuItemPressedGradientBegin
+            {
+                get { return Color.FromArgb(96, 208, 201); }
+            }
+
+            public override Color MenuItemPressedGradientMiddle
+            {
+                get { return Color.FromArgb(96, 208, 201); }
+            }
+
+            public override Color MenuItemPressedGradientEnd
+            {
+                get { return Color.FromArgb(96, 208, 201); }
+            }
+
+            public override Color MenuItemBorder
+            {
+                get { return Color.FromArgb(96, 208, 201); }
+            }
+        }
+
+        private void SetWhiteColor(ToolStripMenuItem item)
+        {
+            item.ForeColor = Color.White;
+            foreach (ToolStripMenuItem it in item.DropDownItems)
+            {
+                SetWhiteColor(it);
+            }
+        }
+
+        private void PictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PictureBox1_Click_1(object sender, EventArgs e)
         {
 
         }

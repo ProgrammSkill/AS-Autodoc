@@ -17,6 +17,12 @@ namespace AS_Autodoc
         public AutoPartsInStore()
         {
             InitializeComponent();
+
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.MinimumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.StartPosition = FormStartPosition.CenterScreen;
+
             SelectComboBox();
         }
         public string InsertOrEdit;
@@ -124,7 +130,7 @@ namespace AS_Autodoc
             string NumberStore= dataGridView1[1, dataGridView1.CurrentRow.Index].Value.ToString().TrimEnd();
             DialogResult result = MessageBox.Show(
             "Вы точно хотите удалить автозапчасть в магазине № "+ NumberStore+"?",
-            "Предупреждение",
+            "Подтверждение",
             MessageBoxButtons.YesNo,
             MessageBoxIcon.Question,
             MessageBoxDefaultButton.Button3);

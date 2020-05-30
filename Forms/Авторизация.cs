@@ -17,6 +17,21 @@ namespace AS_Autodoc
         public Authorization_form()
         {
             InitializeComponent();
+
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.MinimumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.StartPosition = FormStartPosition.CenterScreen;
+
+            //Style style = new Style();
+            //style.GetSelfAndChildrenRecursive(this).OfType<Button>().ToList()
+            //.ForEach(button => button.BackColor = Color.FromArgb(169, 4, 21));
+
+            //style.GetSelfAndChildrenRecursive(this).OfType<Button>().ToList()
+            //.ForEach(button => button.ForeColor = Color.White);
+
+            //          style.GetSelfAndChildrenRecursive(this).OfType<Button>().ToList()
+            //      .ForEach(button => button.BackColor = Color.FromArgb(169, 4, 21));
         }
         public string Login;
         public string Surname;

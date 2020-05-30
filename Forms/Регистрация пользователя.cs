@@ -20,6 +20,12 @@ namespace AS_Autodoc
         public RegistrationOfUsers()
         {
             InitializeComponent();
+
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.MinimumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.StartPosition = FormStartPosition.CenterScreen;
+
             SelectComboBox();
         }
 
@@ -145,7 +151,7 @@ namespace AS_Autodoc
         private void TextBox4_KeyPress(object sender, KeyPressEventArgs e)
         {
             char l = e.KeyChar;
-            if ((l < 'А' || l > 'я') && l != '\b' && l != '.')
+            if ((l < 'А' || l > 'я') && l != '\b' && l != '.' )
             {
                 e.Handled = true;
             }
@@ -158,6 +164,11 @@ namespace AS_Autodoc
             {
                 e.Handled = true;
             }
+        }
+
+        private void TextBox4_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

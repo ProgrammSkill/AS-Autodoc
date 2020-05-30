@@ -17,6 +17,11 @@ namespace AS_Autodoc
         public Models()
         {
             InitializeComponent();
+
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.MinimumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
         public int insertId;
         public int ID_model;
@@ -36,7 +41,7 @@ namespace AS_Autodoc
                     {
                         dataGridView1.Rows.Add();
                         dataGridView1[0, i].Value = r[0].ToString().TrimEnd();
-                        dataGridView1[1, i].Value = r[1].ToString().TrimEnd();
+                        dataGridView1[1, i].Value = r[1].ToString().TrimEnd().TrimEnd();
                         i++;
                     }
                 }
@@ -49,7 +54,7 @@ namespace AS_Autodoc
             string title_country = dataGridView1[1, dataGridView1.CurrentRow.Index].Value.ToString();
             DialogResult result = MessageBox.Show(
             "Вы точно хотите удалить модель из списка?",
-            "Предупреждение",
+            "Подтверждение",
             MessageBoxButtons.YesNo,
             MessageBoxIcon.Question,
             MessageBoxDefaultButton.Button3);
@@ -139,7 +144,7 @@ namespace AS_Autodoc
             {
                 ID_model = Convert.ToInt32(dataGridView1[0, dataGridView1.CurrentRow.Index].Value);
                 model = dataGridView1[1, dataGridView1.CurrentRow.Index].Value.ToString();
-                Renaming__model f = new Renaming__model();
+                RenamingModel f = new RenamingModel();
                 f.Owner = this;
                 f.Show();
             }

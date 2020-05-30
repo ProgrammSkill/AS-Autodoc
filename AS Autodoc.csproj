@@ -32,6 +32,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="Github.NET, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\GithubNET.1.1.1\lib\net472\Github.NET.dll</HintPath>
@@ -195,11 +199,11 @@
     <Compile Include="Forms\Распределение.Designer.cs">
       <DependentUpon>Распределение.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Отделы магазина.cs">
+    <Compile Include="Forms\Магазины.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Отделы магазина.Designer.cs">
-      <DependentUpon>Отделы магазина.cs</DependentUpon>
+    <Compile Include="Forms\Магазины.Designer.cs">
+      <DependentUpon>Магазины.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Редактирование связи марки и модели.cs">
       <SubType>Form</SubType>
@@ -337,12 +341,13 @@
     <Compile Include="Forms\Переименование модели.Designer.cs">
       <DependentUpon>Переименование модели.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Редактирование отдела.cs">
+    <Compile Include="Forms\Редактирование данных магазина.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Редактирование отдела.Designer.cs">
-      <DependentUpon>Редактирование отдела.cs</DependentUpon>
+    <Compile Include="Forms\Редактирование данных магазина.Designer.cs">
+      <DependentUpon>Редактирование данных магазина.cs</DependentUpon>
     </Compile>
+    <Compile Include="Style.cs" />
     <EmbeddedResource Include="Forms\Автозапчасти в магазине для продавца.resx">
       <DependentUpon>Автозапчасти в магазине для продавца.cs</DependentUpon>
     </EmbeddedResource>
@@ -393,8 +398,8 @@
     <EmbeddedResource Include="Forms\Распределение.resx">
       <DependentUpon>Распределение.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Отделы магазина.resx">
-      <DependentUpon>Отделы магазина.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Магазины.resx">
+      <DependentUpon>Магазины.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Редактирование связи марки и модели.resx">
       <DependentUpon>Редактирование связи марки и модели.cs</DependentUpon>
@@ -472,8 +477,8 @@
     <EmbeddedResource Include="Forms\Производители.resx">
       <DependentUpon>Производители.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Редактирование отдела.resx">
-      <DependentUpon>Редактирование отдела.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Редактирование данных магазина.resx">
+      <DependentUpon>Редактирование данных магазина.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Отчёт по продажам.resx">
       <DependentUpon>Отчёт по продажам.cs</DependentUpon>
@@ -518,6 +523,8 @@
     <None Include="Resources\internet-magazin-avtozapchastej-autodocru-otzyvy-1552723225.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="logo.ico" />
+    <None Include="Resources\Выбор-автозапчастей-для-автомобилей-разных-производителей.jpg" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

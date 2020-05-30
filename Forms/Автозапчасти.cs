@@ -18,6 +18,12 @@ namespace AS_Autodoc
         public Autoparts()
         {
             InitializeComponent();
+
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.MinimumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.StartPosition = FormStartPosition.CenterScreen;
+
             SelectComboBox();
 
         }
@@ -30,6 +36,8 @@ namespace AS_Autodoc
         public string Manufacturer { get; set; }
         public string Comment { get; set; }
 
+        string where;
+
         public void SelectComboBox()
         {
             using (SqlConnection connect = new SqlConnection(con))
@@ -40,7 +48,7 @@ namespace AS_Autodoc
                 {
                     while (r.Read())
                     {
-                        comboBox1.Items.Add(r[1].ToString());
+                        comboBox2.Items.Add(r[1].ToString());
                     }
                 }
             }
@@ -53,23 +61,11 @@ namespace AS_Autodoc
                 {
                     while (r.Read())
                     {
-                        comboBox3.Items.Add(r[1].ToString());
+                        comboBox1.Items.Add(r[1].ToString());
                     }
                 }
             }
 
-            using (SqlConnection connect = new SqlConnection(con))
-            {
-                connect.Open();
-                SqlCommand com = new SqlCommand("SELECT * FROM Country", connect);
-                using (SqlDataReader r = com.ExecuteReader())
-                {
-                    while (r.Read())
-                    {
-                        comboBox4.Items.Add(r[1].ToString());
-                    }
-                }
-            }
         }
 
         public void LoadAll()
@@ -101,8 +97,6 @@ namespace AS_Autodoc
 
         }
 
-
-
         private void Autoparts_Load(object sender, EventArgs e)
         {
             LoadAll();
@@ -120,7 +114,7 @@ namespace AS_Autodoc
         {
             DialogResult result = MessageBox.Show(
             "Вы точно хотите удалить автозапчасть?",
-            "Предупреждение",
+            "Подтверждение",
             MessageBoxButtons.YesNo,
             MessageBoxIcon.Question,
             MessageBoxDefaultButton.Button3);
@@ -171,23 +165,94 @@ namespace AS_Autodoc
             }
         }
 
-        private void Button4_Click(object sender, EventArgs e)
+        private void Search()
         {
-            if (textBox1.Text != "")
+            //поиск по наименованию автозапчасти
+            if (textBox1.Text != "" && 
+                    (comboBox1.Text == "" || comboBox1.Text == "Не указано") &&
+                    (comboBox2.Text == "" || comboBox2.Text == "Не указано") && (comboBox3.Text == "" || comboBox3.Text == "Не указано"))
             {
-                for (int i = 0; i < dataGridView1.Rows.Count; i++)
-                {
-                    string str = dataGridView1[1, i].Value.ToString();
-                    int x = str.IndexOf(textBox1.Text);
-                    if (x > -1)
-                    {
-                        dataGridView1.Rows[i].Visible = true;
-                    }
-                    else
-                    {
-                        dataGridView1.Rows[i].Visible = false;
-                    }
-                }
+                where = "WHERE Autoparts.Title='" + textBox1.Text+"'";
+            }
+            //поиск по производителю
+            else if (textBox1.Text == "" && 
+                    (comboBox1.Text != "" || comboBox1.Text != "Не указано") &&
+                    (comboBox2.Text == "" || comboBox2.Text == "Не указано") && (comboBox3.Text == "" || comboBox3.Text == "Не указано"))
+            {
+                where = "WHERE Manufacturers.Manufacturer='" + comboBox1.Text+"'";
+            }
+            //поиск по марке
+            else if (textBox1.Text == "" && 
+                    (comboBox1.Text == "" || comboBox1.Text == "Не указано") &&
+                    (comboBox2.Text != "" || comboBox2.Text != "Не указано") && (comboBox3.Text == "" || comboBox3.Text == "Не указано"))
+            {
+                where = "WHERE Brands.Title_brand='" + comboBox2.Text + "'";
+            }
+            //поиск по модели
+            else if (textBox1.Text == "" && 
+                    (comboBox1.Text == "" || comboBox1.Text == "Не указано") &&
+                    (comboBox2.Text == "" || comboBox2.Text == "Не указано") && (comboBox3.Text != "" || comboBox3.Text != "Не указано"))
+            {
+                where = "WHERE Models.Title_model='" + comboBox3.Text + "'";
+            }
+            //поиск по наименованию автозапчасти и производителю
+            else if (textBox1.Text != "" && 
+                    (comboBox1.Text != "" || comboBox1.Text != "Не указано") &&
+                    (comboBox2.Text == "" || comboBox2.Text == "Не указано") && (comboBox3.Text == "" || comboBox3.Text == "Не указано"))
+            {
+                where = "WHERE Autoparts.Title='" + textBox1.Text + "' AND Manufacturers.Manufacturer='" + comboBox1.Text+"'";
+            }
+            //поиск по наименованию автозапчасти, по марке
+            else if (textBox1.Text != "" &&
+                    (comboBox1.Text == "" || comboBox1.Text == "Не указано") &&
+                    (comboBox2.Text != "" || comboBox2.Text != "Не указано") && (comboBox3.Text == "" || comboBox3.Text == "Не указано"))
+            {
+                where = "WHERE Autoparts.Title='" + textBox1.Text + "' AND Brands.Title_brand='" + comboBox2.Text + "'";
+            }
+            //поиск по наименованию автозапчасти, по производителю, по марке
+            else if (textBox1.Text != "" &&
+                    (comboBox1.Text != "" || comboBox1.Text != "Не указано") &&
+                    (comboBox2.Text != "" || comboBox2.Text != "Не указано") && (comboBox3.Text == "" || comboBox3.Text == "Не указано"))
+            {
+                where = "WHERE Autoparts.Title='" + textBox1.Text + "' AND Manufacturers.Manufacturer='" + comboBox1.Text + "' AND Brands.Title_brand='" + comboBox2.Text + "'";
+            }
+            //поиск по марке, по модели
+            else if (textBox1.Text == "" &&
+                    (comboBox1.Text == "" || comboBox1.Text == "Не указано") &&
+                    (comboBox2.Text != "" || comboBox2.Text != "Не указано") && (comboBox3.Text != "" || comboBox3.Text != "Не указано"))
+            {
+                where = "WHERE Brands.Title_brand='" + comboBox2.Text + "' AND Models.Title_model='" + comboBox3.Text + "'";
+            }
+            //поиск по производителю и по марке
+            else if (textBox1.Text == "" &&
+                    (comboBox1.Text != "" || comboBox1.Text != "Не указано") &&
+                    (comboBox2.Text != "" || comboBox2.Text != "Не указано") && (comboBox3.Text == "" || comboBox3.Text == "Не указано"))
+            {
+                where = "WHERE Manufacturers.Manufacturer='" +comboBox1.Text+ "' AND Brands.Title_brand='" + comboBox2.Text+"'";
+            }
+            //поиск по производителю, по марке, по модели
+            else if (textBox1.Text == "" &&
+                    (comboBox1.Text != "" || comboBox1.Text != "Не указано") &&
+                    (comboBox2.Text != "" || comboBox2.Text != "Не указано") && (comboBox3.Text != "" || comboBox3.Text != "Не указано"))
+            {
+                where = "WHERE Manufacturers.Manufacturer='" + comboBox1.Text + "' AND Brands.Title_brand='" + comboBox2.Text +
+                "' AND Models.Title_model='" + comboBox3.Text + "'";
+            }
+            //поиск по наименованию автозапчасти, по марке, по модели
+            else if (textBox1.Text != "" &&
+                    (comboBox1.Text == "" || comboBox1.Text == "Не указано") &&
+                    (comboBox2.Text != "" || comboBox2.Text != "Не указано") && (comboBox3.Text != "" || comboBox3.Text != "Не указано"))
+            {
+                where = "WHERE Autoparts.Title='" + textBox1.Text + "' AND Brands.Title_brand='" + comboBox2.Text +
+                "' AND Models.Title_model='" + comboBox3.Text + "'";
+            }
+            //поиск по наименованию автозапчасти, по производителю, по марке, по модели
+            else if (textBox1.Text != "" &&
+                    (comboBox1.Text != "" || comboBox1.Text != "Не указано") &&
+                    (comboBox2.Text != "" || comboBox2.Text != "Не указано") && (comboBox3.Text != "" || comboBox3.Text != "Не указано"))
+            {
+                where = "WHERE Autoparts.Title='" + textBox1.Text + "' AND Manufacturers.Manufacturer='" + comboBox1.Text + "' AND Brands.Title_brand='" + comboBox2.Text +
+                "' AND Models.Title_model='" + comboBox3.Text + "'";
             }
             else
             {
@@ -196,13 +261,52 @@ namespace AS_Autodoc
                     dataGridView1.Rows[i].Visible = true;
                 }
             }
+
+            using (SqlConnection conn = new SqlConnection(con))
+            {
+                conn.Open();
+                SqlCommand com = new SqlCommand("SELECT Autoparts.ID_autoparts, Autoparts.Article, Autoparts.Title, Autoparts.ID_brd_mdl, Brands.Title_brand, Models.Title_model, Manufacturers.Manufacturer, Country.Country, Autoparts.Comment " +
+                "FROM Autoparts INNER JOIN  Brands_and_models " +
+                "ON Autoparts.ID_brd_mdl = Brands_and_models.ID_brd_mdl " +
+                "INNER JOIN Brands ON Brands.ID_brand = Brands_and_models.ID_brand " +
+                "INNER JOIN Models ON Models.ID_model = Brands_and_models.ID_model " +
+                "INNER JOIN Manufacturers ON Manufacturers.ID_manufacturer = Autoparts.ID_manufacturer " +
+                "INNER JOIN Country ON Manufacturers.ID_country = Country.ID_country " +
+                where, conn);
+                int i = 0;
+                dataGridView1.Rows.Clear();
+                using (SqlDataReader r = com.ExecuteReader())
+                {
+                    while (r.Read())
+                    {
+                        dataGridView1.Rows.Add();
+                        dataGridView1[0, i].Value = r[0].ToString();
+                        dataGridView1[1, i].Value = r[1].ToString();
+                        dataGridView1[2, i].Value = r[2].ToString();
+                        dataGridView1[3, i].Value = r[3].ToString();
+                        dataGridView1[4, i].Value = r[4].ToString();
+                        dataGridView1[5, i].Value = r[5].ToString();
+                        dataGridView1[6, i].Value = r[6].ToString();
+                        dataGridView1[7, i].Value = r[7].ToString();
+                        dataGridView1[8, i].Value = r[8].ToString();
+                        i++;
+                    }
+                }
+            }
+            MessageBox.Show(where);
+        }
+
+        private void Button4_Click(object sender, EventArgs e)
+        {
+            Search();
         }
 
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            brand = comboBox1.Text;
-            comboBox2.Items.Clear();
-            comboBox2.Text = "";
+            brand = comboBox2.Text;
+            comboBox3.Items.Clear();
+            comboBox3.Text = "";
+            comboBox3.Items.Add("Не указано");
             using (SqlConnection connect = new SqlConnection(con))
             {
                 connect.Open();
@@ -211,7 +315,7 @@ namespace AS_Autodoc
                 {
                     while (r.Read())
                     {
-                        comboBox2.Items.Add(r[3].ToString());
+                        comboBox3.Items.Add(r[3].ToString());
                     }
                 }
             }
@@ -249,141 +353,27 @@ namespace AS_Autodoc
 
         private void Button6_Click(object sender, EventArgs e)
         {
-            if (textBox2.Text != "")
-            {
-                for (int i = 0; i < dataGridView1.Rows.Count; i++)
-                {
-                    string str = dataGridView1[2, i].Value.ToString();
-                    int x = str.IndexOf(textBox2.Text);
-                    if (x > -1)
-                    {
-                        dataGridView1.Rows[i].Visible = true;
-                    }
-                    else
-                    {
-                        dataGridView1.Rows[i].Visible = false;
-                    }
-                }
-            }
-            else
-            {
-                for (int i = 0; i < dataGridView1.Rows.Count; i++)
-                {
-                    dataGridView1.Rows[i].Visible = true;
-                }
 
-            }
         }
 
         private void Button9_Click(object sender, EventArgs e)
         {
-            if (comboBox3.Text != "" && comboBox3.Text != "Не указано")
-            {
-                for (int i = 0; i < dataGridView1.Rows.Count; i++)
-                {
-                    string str = dataGridView1[6, i].Value.ToString();
-                    int x = str.IndexOf(comboBox3.Text);
-                    if (x > -1)
-                    {
-                        dataGridView1.Rows[i].Visible = true;
-                    }
-                    else
-                    {
-                        dataGridView1.Rows[i].Visible = false;
-                    }
-                }
-            }
-            else
-            {
-                for (int i = 0; i < dataGridView1.Rows.Count; i++)
-                {
-                    dataGridView1.Rows[i].Visible = true;
-                }
 
-            }
         }
 
         private void Button10_Click(object sender, EventArgs e)
         {
-            if (comboBox4.Text != "" && comboBox4.Text != "Не указано")
-            {
-                for (int i = 0; i < dataGridView1.Rows.Count; i++)
-                {
-                    string str = dataGridView1[7, i].Value.ToString();
-                    int x = str.IndexOf(comboBox4.Text);
-                    if (x > -1)
-                    {
-                        dataGridView1.Rows[i].Visible = true;
-                    }
-                    else
-                    {
-                        dataGridView1.Rows[i].Visible = false;
-                    }
-                }
-            }
-            else
-            {
-                for (int i = 0; i < dataGridView1.Rows.Count; i++)
-                {
-                    dataGridView1.Rows[i].Visible = true;
-                }
 
-            }
         }
 
         private void Button7_Click(object sender, EventArgs e)
         {
-            if (comboBox1.Text != ""&&comboBox1.Text!="Не указано")
-            {
-                for (int i = 0; i < dataGridView1.Rows.Count; i++)
-                {
-                    string str = dataGridView1[4, i].Value.ToString();
-                    int x = str.IndexOf(comboBox1.Text);
-                    if (x > -1)
-                    {
-                        dataGridView1.Rows[i].Visible = true;
-                    }
-                    else
-                    {
-                        dataGridView1.Rows[i].Visible = false;
-                    }
-                }
-            }
-            else
-            {
-                for (int i = 0; i < dataGridView1.Rows.Count; i++)
-                {
-                    dataGridView1.Rows[i].Visible = true;
-                }
-            }
+
         }
 
         private void Button8_Click(object sender, EventArgs e)
         {
-            if (comboBox2.Text != "" && comboBox2.Text != "Не указано")
-            {
-                for (int i = 0; i < dataGridView1.Rows.Count; i++)
-                {
-                    string str = dataGridView1[5, i].Value.ToString();
-                    int x = str.IndexOf(comboBox2.Text);
-                    if (x > -1)
-                    {
-                        dataGridView1.Rows[i].Visible = true;
-                    }
-                    else
-                    {
-                        dataGridView1.Rows[i].Visible = false;
-                    }
-                }
-            }
-            else
-            {
-                for (int i = 0; i < dataGridView1.Rows.Count; i++)
-                {
-                    dataGridView1.Rows[i].Visible = true;
-                }
 
-            }
         }
 
         private void GroupBox1_Enter(object sender, EventArgs e)

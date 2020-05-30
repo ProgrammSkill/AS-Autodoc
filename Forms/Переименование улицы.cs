@@ -11,12 +11,17 @@ using System.Data.SqlClient;
 
 namespace AS_Autodoc
 {
-    public partial class Renaming__street : Form
+    public partial class RenamingStreet : Form
     {
         string con = Connect.getConnect();
-        public Renaming__street()
+        public RenamingStreet()
         {
             InitializeComponent();
+
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.MinimumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
         public string id;
 

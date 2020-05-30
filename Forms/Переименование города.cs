@@ -11,12 +11,17 @@ using System.Data.SqlClient;
 
 namespace AS_Autodoc
 {
-    public partial class Renaming_city : Form
+    public partial class RenamingСity : Form
     {
         string con = Connect.getConnect();
-        public Renaming_city()
+        public RenamingСity()
         {
             InitializeComponent();
+
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.MinimumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
         public string id;
 

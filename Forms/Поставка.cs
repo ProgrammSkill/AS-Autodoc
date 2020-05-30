@@ -18,6 +18,12 @@ namespace AS_Autodoc
         public Supply()
         {
             InitializeComponent();
+
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.MinimumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.StartPosition = FormStartPosition.CenterScreen;
+
             SelectComboBox();
         }
         public string InsertOrEdit { get; set; }
@@ -63,15 +69,15 @@ namespace AS_Autodoc
                     while (r.Read())
                     {
                         dataGridView1.Rows.Add();
-                        dataGridView1[0, i].Value = r[0].ToString().TrimEnd();
-                        dataGridView1[1, i].Value = r[1].ToString().TrimEnd();
-                        dataGridView1[2, i].Value = r[2].ToString().TrimEnd();
-                        dataGridView1[3, i].Value = r[3].ToString().TrimEnd();
-                        dataGridView1[4, i].Value = r[4].ToString().TrimEnd();
-                        dataGridView1[5, i].Value = r[5].ToString().TrimEnd();
-                        dataGridView1[6, i].Value = r[6].ToString().TrimEnd();
-                        dataGridView1[7, i].Value = r[7].ToString().TrimEnd();
-                        dataGridView1[8, i].Value = r[8].ToString().TrimEnd();
+                        dataGridView1[0, i].Value = r[0].ToString();
+                        dataGridView1[1, i].Value = r[1].ToString();
+                        dataGridView1[2, i].Value = r[2].ToString();
+                        dataGridView1[3, i].Value = r[3].ToString();
+                        dataGridView1[4, i].Value = r[4].ToString();
+                        dataGridView1[5, i].Value = r[5].ToString();
+                        dataGridView1[6, i].Value = r[6].ToString();
+                        dataGridView1[7, i].Value = r[7].ToString();
+                        dataGridView1[8, i].Value = r[8].ToString();
                         dataGridView1[9, i].Value = r[9].ToString().Remove(10);
                         dataGridView1[10, i].Value = r[10].ToString().TrimEnd();
                         i++;
@@ -144,7 +150,7 @@ namespace AS_Autodoc
         {
             DialogResult result = MessageBox.Show(
             "Вы точно хотите удалить данную поставку?",
-            "Предупреждение",
+            "Подтверждение",
             MessageBoxButtons.YesNo,
             MessageBoxIcon.Question,
             MessageBoxDefaultButton.Button3);

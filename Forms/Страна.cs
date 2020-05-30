@@ -17,6 +17,11 @@ namespace AS_Autodoc
         public Country()
         {
             InitializeComponent();
+
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.MinimumSize = new System.Drawing.Size(this.Width, this.Height);
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
         public int insertId;
         public int ID_country;
@@ -49,7 +54,7 @@ namespace AS_Autodoc
             string title_country = dataGridView1[1, dataGridView1.CurrentRow.Index].Value.ToString();
             DialogResult result = MessageBox.Show(
             "Вы точно хотите удалить страну из списка?",
-            "Предупреждение",
+            "Подтверждение",
             MessageBoxButtons.YesNo,
             MessageBoxIcon.Question,
             MessageBoxDefaultButton.Button3);
@@ -97,9 +102,9 @@ namespace AS_Autodoc
         {
             using (SqlConnection connect = new SqlConnection(con))
             {              
-                    connect.Open();
-                    SqlCommand com = new SqlCommand("EXECUTE dbo.InsertCountry '" + insertId + "','" + textBox1.Text + "'", connect);
-                    com.ExecuteNonQuery();
+                connect.Open();
+                SqlCommand com = new SqlCommand("EXECUTE dbo.InsertCountry '" + insertId + "','" + textBox1.Text + "'", connect);
+                com.ExecuteNonQuery();
             }
             textBox1.Clear();
         }
@@ -145,7 +150,7 @@ namespace AS_Autodoc
             {
                 ID_country = Convert.ToInt32(dataGridView1[0, dataGridView1.CurrentRow.Index].Value);
                 country = dataGridView1[1, dataGridView1.CurrentRow.Index].Value.ToString();
-                Renaming_country f = new Renaming_country();
+                RenamingCountry f = new RenamingCountry();
                 f.Owner = this;
                 f.Show();
             }
